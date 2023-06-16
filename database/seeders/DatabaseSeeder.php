@@ -20,6 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MessageSeeder::class);
         $this->call(SponsorshipSeeder::class);
         $this->call(ViewSeeder::class);
-
+        $this->call(UserSeeder::class);
     }
 }
