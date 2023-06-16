@@ -29,15 +29,15 @@ class UserSeeder extends Seeder
                 'name'=>'Mattia',
                 'lastname'=>'Moneta',
                 'profile_image'=>'www.example.com',
-                'email'=>'mattiamoeta@example.com',
+                'email'=>'mattiamoneta@example.com',
                 'phone'=>'33673337555',
                 'password'=>Hash::make('password')
             ],
             [
                 'name'=>'Simone',
-                'lastname'=>'Carcagnì',
+                'lastname'=>'Carcagni',
                 'profile_image'=>'www.example.com',
-                'email'=>'simonecarcagnì@example.com',
+                'email'=>'simonecarcagni@example.com',
                 'phone'=>'3357338733',
                 'password'=>Hash::make('password')
             ],
