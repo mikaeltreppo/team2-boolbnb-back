@@ -20,9 +20,6 @@ return new class extends Migration
             $table->decimal('price');
             $table->string('description', 1500);
             $table->string('address', 150);
-
-            $table->text('images'); /* da decodificare in JSON */
-
             $table->tinyInteger('beds');
             $table->tinyInteger('bathrooms');
             $table->tinyInteger('bedrooms');
