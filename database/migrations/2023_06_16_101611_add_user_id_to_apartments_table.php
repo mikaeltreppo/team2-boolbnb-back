@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sponsorships', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 50);
-            $table->decimal('price');
-            $table->string('duration', 50);
-            $table->timestamps();
-        });
+        Schema::table('apartments', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id')->nullable()->after('id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL');
+      });
     }
 
     /**
@@ -29,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sponsorships');
+        Schema::table('apartments', function (Blueprint $table) {
+            //
+        });
     }
 };
