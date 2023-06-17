@@ -46,9 +46,10 @@ class ApartmentController extends Controller
      * @param  \App\Models\Apartment  $apartment
      * @return \Illuminate\Http\Response
      */
-    public function show(Apartment $apartment)
+    public function show($id)
     {
-        //
+        $apartment = Apartment::findOrFail($id);
+        return view('admin.apartments.show', compact('apartment'));
     }
 
     /**
