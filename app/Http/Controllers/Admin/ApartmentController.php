@@ -81,8 +81,10 @@ class ApartmentController extends Controller
      * @param  \App\Models\Apartment  $apartment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Apartment $apartment)
+    public function destroy($id)
     {
-        //
+        $apartment = Apartment::findOrFail($id);
+        $apartment->delete();
+        return redirect()->route('admin.apartments.index');
     }
 }

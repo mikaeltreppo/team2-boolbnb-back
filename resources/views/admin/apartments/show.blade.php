@@ -7,7 +7,13 @@
             <h5 class="card-title">{{ $apartment->title }}</h5>
             <p class="card-text">{{$apartment->description}}</p>
             <a href="{{route('admin.apartments.index')}}" class="btn btn-success">Torna ai tuoi Appartamenti</a>
-            <a href="#" class="btn btn-danger">Elimina Appartamento</a>
+     
+            
+            <form method="POST" action="{{ route('admin.apartments.destroy', ['apartment' => $apartment->id]) }}">
+                @method('DELETE')
+                @csrf
+                <button type="submit" class="btn btn-danger mt-2">Elimina Appartamento</button>
+            </form>
         </div>
     </div>
 </div>
