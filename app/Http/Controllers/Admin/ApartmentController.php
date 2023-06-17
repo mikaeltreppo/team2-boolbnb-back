@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Str;
 
 class ApartmentController extends Controller
 {
@@ -26,7 +27,8 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        //
+        $apartments = Apartment::all();
+        return view('admin.apartments.create', compact('apartments'));
     }
 
     /**
@@ -37,7 +39,29 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*da fare validazioni! esempio:
+          $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required'
+        ]); */
+
+        
+        $form_data = $request->all();
+        $newApartment = new Apartment();
+        $newApartment->title = $form_data['title'];
+        $newApartment->description = $form_data['description'];
+        $newApartment->slug = Str::slug($form_data['title']);
+        $newApartment->cover_image = $form_data['cover_image'];
+        $newApartment->price = $form_data['price'];
+        $newApartment->address = $form_data['address'];
+        $newApartment->beds = $form_data['beds'];
+        $newApartment->bathrooms = $form_data['bathrooms'];
+        $newApartment->bedrooms = $form_data['bedrooms'];
+        $newApartment->size_m2 = $form_data['size_m2'];
+        $newApartment->available = $form_data['available'];
+        $newApartment->visible = $form_data['visible'];
+        $newApartment->save();
+        return redirect()->route('admin.apartments.index');
     }
 
     /**

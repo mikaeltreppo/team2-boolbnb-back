@@ -122,6 +122,15 @@
                                 Lista Appartamenti
                             </a>
                         </li>
+                               <!-- reindirizzamento NUOVO APPARTAMENTO -->
+                               <li>
+                                <a href="{{ route('admin.apartments.create') }}" class="nav-link text-white ">
+                                    <svg class="bi pe-none me-2" width="16" height="16">
+                                        <use xlink:href="#speedometer2"></use>
+                                    </svg>
+                                   Nuovo Appartamento
+                                </a>
+                            </li>
 
 
                     </ul>
