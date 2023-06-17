@@ -8,6 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Apartment extends Model
 {
+    protected $fillable = [
+        'title',
+        'cover_image',
+        'price',
+        'description',
+        'address',
+        'beds',
+        'bathrooms',
+        'bedrooms',
+        'size_m2',
+        'available',
+        'visible'
+    ];
+
     use HasFactory;
     public function sponsorships(){
         return $this->belongsToMany(Sponsorship::class);
