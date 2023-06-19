@@ -2,11 +2,12 @@
 
 @section('content')
 
-        <div class="row mb-5 align-items-center text-center text-lg-start ">
+        <div class="row align-items-center text-center text-lg-start ">
             <div class="col-12 col-lg-6">
-                <h1 class="fw-lighter mb-4 mb-lg-0">Bentornato, <span class="fw-bold">Cicciobello</span></h1>
+                <h1 class="fw-lighter mb-4 mb-lg-0">Bentornato, <span class="fw-bold font-primary">Cicciobello</span></h1>
             </div>
 
+            {{-- Sponsorsip Banner --}}
             <div class="col-12 col-lg-6">
                 <div class="card bg-light">
                     <div class="card-body">
@@ -22,7 +23,10 @@
                     </div>
                 </div>
             </div>
+            {{-- Sponsorship Banner --}}
         </div>
+
+        <hr class="my-5">
 
         <div class="row">
             <div class="col-lg-4 col-12">

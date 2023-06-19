@@ -26,7 +26,7 @@
                <li>
                 <a href="{{ route('admin.sponsorships.index') }}" class="nav-link  text-dark text-center text-md-start sidebar-icon">
                     <i class="fa-solid fa-list me-2"></i>
-                    Vedi Le Nostre sponsorizzazioni
+                    <span  class="d-none d-md-inline">Vedi Le Nostre sponsorizzazioni</span>
                 </a>
             </li>
                     <!-- reindirizzamento mostra memberships -->
@@ -34,7 +34,7 @@
                     <li>
                         <a href="{{ route('admin.messages.index') }}" class="nav-link  text-dark text-center text-md-start sidebar-icon">
                             <i class="fa-solid fa-envelope"></i>
-                            Messaggi
+                            <span  class="d-none d-md-inline">Messaggi</span>
                         </a>
                     </li>
 </ul>
