@@ -1,1 +1,9 @@
-@import '~bootstrap/scss/bootstrap'
+/* GLOBAL */
+@use 'partials/colors' as *;
+@use 'partials/typo' as *;
+
+/* COMPONENTS */
+@use 'partials/navbar' as *;
+@use 'partials/sidebar' as *;
+
+@import '~bootstrap/scss/bootstrap';
