@@ -2,23 +2,23 @@
 <ul class="nav nav-pills flex-column mb-auto">
     <!-- reindirizzamento DASHBOARD -->
     <li>
-        <a href="{{ route('admin.dashboard') }}" class="nav-link ">
+        <a href="{{ route('admin.dashboard') }}" class="nav-link text-dark text-center text-md-start sidebar-icon">
             <i class="fa-solid fa-gauge me-2"></i>
-            Dashboard
+            <span class="d-none d-md-inline">Dashboard</span>
         </a>
     </li>
     <!-- reindirizzamento LISTA APPARTAMENTI -->
     <li>
-        <a href="{{ route('admin.apartments.index') }}" class="nav-link ">
+        <a href="{{ route('admin.apartments.index') }}" class="nav-link text-dark text-center text-md-start sidebar-icon">
             <i class="fa-solid fa-list me-2"></i>
-            Lista Appartamenti
+            <span class="d-none d-md-inline">Lista Appartamenti</span>
         </a>
     </li>
            <!-- reindirizzamento NUOVO APPARTAMENTO -->
            <li>
-            <a href="{{ route('admin.apartments.create') }}" class="nav-link ">
+            <a href="{{ route('admin.apartments.create') }}" class="nav-link text-dark text-center text-md-start sidebar-icon">
                 <i class="fa-solid fa-plus me-2"></i>
-               Nuovo Appartamento
+               <span class="d-none d-md-inline">Nuovo Appartamento</span>
             </a>
         </li>
                <!-- reindirizzamento mostra memberships -->
