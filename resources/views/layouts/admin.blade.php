@@ -20,7 +20,7 @@
 <body>
     <div id="app">
         <main>
-            <div class="container-fluid g-0">
+            <div class="container-fluid bg-light g-0">
                 <div class="row g-0">
                     {{-- Sidebar --}}
                     <div class="col-xl-2 col-lg-3 col-md-4 col-2 vh-100">
