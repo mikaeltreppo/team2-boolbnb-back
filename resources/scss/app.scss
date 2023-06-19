@@ -1,9 +1,14 @@
 /* GLOBAL */
-@use 'partials/colors' as *;
-@use 'partials/typo' as *;
+@use "partials/colors" as *;
+@use "partials/typo" as *;
 
 /* COMPONENTS */
-@use 'partials/navbar' as *;
-@use 'partials/sidebar' as *;
+@use "partials/navbar" as *;
+@use "partials/sidebar" as *;
 
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
+
+.ms_btn_add_card {
+    height: 3rem;
+    border-color: $light_gray_color solid 2px;
+}
