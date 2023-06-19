@@ -16,9 +16,13 @@ class ApartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
-        $apartments = Apartment::all();
+
+        $user = auth()->user();
+        $apartments = $user->apartments;
         return view('admin.apartments.index', compact('apartments'));
     }
 
@@ -41,11 +45,12 @@ class ApartmentController extends Controller
      */
     public function store(StoreApartmentRequest $request)
     {
-  
-
+        //serve per ricavare l'utente
+        $user = auth()->user();
 
         $form_data = $request->all();
         $newApartment = new Apartment();
+        $newApartment->user_id = $user->id;
         $newApartment->title = $form_data['title'];
         $newApartment->description = $form_data['description'];
         $newApartment->slug = Str::slug($form_data['title']);
@@ -72,8 +77,13 @@ class ApartmentController extends Controller
      */
     public function show($id)
     {
+        $user = auth()->user();
         $apartment = Apartment::findOrFail($id);
-        return view('admin.apartments.show', compact('apartment'));
+        if ($apartment->user_id == $user->id) {
+            return view('admin.apartments.show', compact('apartment'));
+        } else {
+            return view('errors.403');
+        }
     }
 
     /**
@@ -85,9 +95,13 @@ class ApartmentController extends Controller
     public function edit($id)
     {
 
-
         $apartment = Apartment::findOrFail($id);
-        return view('admin.apartments.edit', compact('apartment'));
+        $user = auth()->user();
+        if ($apartment->user_id == $user->id) {
+            return view('admin.apartments.edit', compact('apartment'));
+        } else {
+            return view('errors.403');
+        }
     }
 
     /**
