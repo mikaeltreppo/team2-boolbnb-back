@@ -21,8 +21,14 @@
                Nuovo Appartamento
             </a>
         </li>
+               <!-- reindirizzamento mostra memberships -->
 
-
+               <li>
+                <a href="{{ route('admin.sponsorships.index') }}" class="nav-link ">
+                    <i class="fa-solid fa-list me-2"></i>
+                    Vedi Le Nostre sponsorizzazioni
+                </a>
+            </li>
 </ul>
 </div>
   
