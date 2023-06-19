@@ -60,13 +60,13 @@
             <div class="d-flex">
                 <div class="m-3">
                     <label for="visible" class="form-label">Visibile da subito?</label>
-                    <input type="number" id="visible" name="visible" min="1" max="130" step="1"
-                    value="{{ old('apartment', $apartment->visible) }}">
+                    <input type="checkbox" id="visible" name="visible"
+                    {{ ($apartment->visible==1)?'checked':'' }}>
                 </div>
                 <div class="m-3">
                     <label for="available" class="form-label">Disponibile da subito</label>
-                    <input type="number" id="available" name="available" min="1" max="130" step="1"
-                    value="{{ old('apartment', $apartment->available) }}">
+                    <input type="checkbox" id="available" name="available"
+                    {{ ($apartment->available==1)?'checked':'' }}>
                 </div>
             </div>
             <button type="submit" class="btn btn-success">Modifica</button>
