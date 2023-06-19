@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <div class="m-3">
+        <!--messaggi errori generali-->
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -10,6 +11,7 @@
                 </ul>
             </div>
         @endif
+        
         <form method="POST" action="{{ route('admin.apartments.store') }}">
             @csrf
             <div class="mb-3">
