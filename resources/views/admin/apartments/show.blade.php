@@ -9,8 +9,7 @@
             <a href="{{route('admin.apartments.index')}}" class="btn btn-success">Torna ai tuoi Appartamenti</a>
             <a href="{{route('admin.apartments.edit', ['apartment' => $apartment->id])}}" class="btn btn-warning m-2">Modifica</a>
             <a href="{{route('admin.sponsorships.index')}}" class="btn btn-success">Sponsorizza</a>
-            <a href="{{route('admin.messages.index')}}" class="btn btn-success">Messaggi</a>
-            
+     
             <form method="POST" action="{{ route('admin.apartments.destroy', ['apartment' => $apartment->id]) }}">
                 @method('DELETE')
                 @csrf
