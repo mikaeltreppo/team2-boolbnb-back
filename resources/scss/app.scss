@@ -1,6 +1,7 @@
 /* GLOBAL */
 @use "partials/colors" as *;
 @use "partials/typo" as *;
+@use "partials/controls" as *;
 
 /* COMPONENTS */
 @use "partials/navbar" as *;
@@ -8,7 +9,53 @@
 
 @import "~bootstrap/scss/bootstrap";
 
-.ms_btn_add_card {
-    height: 3rem;
-    border-color: $light_gray_color solid 2px;
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: $font-serif;
+}
+
+/* CARD APARTMENT */
+
+.ms_card {
+    height: 22rem;
+    width: 17rem;
+}
+
+.ms_btn_add {
+    transition: all 0.4s ease;
+    color: $black_text_color;
+    text-decoration: none;
+    position: relative;
+
+    .fa-square-plus {
+        font-size: 4rem;
+    }
+
+    .fa-circle-info {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+
+    &:hover {
+        background-color: $black_text_color;
+        color: white;
+    }
+
+    &:hover .fa-circle-info {
+        color: $premium_color;
+    }
+
+    &:hover .ms_add_apartment {
+        opacity: 1;
+    }
+
+    .ms_add_apartment {
+        position: absolute;
+        bottom: 1rem;
+        opacity: 0;
+    }
 }
