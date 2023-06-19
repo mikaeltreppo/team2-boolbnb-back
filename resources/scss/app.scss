@@ -9,6 +9,10 @@
 @import "~bootstrap/scss/bootstrap";
 
 .ms_btn_add_card {
-    height: 3rem;
+    height: 8rem;
     border-color: $light_gray_color solid 2px;
+
+    i {
+        color: $black_text_color;
+    }
 }
