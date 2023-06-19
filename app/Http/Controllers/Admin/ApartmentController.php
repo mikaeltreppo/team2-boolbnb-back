@@ -6,6 +6,8 @@ use App\Models\Apartment;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Str;
+use App\Http\Requests\StoreApartmentRequest;
+use App\Http\Requests\UpdateApartmentRequest;
 
 class ApartmentController extends Controller
 {
@@ -16,7 +18,7 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments= Apartment::all();
+        $apartments = Apartment::all();
         return view('admin.apartments.index', compact('apartments'));
     }
 
@@ -37,15 +39,11 @@ class ApartmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreApartmentRequest $request)
     {
-        /*da fare validazioni! esempio:
-          $request->validate([
-            'title' => 'required|max:255',
-            'description' => 'required'
-        ]); */
+  
 
-        
+
         $form_data = $request->all();
         $newApartment = new Apartment();
         $newApartment->title = $form_data['title'];
@@ -58,8 +56,10 @@ class ApartmentController extends Controller
         $newApartment->bathrooms = $form_data['bathrooms'];
         $newApartment->bedrooms = $form_data['bedrooms'];
         $newApartment->size_m2 = $form_data['size_m2'];
-        $newApartment->available = $form_data['available'];
-        $newApartment->visible = $form_data['visible'];
+        /*passiamo 1 o 0 zero per booleani in DB*/
+        $newApartment->available = isset($form_data['available']) ? 1 : 0;
+        $newApartment->visible = isset($form_data['visible']) ? 1 : 0;
+
         $newApartment->save();
         return redirect()->route('admin.apartments.index');
     }
@@ -85,7 +85,7 @@ class ApartmentController extends Controller
     public function edit($id)
     {
 
-      
+
         $apartment = Apartment::findOrFail($id);
         return view('admin.apartments.edit', compact('apartment'));
     }
@@ -97,10 +97,10 @@ class ApartmentController extends Controller
      * @param  \App\Models\Apartment  $apartment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateApartmentRequest $request, $id)
     {
-        $apartment=Apartment::findOrFail($id);
-        $form_data= $request->all();
+        $apartment = Apartment::findOrFail($id);
+        $form_data = $request->all();
         $apartment->update($form_data);
         return redirect()->route('admin.apartments.show', ['apartment' => $apartment->id]);
     }
