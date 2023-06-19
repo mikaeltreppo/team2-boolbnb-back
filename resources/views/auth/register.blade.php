@@ -12,10 +12,13 @@
                         @csrf
 
                         <div class="mb-4 row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right required_field">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" minlength="2" value="{{ old('name') }}" required autocomplete="name" autofocus  title="{{ __('articles.CreateTitleName') }}">
+                                <p id="nameError" style="color: red;"></p>
+                                <!--script per validazione live su file validationRegister.js-->
+                         
 
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -26,11 +29,12 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Lastname') }}</label>
+                            <label for="lastname" class="col-md-4 col-form-label text-md-right  required_field">{{ __('Lastname') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
-
+                                <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" minlength="2" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus title="{{ __('articles.CreateTitleName') }}">
+                                <p id="lastnameError" style="color: red;"></p>
+                                <!--script per validazione live su file validationRegister.js-->
                                 @error('lastname')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -41,11 +45,12 @@
 
                         
                         <div class="mb-4 row">
-                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
+                            <label for="phone" class="col-md-4 col-form-label text-md-right required_field">{{ __('Phone') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
-
+                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" minlength="9" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus title="{{ __('articles.CreateTitleName') }}">
+                                <p id="phoneError" style="color: red;"></p>
+                                <!--script per validazione live su file validationRegister.js-->
                                 @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -55,11 +60,12 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right required_field">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" minlength="4" name="email" value="{{ old('email') }}" required autocomplete="email" title="{{ __('articles.CreateTitleName') }}">
+                                <p id="emailError" style="color: red;"></p>
+                                <!--script per validazione live su file validationRegister.js-->
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -73,7 +79,8 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
+                                <p id="nameError" style="color: red;"></p>
+                                <!--script per validazione live su file validationRegister.js-->
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
