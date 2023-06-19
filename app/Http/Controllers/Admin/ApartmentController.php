@@ -115,6 +115,8 @@ class ApartmentController extends Controller
     {
         $apartment = Apartment::findOrFail($id);
         $form_data = $request->all();
+        $form_data['visible'] = (isset($form_data['visible']) && $form_data['visible'] == true) ? 1 : 0;
+        $form_data['available'] = (isset($form_data['available']) && $form_data['available'] == true) ? 1 : 0;
         $apartment->update($form_data);
         return redirect()->route('admin.apartments.show', ['apartment' => $apartment->id]);
     }
