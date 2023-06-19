@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\ApartmentController;
+use App\Http\Controllers\Admin\SponsorshipController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Sponsorship;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +40,7 @@ Route::middleware(['auth', 'verified'])
             return view('admin.dashboard'); })->name('dashboard');
         /*rotte appartamenti con crud gestite qui*/
         Route::resource('apartments', ApartmentController::class);
+        Route::resource('sponsorships', SponsorshipController::class);
     });
 
 
