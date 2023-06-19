@@ -15,7 +15,8 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        $messages = Message::all();
+        return view('admin.messages.index', compact('messages'));
     }
 
     /**
@@ -45,9 +46,13 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function show(Message $message)
+    public function show($id)
     {
-        //
+
+        $message = Message::findOrFail($id);
+
+            return view('admin.messages.show', compact('message'));
+     
     }
 
     /**
@@ -79,8 +84,12 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Message $message)
+    public function destroy($id)
     {
-        //
+        {
+            $message = message::findOrFail($id);
+            $message->delete();
+            return redirect()->route('admin.messages.index');
+        }
     }
 }

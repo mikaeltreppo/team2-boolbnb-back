@@ -24,11 +24,19 @@
                <!-- reindirizzamento mostra memberships -->
 
                <li>
-                <a href="{{ route('admin.sponsorships.index') }}" class="nav-link ">
+                <a href="{{ route('admin.sponsorships.index') }}" class="nav-link  text-dark text-center text-md-start sidebar-icon">
                     <i class="fa-solid fa-list me-2"></i>
                     Vedi Le Nostre sponsorizzazioni
                 </a>
             </li>
+                    <!-- reindirizzamento mostra memberships -->
+
+                    <li>
+                        <a href="{{ route('admin.messages.index') }}" class="nav-link  text-dark text-center text-md-start sidebar-icon">
+                            <i class="fa-solid fa-envelope"></i>
+                            Messaggi
+                        </a>
+                    </li>
 </ul>
 </div>
   
