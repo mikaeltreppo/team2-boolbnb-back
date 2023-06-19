@@ -23,15 +23,15 @@
             <div class="container-fluid g-0">
                 <div class="row g-0">
                     {{-- Sidebar --}}
-                    <div class="col-xl-2 col-md-4 col-2">
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-2 vh-100">
                         @include('partials.sidebar')
                     </div>
                     {{-- End Sidebar --}}
 
                     {{-- Main Content --}}
-                    <div class="col-xl-10 col-md-8 col-10">
+                    <div class="col-xl-10 col-lg-9 col-md-8 col-10 vh-100 overflow-y-auto">
                         @include('partials.navbar')
-                        <div class="container-fluid p-3">
+                        <div class="container-fluid p-5">
                             @yield('content')   
                         </div>     
                     </div>       
