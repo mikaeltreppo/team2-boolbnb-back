@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Apartment;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateApartmentRequest extends FormRequest
@@ -13,7 +14,7 @@ class UpdateApartmentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
