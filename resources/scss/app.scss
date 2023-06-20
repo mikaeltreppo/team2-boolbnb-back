@@ -1,18 +1,17 @@
 /* GLOBAL */
-@use "partials/vars" as *;          // Global Variables
-@use "partials/colors" as *;        // Colors
-@use "partials/layout" as *;        // Custom margin, positions ecc...
-@use "partials/typo" as *;          // Fonts and Typography Styles
-@use "partials/components" as *;    // Buttons, images and other controls
+@use "partials/vars" as *; // Global Variables
+@use "partials/colors" as *; // Colors
+@use "partials/layout" as *; // Custom margin, positions ecc...
+@use "partials/typo" as *; // Fonts and Typography Styles
+@use "partials/components" as *; // Buttons, images and other controls
 
 /* GRAPHIC FX */
-@use "partials/effects" as *;       // Graphic Effects
-@use "partials/anim" as *;          // Animations
-
+@use "partials/effects" as *; // Graphic Effects
+@use "partials/anim" as *; // Animations
 
 /* COMPONENTS */
 
-@use "partials/navbar" as *;  
+@use "partials/navbar" as *;
 @use "partials/sidebar" as *;
 
 @import "~bootstrap/scss/bootstrap";
@@ -20,8 +19,18 @@
 /* CARD APARTMENT */
 
 .ms_card {
-    height: 22rem;
-    width: 17rem;
+    height: 25rem;
+
+    img {
+        height: 10rem;
+        object-fit: cover;
+        transition: all 0.4s ease;
+        opacity: 1;
+
+        &:hover {
+            filter: grayscale(1);
+        }
+    }
 }
 
 .ms_btn_add {
@@ -30,32 +39,34 @@
     text-decoration: none;
     position: relative;
 
-    .fa-square-plus {
-        font-size: 4rem;
+    .ms_box_info {
+        .ms_info {
+            position: absolute;
+            top: -2.5rem;
+            right: -1rem;
+            opacity: 0;
+        }
+
+        .fa-circle-info {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+        }
+        &:hover {
+            color: $premium_color;
+        }
+
+        &:hover .ms_info {
+            opacity: 1;
+        }
     }
 
-    .fa-circle-info {
-        position: absolute;
-        top: 0.5rem;
-        right: 0.5rem;
+    .fa-square-plus {
+        font-size: 4rem;
     }
 
     &:hover {
         background-color: $black_text_color;
         color: white;
-    }
-
-    &:hover .fa-circle-info {
-        color: $premium_color;
-    }
-
-    &:hover .ms_add_apartment {
-        opacity: 1;
-    }
-
-    .ms_add_apartment {
-        position: absolute;
-        bottom: 1rem;
-        opacity: 0;
     }
 }
