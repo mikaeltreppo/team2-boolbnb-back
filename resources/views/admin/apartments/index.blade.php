@@ -48,6 +48,8 @@
                                     <span class="fw-bold ">{{ $apartment->price }}</span> €/notte
                                 </div>
                                 <div class="card-text">
+                                    <i class="fa-solid fa-house ms_light_gray_text me-1 "></i>
+                                    {{-- <i class="fa-solid fa-ruler-combined ms_light_gray_text me-1 "></i> --}}
                                     <span class="fw-bold ">{{ $apartment->size_m2 }}</span> m<sup>2</sup>
                                 </div>
                             </div>
@@ -56,10 +58,12 @@
                                 <a href="#" class="btn ms-btn ms-btn-sm ms-btn-premium ms-2"><i
                                         class="fa-solid fa-star me-2"></i>Sponsorizza</a>
                                 <div class="me-2">
-                                    <a href="{{ route('admin.apartments.edit', ['apartment' => $apartment->id]) }}"
-                                        class="btn ms-btn-sm ms-btn-outline-primary"><i class="fa-solid fa-pen"></i></a>
-                                    <a href="#" class="btn ms-btn-sm ms-btn-outline-black"><i
-                                            class="fa-solid fa-trash"></i></a>
+                                    <a href="{{ route('admin.apartments.edit', ['apartment' => $apartment->id]) }}" class="btn ms-btn-sm ms-btn-outline-primary">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </a>
+                                    <a href="#" class="btn ms-btn-sm ms-btn-outline-black">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
                                 </div>
                             </div>
                             {{-- end buttons --}}
