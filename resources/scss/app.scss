@@ -1,13 +1,13 @@
 /* GLOBAL */
-@use "partials/vars" as *;      // Global Variables
-@use "partials/colors" as *;    // Colors
-@use "partials/layout" as *;    // Custom margin, positions ecc...
-@use "partials/typo" as *;      // Fonts and Typography Styles
-@use "partials/controls" as *;  // Buttons, images and other controls
+@use "partials/vars" as *;          // Global Variables
+@use "partials/colors" as *;        // Colors
+@use "partials/layout" as *;        // Custom margin, positions ecc...
+@use "partials/typo" as *;          // Fonts and Typography Styles
+@use "partials/components" as *;    // Buttons, images and other controls
 
 /* GRAPHIC FX */
-@use "partials/effects" as *;   // Graphic Effects
-@use "partials/anim" as *;      // Animations
+@use "partials/effects" as *;       // Graphic Effects
+@use "partials/anim" as *;          // Animations
 
 
 /* COMPONENTS */
