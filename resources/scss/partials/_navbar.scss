@@ -1,4 +1,5 @@
 @use 'vars' as *;
+@use 'colors' as *;
 
 /* NAVBAR */
 
@@ -45,4 +46,15 @@
     right: -30px;
     transition: $transition_fast;
     font-size: .8rem;
+}
+
+.menu-item{
+    display: inline-block;
+    color: $black_text_color!important;
+    text-decoration: none;
+    font-size: .9rem;
+}
+
+.menu-item:hover{
+    color: $main_darker2_color!important;
 }

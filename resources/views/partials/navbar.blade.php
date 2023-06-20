@@ -33,16 +33,30 @@
   
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasExampleLabel">{{ Auth::user()->name }}</h5>
+      <h5 class="offcanvas-title font-secondary" id="offcanvasExampleLabel">{{ Auth::user()->name }}</h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body">
-        <a class="dropdown-item" href="{{ url('dashboard') }}">{{ __('Dashboard') }}</a>
-        <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profile') }}</a>
-        <a class="dropdown-item" href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-                         document.getElementById('logout-form').submit();">
-            {{ __('Logout') }}
-        </a>
+    <div class="offcanvas-body text-center">
+        <ul class="list-unstyled">
+            <li>
+                <a class="my-2 menu-item" href="{{ url('dashboard') }}">{{ __('Dashboard') }}</a>
+            </li>
+            <li>
+                <a class="my-2 menu-item" href="{{ url('profile') }}">{{ __('Profile') }}</a>
+            </li>
+            <li>
+                <button class="my-3 btn btn-outline-danger rounded-4 btn-sm" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                <i class="fa-solid fa-right-from-bracket me-2"></i>
+                {{ __('Logout') }}
+                </button>
+            </li>
+        </ul>
+       
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
+       
     </div>
   </div>
