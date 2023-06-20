@@ -1,25 +1,35 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="mx-5">
 
-        <h1 class="text-center my-5">I miei appartamenti</h1>
+    <div>
 
-        <div class="row flex-wrap justify-content-center">
+        <h1 class="text-center">I miei appartamenti</h1>
+        <p class="text-center mb-5">Qui puoi gestire i tuoi appartamenti.</p>
+
+        <div class="row flex-wrap gy-4">
 
             {{-- card add --}}
-            <a href="{{ route('admin.apartments.create') }}" class="col-lg col-sm-12 card m-3 ms_card ms_btn_add">
-                <i class="fa-solid fa-circle-info"></i>
-                <div class="d-flex align-items-center flex-column justify-content-center h-100">
-                    <i class="fa-solid fa-square-plus"></i>
-                    <div class="ms_add_apartment">Aggiungi un appartamento</div>
-                </div>
-            </a>
+            <div class="col-lg-3 col-md-6 col-sm-12 ">
+          
+                <a href="{{ route('admin.apartments.create') }}" class="card ms_card ms_btn_add">
+                    <div class="ms_box_info">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <div class="ms_speech ms_bottom ms_info">Aggiungi un appartamento</div>
+                    </div>
+                    
+                    <div class="d-flex align-items-center justify-content-center h-100">
+                        <i class="fa-solid fa-square-plus"></i>
+                    </div>
+                </a>
+            </div>
+           
             {{-- fine card add --}}
 
             {{-- card apartment --}}
             @foreach ($apartments as $apartment)
-                <div class="col-lg col-sm-12 p-0 card m-3 ms_card">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="p-0 card ms_card">
                     <img src="{{ asset('storage/' . $apartment->cover_image) }}" class="card-img-top"
                         alt="{{ $apartment->title }}">
                     <div class="card-body">
@@ -35,9 +45,10 @@
                             <a href="{{ route('admin.apartments.edit', ['apartment' => $apartment->id]) }}"
                                 class="btn btn-warning m-2"><i class="fa-solid fa-trash"></i></a>
                         </div>
-
                     </div>
                 </div>
+            </div>
+                
             @endforeach
             {{-- end card apartment --}}
 
