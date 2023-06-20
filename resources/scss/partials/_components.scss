@@ -193,6 +193,45 @@
 }
 
 
+/* Button Textual */
+
+.btn.ms-btn-textual-primary{
+    position: relative;
+    overflow: hidden;
+    color: white;
+    text-decoration: none;
+    font-size: .9rem;
+}
+
+.btn.ms-btn-textual-primary.arrow::after{
+    position: absolute;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f054";
+    right: -20px;
+    height: 20px;
+    width: 20px;
+    transition: $transition_fast;
+    opacity: 0;
+}
+
+.btn.ms-btn-textual-primary:hover{
+    background-color: $main_darker_color;
+    color: white;
+}
+
+.btn.ms-btn-textual-primary:hover.arrow::after{
+   right: 0px;
+   opacity: 1;
+}
+
+.btn.ms-btn-textual-primary.active{
+    font-weight: bold;
+    background-color: $main_darker_color;
+    border: 1px solid $main_darker_color;;
+    color: white;
+}
+
 
 //CARD MESSAGE YELLOW INFO
 
