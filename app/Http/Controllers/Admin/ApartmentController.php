@@ -69,11 +69,12 @@ class ApartmentController extends Controller
             $form_data['visible'] = false;
         }
 
+        $form_data['user_id'] = $user->id;
+
         $newApartment = Apartment::create($form_data);
 
         /*  $form_data = $request->all();
         $newApartment = new Apartment();
-        $newApartment->user_id = $user->id;
         $newApartment->title = $form_data['title'];
         $newApartment->description = $form_data['description'];
         $newApartment->slug = Str::slug($form_data['title']);
