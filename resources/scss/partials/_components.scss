@@ -80,6 +80,19 @@
     font-size: 0.8rem;
 }
 
+.ms_premium_icon {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 0.5rem;
+    background-color: $premium_color;
+    text-align: center;
+    line-height: 2rem;
+    color: $black_text_color;
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+}
+
 /* Buttons */
 
 /**
@@ -181,9 +194,6 @@
 
 
 
-
-
-
 //CARD MESSAGE YELLOW INFO
 
 .ms_speech {
@@ -214,3 +224,5 @@
     left: 80%;
     margin-left: -20px;
 }
+
+//OTHER
