@@ -6,7 +6,7 @@
 
             {{-- Heading --}}
             <div class="col-12 col-lg-6 mb-4 mb-lg-0">
-                <h1 class="fw-lighter mb-1">Bentornato, <span class="fw-bold font-primary">Cicciobello!</span></h1>
+                <h1 class="fw-lighter mb-1">Bentornato, <span class="fw-bold font-primary">{{ Auth::user()->name }}</span></h1>
                 <p>Questa è la tua dashboard, una panoramica dei tuoi annunci</p>
             </div>
             {{-- End Heading --}}
