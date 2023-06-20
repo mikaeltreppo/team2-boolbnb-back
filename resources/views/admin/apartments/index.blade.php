@@ -46,7 +46,7 @@
                                 <span class="fw-bold ">{{ $apartment->price }}</span> €/notte
                             </div>
                             <div class="card-text">
-                                <span class="fw-bold ">{{ $apartment->size_m2 }}</span>m<sup>2</sup>
+                                <span class="fw-bold ">{{ $apartment->size_m2 }}</span> m<sup>2</sup>
                             </div>
                         </div>
                         {{-- buttons --}}
