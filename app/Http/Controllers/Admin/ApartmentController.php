@@ -73,22 +73,6 @@ class ApartmentController extends Controller
 
         $newApartment = Apartment::create($form_data);
 
-        /*  $form_data = $request->all();
-        $newApartment = new Apartment();
-        $newApartment->title = $form_data['title'];
-        $newApartment->description = $form_data['description'];
-        $newApartment->slug = Str::slug($form_data['title']);
-        $newApartment->cover_image = $form_data['cover_image'];
-        $newApartment->price = $form_data['price'];
-        $newApartment->address = $form_data['address'];
-        $newApartment->beds = $form_data['beds'];
-        $newApartment->bathrooms = $form_data['bathrooms'];
-        $newApartment->bedrooms = $form_data['bedrooms'];
-        $newApartment->size_m2 = $form_data['size_m2'];
-        passiamo 1 o 0 zero per booleani in DB
-        $newApartment->available = isset($form_data['available']) ? 1 : 0;
-        $newApartment->visible = isset($form_data['visible']) ? 1 : 0;*/
-
         $newApartment->save();
         return redirect()->route('admin.apartments.index', ['apartment' => $newApartment->slug]);
     }
@@ -138,10 +122,34 @@ class ApartmentController extends Controller
     public function update(UpdateApartmentRequest $request, $id)
     {
         $apartment = Apartment::findOrFail($id);
-        $form_data = $request->all();
-        $form_data['visible'] = (isset($form_data['visible']) && $form_data['visible'] == true) ? 1 : 0;
-        $form_data['available'] = (isset($form_data['available']) && $form_data['available'] == true) ? 1 : 0;
+
+        $form_data = $request->validated();
+
+        $form_data['slug'] = Str::slug($request->title, '-');
+
+        if ($request->hasFile('cover_image')) {
+
+            if ($apartment->cover_image) {
+                Storage::delete($apartment->cover_image);
+            }
+
+            $form_data['cover_image'] = Storage::put('cover', $request->cover_image);
+        }
+
+        if (isset($request->visible)) {
+            $form_data['visible'] = true;
+        } else {
+            $form_data['visible'] = false;
+        }
+
+        if (isset($request->available)) {
+            $form_data['available'] = true;
+        } else {
+            $form_data['available'] = false;
+        }
+
         $apartment->update($form_data);
+
         return redirect()->route('admin.apartments.show', ['apartment' => $apartment->id]);
     }
 
@@ -154,6 +162,9 @@ class ApartmentController extends Controller
     public function destroy($id)
     {
         $apartment = Apartment::findOrFail($id);
+        if ($apartment->cover_image) {
+            Storage::delete($apartment->cover_image);
+        }
         $apartment->delete();
         return redirect()->route('admin.apartments.index');
     }

@@ -2,14 +2,15 @@
 @section('content')
     <div class="d-flex justify-content-center ">
         <div class="card ">
-            <img src="{{ asset('storage/' . $apartment->cover_image) }}" class="card-img-top" alt="{{ $apartment->title }}">
-
+            @if ($apartment->cover_image)
+                <img src="{{ asset('storage/' . $apartment->cover_image) }}" class="card-img-top"
+                    alt="{{ $apartment->title }}">
+            @endif
             <div class="card-body">
                 <h5 class="card-title fs-5 font-semibold">{{ $apartment->title }}</h5>
                 <span class="card-text"><i
-                    class="fa-solid fa-location-dot ms_light_gray_text me-2 mt-1"
-                  ></i>{{ $apartment->address }}</span>
-                
+                        class="fa-solid fa-location-dot ms_light_gray_text me-2 mt-1"></i>{{ $apartment->address }}</span>
+
                 <div class="d-flex mt-2 justify-content-between">
                     <div class="card-text">
                         <span class="fw-bold ">{{ $apartment->price }}</span> €/notte
