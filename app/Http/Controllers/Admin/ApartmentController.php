@@ -17,9 +17,13 @@ class ApartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
-        $apartments = Apartment::all();
+
+        $user = auth()->user();
+        $apartments = $user->apartments;
         return view('admin.apartments.index', compact('apartments'));
     }
 
@@ -45,6 +49,8 @@ class ApartmentController extends Controller
         $form_data = $request->validated();
 
         $form_data['slug'] = Str::slug($request->title, '-');
+        //serve per ricavare l'utente
+        $user = auth()->user();
 
         if ($request->hasFile('cover_image')) {
             $path = Storage::put('cover', $request->cover_image);
@@ -67,6 +73,7 @@ class ApartmentController extends Controller
 
         /*  $form_data = $request->all();
         $newApartment = new Apartment();
+        $newApartment->user_id = $user->id;
         $newApartment->title = $form_data['title'];
         $newApartment->description = $form_data['description'];
         $newApartment->slug = Str::slug($form_data['title']);
@@ -93,8 +100,13 @@ class ApartmentController extends Controller
      */
     public function show($id)
     {
+        $user = auth()->user();
         $apartment = Apartment::findOrFail($id);
-        return view('admin.apartments.show', compact('apartment'));
+        if ($apartment->user_id == $user->id) {
+            return view('admin.apartments.show', compact('apartment'));
+        } else {
+            return view('errors.403');
+        }
     }
 
     /**
@@ -106,9 +118,13 @@ class ApartmentController extends Controller
     public function edit($id)
     {
 
-
         $apartment = Apartment::findOrFail($id);
-        return view('admin.apartments.edit', compact('apartment'));
+        $user = auth()->user();
+        if ($apartment->user_id == $user->id) {
+            return view('admin.apartments.edit', compact('apartment'));
+        } else {
+            return view('errors.403');
+        }
     }
 
     /**
@@ -122,6 +138,8 @@ class ApartmentController extends Controller
     {
         $apartment = Apartment::findOrFail($id);
         $form_data = $request->all();
+        $form_data['visible'] = (isset($form_data['visible']) && $form_data['visible'] == true) ? 1 : 0;
+        $form_data['available'] = (isset($form_data['available']) && $form_data['available'] == true) ? 1 : 0;
         $apartment->update($form_data);
         return redirect()->route('admin.apartments.show', ['apartment' => $apartment->id]);
     }

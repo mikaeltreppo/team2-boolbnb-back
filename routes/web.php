@@ -1,8 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\ApartmentController;
+use App\Http\Controllers\Admin\SponsorshipController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Sponsorship;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Mime\Message;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +43,8 @@ Route::middleware(['auth', 'verified'])
         })->name('dashboard');
         /*rotte appartamenti con crud gestite qui*/
         Route::resource('apartments', ApartmentController::class);
+        Route::resource('sponsorships', SponsorshipController::class);
+        Route::resource('messages', MessageController::class);
     });
 
 
