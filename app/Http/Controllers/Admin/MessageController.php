@@ -13,9 +13,12 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($apartment_id)
+    public function index()
     {
-        $messages = Message::where('apartment_id', $apartment_id)->get();
+        $user = auth()->user();
+        $apartments = $user->apartments()->pluck('id');
+        $messages = Message::whereIn('apartment_id', $apartments)->get();
+
         return view('admin.messages.index', compact('messages'));
     }
 
@@ -51,8 +54,8 @@ class MessageController extends Controller
 
         $message = Message::findOrFail($id);
 
-            return view('admin.messages.show', compact('message'));
-     
+        return view('admin.messages.show', compact('message'));
+
     }
 
     /**
@@ -85,8 +88,7 @@ class MessageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        {
+    { {
             $message = message::findOrFail($id);
             $message->delete();
             return redirect()->route('admin.messages.index');

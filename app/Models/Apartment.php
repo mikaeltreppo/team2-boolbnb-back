@@ -10,6 +10,7 @@ class Apartment extends Model
 {
     protected $fillable = [
         'title',
+        'slug',
         'cover_image',
         'price',
         'description',
@@ -19,23 +20,29 @@ class Apartment extends Model
         'bedrooms',
         'size_m2',
         'available',
-        'visible'
+        'visible',
+        'user_id'
     ];
 
     use HasFactory;
-    public function sponsorships(){
+    public function sponsorships()
+    {
         return $this->belongsToMany(Sponsorship::class);
     }
-    public function facilities(){
+    public function facilities()
+    {
         return $this->belongsToMany(Facility::class);
     }
-    public function views(){
+    public function views()
+    {
         return $this->belongsToMany(View::class);
     }
-   public function user(){
-        return $this->belongsTo(User::class);  
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
-    public function messages(){
-        return $this->hasMany(Message::class); 
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
     }
 }
