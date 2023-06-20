@@ -12,4 +12,5 @@
 .panel-shadow-right{
     -webkit-box-shadow: inset -36px 3px 36px -30px rgba($black_text_color, .7); 
     box-shadow: inset -36px 3px 36px -30px rgba($black_text_color, .7);
+    border-right: 2px solid $main_darker2_color;
 }

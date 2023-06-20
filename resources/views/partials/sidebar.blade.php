@@ -1,42 +1,43 @@
-<div class="sidebar ms-bg-dark vh-100 py-4 panel-shadow-right">
+<div class="sidebar ms-bg-dark vh-100 py-4 panel-shadow-right px-3">
+<div class="brand">
+    LOGO
+</div>
+<hr>
 <ul class="nav nav-pills flex-column mb-auto">
     <!-- reindirizzamento DASHBOARD -->
+    <span class="sidebar-title ps-3 text-uppercase mb-3 d-none d-md-inline text-light">main</span>
     <li>
-        <a href="{{ route('admin.dashboard') }}" class="nav-link text-white text-center text-md-start sidebar-icon">
+        <a href="{{ route('admin.dashboard') }}" class="btn ms-btn-textual-primary w-lg-auto w-100 text-center text-lg-start sidebar-icon arrow rounded-4 active">
             <i class="fa-solid fa-gauge me-2"></i>
             <span class="d-none d-md-inline">Dashboard</span>
         </a>
     </li>
+    <hr>
     <!-- reindirizzamento LISTA APPARTAMENTI -->
+    <span class="sidebar-title ps-3 text-uppercase my-3 d-none d-md-inline text-light">link rapidi</span>
     <li>
-        <a href="{{ route('admin.apartments.index') }}" class="nav-link text-white text-center text-md-start sidebar-icon">
+        <a href="{{ route('admin.apartments.index') }}" class="btn ms-btn-textual-primary w-lg-auto w-100 text-center text-lg-start sidebar-icon arrow rounded-4">
             <i class="fa-solid fa-list me-2"></i>
-            <span class="d-none d-md-inline">Lista Appartamenti</span>
+            <span class="d-none d-md-inline">I Miei Appartamenti</span>
         </a>
     </li>
-           {{-- <!-- reindirizzamento NUOVO APPARTAMENTO -->
-           <li>
-            <a href="{{ route('admin.apartments.create') }}" class="nav-link text-white text-center text-md-start sidebar-icon">
-                <i class="fa-solid fa-plus me-2"></i>
-               <span class="d-none d-md-inline">Nuovo Appartamento</span>
-            </a>
-        </li> --}}
-        <!-- reindirizzamento mostra memberships -->
+
+    <li>
+        <a href="{{ route('admin.messages.index') }}" class="btn ms-btn-textual-primary w-lg-auto w-100 text-center text-lg-start sidebar-icon arrow rounded-4">
+            <i class="fa-solid fa-envelope me-2"></i>
+            <span  class="d-none d-md-inline">Messaggi</span>
+        </a>
+    </li>
+   
 
         <li>
-            <a href="{{ route('admin.sponsorships.index') }}" class="nav-link  text-white text-center text-md-start sidebar-icon">
-                <i class="fa-solid fa-list me-2"></i>
-                <span  class="d-none d-md-inline">Vedi Le Nostre sponsorizzazioni</span>
+            <a href="{{ route('admin.sponsorships.index') }}" class="btn ms-btn-textual-primary w-lg-auto w-100 text-center text-lg-start sidebar-icon arrow rounded-4">
+                <i class="fa-solid fa-star text-warning me-2"></i>
+                <span  class="d-none d-md-inline">Sponsorizza</span>
             </a>
          </li>
-        <!-- reindirizzamento mostra memberships -->
-
-        <li>
-            <a href="{{ route('admin.messages.index') }}" class="nav-link  text-white text-center text-md-start sidebar-icon">
-                <i class="fa-solid fa-envelope me-2"></i>
-                <span  class="d-none d-md-inline">Messaggi</span>
-            </a>
-        </li>
+     
+       
 </ul>
 </div>
   
