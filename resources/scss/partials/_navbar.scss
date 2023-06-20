@@ -58,3 +58,12 @@
 .menu-item:hover{
     color: $main_darker2_color!important;
 }
+
+a.offcanvas-btn{
+    font-weight: 2rem;
+    color: $black_text_color;
+}
+
+a.offcanvas-btn i{
+    font-weight: 2rem!important;
+}
