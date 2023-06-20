@@ -4,6 +4,7 @@ $font-sans-serif: "Montserrat", sans-serif;
 
 *,
 html,
+
 body{
     font-family: $font-sans-serif;
 }
@@ -15,3 +16,13 @@ h4, h5, h6{
 
 .font-primary{font-family: $font-serif}
 .font-secondary{font-family: $font-sans-serif}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+
+
+
+
+

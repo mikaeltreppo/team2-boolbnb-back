@@ -6,5 +6,12 @@ $main_darker_color: #1098ad;
 $main_darker2_color: #0c8599;
 $premium_color: #fcc419;
 
-.ms-bg-light{background-color: $main_color!important;}
-.ms-bg-dark{background-color: $main_darker2_color!important;}
+.ms-bg-light {
+    background-color: $main_color !important;
+}
+.ms-bg-dark {
+    background-color: $main_darker2_color !important;
+}
+.ms_light_gray_text {
+    color: $light_gray_color;
+}
