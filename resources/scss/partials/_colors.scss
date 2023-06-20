@@ -6,12 +6,32 @@ $main_darker_color: #1098ad;
 $main_darker2_color: #0c8599;
 $premium_color: #fcc419;
 
+//BG COLORS
+
 .ms-bg-light {
     background-color: $main_color !important;
 }
 .ms-bg-dark {
     background-color: $main_darker2_color !important;
 }
+
+//text COLORS
+
+.ms_text_light {
+    color: $main_color !important;
+}
+.ms_text_main_darker {
+    color: $main_darker_color !important;
+}
 .ms_light_gray_text {
-    color: $light_gray_color;
+    color: $light_gray_color !important;
+}
+.ms_black_text {
+    color: $black_text_color !important;
+}
+
+.ms_svg_main_color {
+    width: 1.7rem;
+    filter: brightness(0) saturate(100%) invert(56%) sepia(39%) saturate(859%)
+        hue-rotate(140deg) brightness(81%) contrast(100%);
 }
