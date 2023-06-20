@@ -19,7 +19,7 @@
         <th scope="row">{{$message->id}}</th>
         <td>{{$message->message}}</td>
         <td>{{$message->email}}</td>
-        <td>{{$message->apartment_id}}</td>
+        <td>{{$message->apartment->name}}</td>
         <td> <a href="{{route('admin.messages.show', ['message' => $message->id])}}"class="btn btn-primary">Vedi</a></td>
    
       </tr>

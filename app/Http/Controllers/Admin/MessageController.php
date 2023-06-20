@@ -13,9 +13,9 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($apartment_id)
     {
-        $messages = Message::all();
+        $messages = Message::where('apartment_id', $apartment_id)->get();
         return view('admin.messages.index', compact('messages'));
     }
 
