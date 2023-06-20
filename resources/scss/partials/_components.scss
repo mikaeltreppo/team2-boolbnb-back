@@ -3,22 +3,22 @@
 
 /* CONTROLS */
 
-.dashboard-tile {
+.card-tile {
     transition: $transition_fast;
 }
 
-.dashboard-tile:hover {
+.card-tile:hover {
     -webkit-box-shadow: 0px 4px 15px 6px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 4px 15px 6px rgba(0, 0, 0, 0.1);
     transform: translateY(-3px);
     cursor: pointer;
 }
 
-.dashboard-tile:hover .rounded-icon i {
+.card-tile:hover .rounded-icon i {
     transform: translateX(-50px);
 }
 
-.dashboard-tile:hover .rounded-icon::after {
+.card-tile:hover .rounded-icon::after {
     transform: translateX(-50px);
 }
 
@@ -106,8 +106,44 @@
 .btn.ms-btn:hover {
     -webkit-box-shadow: 0px 2px 15px -6px $main_darker2_color;
     box-shadow: 0px 2px 15px -6px $main_darker2_color;
+    background-color: transparent;
+    border: 1px solid $main_darker2_color;
+    color: $main_darker2_color;
     padding-right: 30px !important;
 }
+
+
+/* Blue Outline */
+
+.btn.ms-btn-outline-primary {
+    background-color: transparent;
+    border: 1px solid $main_darker_color;
+    color: $main_darker_color;
+}
+
+.btn.ms-btn-outline-primary:hover {
+    background-color: $main_darker2_color;
+    border: 1px solid $main_darker2_color;
+    color: white;
+}
+
+/* Black Outline */
+
+.btn.ms-btn-outline-black {
+    background-color: transparent;
+    border: 1px solid $black_text_color;
+    color: $black_text_color;
+}
+
+.btn.ms-btn-outline-black:hover {
+    background-color: $black_text_color;
+    border: 1px solid $black_text_color;
+    color: white;
+}
+
+
+
+/* Blue Button */
 
 .btn.ms-btn-primary {
     background-color: $main_darker2_color;
@@ -121,19 +157,18 @@
     color: $main_darker2_color;
 }
 
+
+
+
+/* Yellow Button */
+
 .btn.ms-btn-premium {
     border: 1px solid $premium_color;
     background-color: $premium_color;
     color: $black_text_color;
 }
 
-.btn.ms-btn-premium:hover {
-    background-color: transparent;
-    border: 1px solid $premium_color;
-    -webkit-box-shadow: 0px 2px 15px -6px $premium_color;
-    box-shadow: 0px 2px 15px -6px $premium_color;
-    color: $premium_color;
-}
+
 
 //CARD MESSAGE YELLOW INFO
 
