@@ -12,7 +12,7 @@
             {{-- card add --}}
             <div class="col-lg-3 col-md-6 col-sm-12 ">
           
-                <a href="{{ route('admin.apartments.create') }}" class="card ms_card ms_btn_add">
+                <a href="{{ route('admin.apartments.create') }}" class="card ms_card ms_btn_add flat-shadow">
                     <div class="ms_box_info">
                         <i class="fa-solid fa-circle-info"></i>
                         <div class="ms_speech ms_bottom ms_info">Aggiungi un appartamento</div>
@@ -29,7 +29,7 @@
             {{-- card apartment --}}
             @foreach ($apartments as $apartment)
             <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="p-0 card ms_card ">
+                <div class="p-0 card ms_card card-tile drop-shadow-sm bg-white rounded-4 flat-shadow">
                     <a href="{{ route('admin.apartments.show', ['apartment' => $apartment->id]) }}">
                         <img src="{{ asset('storage/' . $apartment->cover_image) }}" class="card-img-top"
                         alt="{{ $apartment->title }}">
@@ -37,9 +37,10 @@
                     
                     <div class="card-body">
                         <h5 class="card-title fs-5 font-semibold">{{ $apartment->title }}</h5>
-                        <span class="card-text"><i
-                            class="fa-solid fa-location-dot ms_light_gray_text me-2 mt-1"
-                          ></i>{{ $apartment->address }}</span>
+                        <span class="card-text">
+                            <i class="fa-solid fa-location-dot ms_light_gray_text me-2 mt-1"></i>
+                            {{ $apartment->address }}
+                        </span>
                         
                         <div class="d-flex mt-2 justify-content-between">
                             <div class="card-text">

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <div class="d-flex justify-content-center ">
-        <div class="card">
+        <div class="card ">
             <img src="{{ asset('storage/' . $apartment->cover_image) }}" class="card-img-top" alt="{{ $apartment->title }}">
 
             <div class="card-body">

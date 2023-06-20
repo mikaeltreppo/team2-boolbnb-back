@@ -26,10 +26,6 @@
         object-fit: cover;
         transition: all 0.4s ease;
         opacity: 1;
-
-        &:hover {
-            filter: grayscale(1);
-        }
     }
 }
 
