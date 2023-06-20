@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Apartment;
 use App\Models\Sponsorship;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -83,5 +84,21 @@ class SponsorshipController extends Controller
     public function destroy(Sponsorship $sponsorship)
     {
         //
+    }
+
+    public function sponsorizeApartment(Request $request, $apartmentId) //viene chiamato dal post delle sponsorizzazioni
+    {
+        $apartment = Apartment::find($apartmentId);
+        $sponsorshipId = $request->input('sponsorship_id'); //da modificare in base al name del form
+        $sponsorship = Sponsorship::find($sponsorshipId);
+
+        $start_date = now(); //data presa dal server su cui viene eseguito il codice Laravel quindi occhio ai conflitti 
+        $expired_at = $start_date->addHours($sponsorship->duration);
+
+
+        $apartment->sponsorships()->attach($sponsorship->id, [
+            'start_date' => $start_date,
+            'expired_at' => $expired_at,
+        ]);
     }
 }
