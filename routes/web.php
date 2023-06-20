@@ -45,6 +45,9 @@ Route::middleware(['auth', 'verified'])
         Route::resource('apartments', ApartmentController::class);
         Route::resource('sponsorships', SponsorshipController::class);
         Route::resource('messages', MessageController::class);
+        //Rotta per gestire il post delle sponsorizzazioni
+        Route::post('sponsorship', [SponsorshipController::class, 'sponsorizeApartment'])->name('sponsorize.apartment');
+
     });
 
 
