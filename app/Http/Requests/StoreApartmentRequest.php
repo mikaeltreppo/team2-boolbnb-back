@@ -28,7 +28,7 @@ class StoreApartmentRequest extends FormRequest
             'title' => 'required|max:255',
             'description' => 'required|max:5000',
             'cover_image' => 'required|max:1024|image',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric|min:0',
             'address' => 'required',
             'beds' => 'required|integer',
             'bathrooms' => 'required|integer',
@@ -50,6 +50,7 @@ class StoreApartmentRequest extends FormRequest
             'cover_image.image' => "Il file inserito deve essere di tipo Immagine.",
             'price.required' => "Il prezzo dell'appartamento è richiesto.",
             'price.numeric' => 'Il valore inserito deve essere di tipo numerico.',
+            'price.min' => 'Inserisci un prezzo dal valore positivo.',
             'address.required' => "L'indirizzo dell'appartamento è richiesto.",
             'beds.required' => 'Il numero di letti è richiesto.',
             'beds.integer' => 'Il dato inserito deve essere di tipo numero intero.',
@@ -59,6 +60,7 @@ class StoreApartmentRequest extends FormRequest
             'bedrooms.integer' => 'Il dato inserito deve essere di tipo numero intero.',
             'size_m2.required' => 'Il numero di metri quadri è richiesto.',
             'size_m2.integer' => 'Il dato inserito deve essere di tipo numero intero.'
+
         ];
     }
 }

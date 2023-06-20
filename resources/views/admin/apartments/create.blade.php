@@ -11,7 +11,7 @@
                 </ul>
             </div>
         @endif
-
+        <h1 class="text-center">Aggiunti un nuovo appartamento</h1>
         <form method="POST" action="{{ route('admin.apartments.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="d-flex flex-wrap">
@@ -113,8 +113,6 @@
                     @enderror
                 </div>
             </div>
-
-            <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!controllare l'inserimento di available e visible come numero giusto?!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
             <div class="p-3">
                 <div class="form-check form-switch">
