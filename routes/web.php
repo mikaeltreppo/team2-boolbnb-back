@@ -35,7 +35,8 @@ Route::middleware(['auth', 'verified'])
     ->prefix('admin')
     ->group(function () {
         Route::get('/', function () {
-            return view('admin.dashboard'); })->name('dashboard');
+            return view('admin.dashboard');
+        })->name('dashboard');
         /*rotte appartamenti con crud gestite qui*/
         Route::resource('apartments', ApartmentController::class);
     });
