@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Str;
 use App\Http\Requests\StoreApartmentRequest;
 use App\Http\Requests\UpdateApartmentRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ApartmentController extends Controller
 {
@@ -45,10 +46,32 @@ class ApartmentController extends Controller
      */
     public function store(StoreApartmentRequest $request)
     {
+        $form_data = $request->validated();
+
+        $form_data['slug'] = Str::slug($request->title, '-');
         //serve per ricavare l'utente
         $user = auth()->user();
 
-        $form_data = $request->all();
+        if ($request->hasFile('cover_image')) {
+            $path = Storage::put('cover', $request->cover_image);
+            $form_data['cover_image'] = $path;
+        }
+
+        if (isset($request->available)) {
+            $form_data['available'] = true;
+        } else {
+            $form_data['available'] = false;
+        }
+
+        if (isset($request->visible)) {
+            $form_data['visible'] = true;
+        } else {
+            $form_data['visible'] = false;
+        }
+
+        $newApartment = Apartment::create($form_data);
+
+        /*  $form_data = $request->all();
         $newApartment = new Apartment();
         $newApartment->user_id = $user->id;
         $newApartment->title = $form_data['title'];
@@ -61,12 +84,12 @@ class ApartmentController extends Controller
         $newApartment->bathrooms = $form_data['bathrooms'];
         $newApartment->bedrooms = $form_data['bedrooms'];
         $newApartment->size_m2 = $form_data['size_m2'];
-        /*passiamo 1 o 0 zero per booleani in DB*/
+        passiamo 1 o 0 zero per booleani in DB
         $newApartment->available = isset($form_data['available']) ? 1 : 0;
-        $newApartment->visible = isset($form_data['visible']) ? 1 : 0;
+        $newApartment->visible = isset($form_data['visible']) ? 1 : 0;*/
 
         $newApartment->save();
-        return redirect()->route('admin.apartments.index');
+        return redirect()->route('admin.apartments.index', ['apartment' => $newApartment->slug]);
     }
 
     /**
