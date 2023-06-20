@@ -1,31 +1,30 @@
-@use 'colors' as *;
-@use 'vars' as *;
+@use "colors" as *;
+@use "vars" as *;
 
 /* CONTROLS */
 
-.dashboard-tile{
+.dashboard-tile {
     transition: $transition_fast;
 }
 
-.dashboard-tile:hover{
-    -webkit-box-shadow: 0px 4px 15px 6px rgba(0,0,0,0.10); 
-    box-shadow: 0px 4px 15px 6px rgba(0,0,0,0.10);
+.dashboard-tile:hover {
+    -webkit-box-shadow: 0px 4px 15px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 15px 6px rgba(0, 0, 0, 0.1);
     transform: translateY(-3px);
     cursor: pointer;
 }
 
-.dashboard-tile:hover .rounded-icon i{
-   transform: translateX(-50px);
+.dashboard-tile:hover .rounded-icon i {
+    transform: translateX(-50px);
 }
 
-.dashboard-tile:hover .rounded-icon::after{
+.dashboard-tile:hover .rounded-icon::after {
     transform: translateX(-50px);
- }
- 
+}
 
 /* Icons */
 
- .rounded-icon{
+.rounded-icon {
     position: relative;
     display: flex;
     align-items: center;
@@ -39,24 +38,22 @@
     overflow: hidden;
 }
 
- .rounded-icon i{
+.rounded-icon i {
     transition: $transition_fast;
 }
 
-
- .rounded-icon::after{
-        font-family: "Font Awesome 5 Free";
-        font-weight: 900;
-        content: "\f054";
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        line-height: 50px;
-        top: 0;
-        right: -50px;
-        transition: $transition_fast;
-        font-size: .8rem;
-      
+.rounded-icon::after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f054";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    top: 0;
+    right: -50px;
+    transition: $transition_fast;
+    font-size: 0.8rem;
 }
 
 /* Buttons */
@@ -65,17 +62,22 @@
 *   USARE SEMPRE LA CLASSE "ms-btn" unitamente a "btn"
 */
 
-
-.btn.ms-btn{
+.btn.ms-btn {
     transition: $transition_fast;
     overflow: hidden;
 }
 
-.btn.ms-btn-sm{ font-size: .8rem;}
-.btn.ms-btn-md{ font-size: 1rem;}
-.btn.ms-btn-lg{ font-size: 1.5rem;}
+.btn.ms-btn-sm {
+    font-size: 0.8rem;
+}
+.btn.ms-btn-md {
+    font-size: 1rem;
+}
+.btn.ms-btn-lg {
+    font-size: 1.5rem;
+}
 
-.btn.ms-btn::after{
+.btn.ms-btn::after {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f054";
@@ -84,26 +86,65 @@
     transition: $transition_fast;
 }
 
-.btn.ms-btn:hover .btn.ms-btn::after{
+.btn.ms-btn:hover .btn.ms-btn::after {
     right: 60px;
 }
 
-.btn.ms-btn:hover{
-    -webkit-box-shadow: 0px 2px 15px -6px $main_darker2_color; 
+.btn.ms-btn:hover {
+    -webkit-box-shadow: 0px 2px 15px -6px $main_darker2_color;
     box-shadow: 0px 2px 15px -6px $main_darker2_color;
-    padding-right: 30px!important;
+    padding-right: 30px !important;
 }
 
-.btn.ms-btn-primary{
+.btn.ms-btn-primary {
     background-color: $main_darker2_color;
     border: 1px solid $main_darker_color;
     color: white;
 }
 
-
-.btn.ms-btn-primary:hover{
+.btn.ms-btn-primary:hover {
     background-color: transparent;
     border: 1px solid $main_darker2_color;
     color: $main_darker2_color;
 }
 
+.btn.ms-btn-premium {
+    background-color: $premium_color;
+    color: $black_text_color;
+}
+
+.btn.ms-btn-premium:hover {
+    background-color: transparent;
+    border: 1px solid $black_text_color;
+}
+
+//CARD MESSAGE YELLOW INFO
+
+.ms_speech {
+    color: $black_text_color;
+    font-weight: 600;
+    text-align: center;
+    font-size: 0.8rem;
+    background: $premium_color;
+    position: relative;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    max-width: 300px;
+    transition: all 0.3s ease;
+}
+
+.ms_speech::after {
+    content: "";
+    border: 15px solid transparent;
+    position: absolute;
+}
+
+.ms_bottom.ms_speech::after {
+    //freccina giù
+    border-top-color: $premium_color;
+    border-bottom: 0;
+
+    bottom: -10px;
+    left: 80%;
+    margin-left: -20px;
+}
