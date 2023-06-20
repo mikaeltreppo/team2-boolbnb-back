@@ -51,7 +51,7 @@
                         </div>
                         {{-- buttons --}}
                         <div class="d-flex position-absolute mb-2 bottom-0 start-0 justify-content-between w-100">
-                            <a href="#" class="btn ms-btn ms-btn-sm btn-warning ms-2">Sponsorizza <i class="fa-solid fa-star"></i></a>
+                            <a href="#" class="btn ms-btn ms-btn-sm ms-btn-premium ms-2"><i class="fa-solid fa-star me-2"></i>Sponsorizza</a>
                             <div class="me-2">
                                 <a href="{{ route('admin.apartments.edit', ['apartment' => $apartment->id]) }}"
                                     class="btn ms-btn-sm btn-outline-primary"><i class="fa-solid fa-pen"></i></a>

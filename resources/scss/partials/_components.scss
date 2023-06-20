@@ -109,14 +109,21 @@
 }
 
 .btn.ms-btn-premium {
+    border: 1px solid $premium_color;
     background-color: $premium_color;
     color: $black_text_color;
 }
 
 .btn.ms-btn-premium:hover {
     background-color: transparent;
-    border: 1px solid $black_text_color;
+    border: 1px solid $premium_color;
+    -webkit-box-shadow: 0px 2px 15px -6px $premium_color;
+    box-shadow: 0px 2px 15px -6px $premium_color;
+    color: $premium_color;
 }
+
+
+
 
 //CARD MESSAGE YELLOW INFO
 
