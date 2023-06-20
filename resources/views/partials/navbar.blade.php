@@ -6,7 +6,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">      
             {{-- Left Side Of Navbar --}}
-            <a href="{{ route('admin.apartments.create') }}" type="button" class="btn ms-btn ms-btn-sm ms-btn-primary">
+            <a href="{{ route('admin.apartments.create') }}" type="button" class="btn ms-btn ms-btn-sm ms-btn-outline-primary fw-bold">
                 <i class="fa-solid fa-plus me-2"></i>
                 Aggiungi
             </a>
@@ -34,18 +34,19 @@
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title font-secondary" id="offcanvasExampleLabel">{{ Auth::user()->name }}</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <div class="offcanvas-right d-flex align-items-center">
+        <a href="{{ url('profile') }}" class="btn">
+            <i class="fa-solid fa-gear text-muted"></i>
+            <span class="small fw-bold">Account</span>
+        </a>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
     </div>
-    <div class="offcanvas-body text-center">
+    <div class="offcanvas-body">
         <ul class="list-unstyled">
+       
             <li>
-                <a class="my-2 menu-item" href="{{ url('dashboard') }}">{{ __('Dashboard') }}</a>
-            </li>
-            <li>
-                <a class="my-2 menu-item" href="{{ url('profile') }}">{{ __('Profile') }}</a>
-            </li>
-            <li>
-                <button class="my-3 btn btn-outline-danger rounded-4 btn-sm" href="{{ route('logout') }}"
+                <button class="my-3 btn ms-btn-outline-primary rounded-4 btn-sm w-100" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                              document.getElementById('logout-form').submit();">
                 <i class="fa-solid fa-right-from-bracket me-2"></i>
