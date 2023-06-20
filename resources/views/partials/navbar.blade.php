@@ -14,16 +14,7 @@
             {{-- Right Side Of Navbar --}}
             <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->
-                {{-- @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    @endif
-                @else --}}
+
                     <li class="nav-item dropstart">
                         <a id="navbarDropdown" class="nav-link user-dropdown fw-bold px-3 py-1"
                         data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" v-pre>
