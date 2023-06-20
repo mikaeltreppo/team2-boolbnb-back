@@ -14,7 +14,6 @@
 //     cursor: pointer;
 // }
 
-
 .card-tile.drop-shadow-sm:hover {
     -webkit-box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.1);
@@ -29,14 +28,12 @@
     cursor: pointer;
 }
 
-
 .card-tile.drop-shadow-lg:hover {
     -webkit-box-shadow: 0px 4px 15px 9px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 4px 15px 9px rgba(0, 0, 0, 0.1);
     transform: translateY(-5px);
     cursor: pointer;
 }
-
 
 .card-tile:hover .rounded-icon i {
     transform: translateX(-50px);
@@ -130,12 +127,11 @@
 .btn.ms-btn:hover {
     -webkit-box-shadow: 0px 2px 15px -6px $main_darker2_color;
     box-shadow: 0px 2px 15px -6px $main_darker2_color;
-    background-color: transparent;
+    background-color: #fff;
     border: 1px solid $main_darker2_color;
     color: $main_darker2_color;
     padding-right: 30px !important;
 }
-
 
 /* Blue Outline */
 
@@ -165,8 +161,6 @@
     color: white;
 }
 
-
-
 /* Blue Button */
 
 .btn.ms-btn-primary {
@@ -181,9 +175,6 @@
     color: $main_darker2_color;
 }
 
-
-
-
 /* Yellow Button */
 
 .btn.ms-btn-premium {
@@ -192,18 +183,17 @@
     color: $black_text_color;
 }
 
-
 /* Button Textual */
 
-.btn.ms-btn-textual-primary{
+.btn.ms-btn-textual-primary {
     position: relative;
     overflow: hidden;
     color: white;
     text-decoration: none;
-    font-size: .9rem;
+    font-size: 0.9rem;
 }
 
-.btn.ms-btn-textual-primary.arrow::after{
+.btn.ms-btn-textual-primary.arrow::after {
     position: absolute;
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
@@ -215,23 +205,22 @@
     opacity: 0;
 }
 
-.btn.ms-btn-textual-primary:hover{
+.btn.ms-btn-textual-primary:hover {
     background-color: $main_darker_color;
     color: white;
 }
 
-.btn.ms-btn-textual-primary:hover.arrow::after{
-   right: 0px;
-   opacity: 1;
+.btn.ms-btn-textual-primary:hover.arrow::after {
+    right: 0px;
+    opacity: 1;
 }
 
-.btn.ms-btn-textual-primary.active{
+.btn.ms-btn-textual-primary.active {
     font-weight: bold;
     background-color: $main_darker_color;
-    border: 1px solid $main_darker_color;;
+    border: 1px solid $main_darker_color;
     color: white;
 }
-
 
 //CARD MESSAGE YELLOW INFO
 

@@ -74,6 +74,11 @@
 .ms_big_card {
     width: 80%;
 
+    .ms_arrow_back {
+        position: absolute;
+        left: -3rem;
+    }
+
     img {
         height: 25rem;
         object-fit: cover;
