@@ -1,26 +1,28 @@
 /* TYPOGRAPHY */
+$font-serif: "Lora", serif;
+$font-sans-serif: "Montserrat", sans-serif;
 
 *,
 html,
-body {
-    font-family: "Montserrat", sans-serif;
+
+body{
+    font-family: $font-sans-serif;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: "Lora", serif;
+h1, h2, h3,
+h4, h5, h6{
+    font-family: $font-serif;
 }
 
-.font-primary {
-    font-family: "Lora", serif;
-}
+.font-primary{font-family: $font-serif}
+.font-secondary{font-family: $font-sans-serif}
+
 .font-semibold {
     font-weight: 600;
 }
-.font-secondary {
-    font-family: "Montserrat", sans-serif;
-}
+
+
+
+
+
+

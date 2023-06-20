@@ -51,11 +51,18 @@ class MessageController extends Controller
      */
     public function show($id)
     {
-
-        $message = Message::findOrFail($id);
-
-        return view('admin.messages.show', compact('message'));
-
+        $message = Message::findOrFail($id); //trova il messaggio tramite id
+        $apartment_id = $message->apartment_id; //salvo l'id dell'appartamento legato al messaggio
+        $user = auth()->user(); //creo il riferimento all'utente loggato
+        $user_apartments = $user->apartments()->pluck('id')->toArray(); //creo l'array di tutti gli id degli appartamenti dell'utente loggato
+        if (in_array($apartment_id, $user_apartments)) {
+            return view('admin.messages.show', compact('message'));
+        } else {
+            return view('errors.403');
+        }
+        /*confronto che nella lista degli id degli appartamenti dell'utente registrato ovvero $user_apartments
+         * sia presente apartment_id relativo al messaggio quinid non posso vedere messaggi relativi ad appartamenti non miei 
+         */
     }
 
     /**

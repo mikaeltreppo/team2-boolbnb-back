@@ -4,46 +4,28 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">            
-            <!-- Right Side Of Navbar -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">      
+            {{-- Left Side Of Navbar --}}
+            <a href="{{ route('admin.apartments.create') }}" type="button" class="btn ms-btn ms-btn-sm ms-btn-primary">
+                <i class="fa-solid fa-plus me-2"></i>
+                Aggiungi
+            </a>
+
+            {{-- Right Side Of Navbar --}}
             <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->
-                @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    @endif
-                @else
+
                     <li class="nav-item dropstart">
                         <a id="navbarDropdown" class="nav-link user-dropdown fw-bold px-3 py-1"
                         data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" v-pre>
-
-                            
                             <span class="align-middle">{{ Auth::user()->name }}</span>
                             <div class="user-icon ms-bg-dark align-middle">
                                 <i class="fa-solid fa-user"></i>
                             </div>
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ url('dashboard') }}">{{ __('Dashboard') }}</a>
-                            <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profile') }}</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
                     </li>
-                @endguest
+                {{-- @endguest --}}
             </ul>
         </div>
     </div>

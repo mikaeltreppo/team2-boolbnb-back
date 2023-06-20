@@ -14,13 +14,13 @@
             <span class="d-none d-md-inline">Lista Appartamenti</span>
         </a>
     </li>
-           <!-- reindirizzamento NUOVO APPARTAMENTO -->
+           {{-- <!-- reindirizzamento NUOVO APPARTAMENTO -->
            <li>
             <a href="{{ route('admin.apartments.create') }}" class="nav-link text-white text-center text-md-start sidebar-icon">
                 <i class="fa-solid fa-plus me-2"></i>
                <span class="d-none d-md-inline">Nuovo Appartamento</span>
             </a>
-        </li>
+        </li> --}}
         <!-- reindirizzamento mostra memberships -->
 
         <li>
