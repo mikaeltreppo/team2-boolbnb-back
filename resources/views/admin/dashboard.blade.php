@@ -47,7 +47,7 @@
             <div class="col-lg-4 col-12">
                 
                 {{-- Messages --}}
-                <div class="card dashboard-tile mb-4 py-3 bg-white rounded-4 flat-shadow">
+                <div class="card card-tile mb-4 py-3 bg-white rounded-4 flat-shadow">
                     <div class="card-body position-relative">
                       <div class="row align-items-center text-center text-lg-start g-0">
 
@@ -76,7 +76,7 @@
                   {{-- End Messages --}}
 
                   {{-- Views --}}
-                    <div class="card dashboard-tile mb-4 py-3 bg-white rounded-4 flat-shadow">
+                    <div class="card card-tile mb-4 py-3 bg-white rounded-4 flat-shadow">
                         <div class="card-body position-relative">
 
                         <div class="row align-items-center text-center text-lg-start  g-0">
@@ -103,7 +103,7 @@
                   {{-- End Views --}}
 
                     {{-- Aparmtents --}}
-                    <div class="card dashboard-tile py-3 bg-white rounded-4 flat-shadow">
+                    <div class="card card-tile py-3 bg-white rounded-4 flat-shadow">
 
                             <div class="card-body position-relative">
 
@@ -132,7 +132,7 @@
             </div>
            {{-- Graph --}}
             <div class="col-xl-5 col-lg-8 col-12">
-                <div class="card h-100 bg-white rounded-4 flat-shadow dashboard-tile">
+                <div class="card h-100 bg-white rounded-4 flat-shadow card-tile">
                     <div class="card-body p-3">
                         <span class="small fw-bold">Statistiche Globali</span>
                     </div>
@@ -141,7 +141,7 @@
              {{-- End Graph --}}
 
              <div class="col-xl-3 col-lg-12 col-12">
-                <div class="card h-100 bg-white rounded-4 flat-shadow dashboard-tile">
+                <div class="card h-100 bg-white rounded-4 flat-shadow card-tile">
                     <div class="card-body p-3">
                         <span class="small fw-bold">Altro?</span>
                     </div>

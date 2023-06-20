@@ -54,9 +54,9 @@
                             <a href="#" class="btn ms-btn ms-btn-sm ms-btn-premium ms-2"><i class="fa-solid fa-star me-2"></i>Sponsorizza</a>
                             <div class="me-2">
                                 <a href="{{ route('admin.apartments.edit', ['apartment' => $apartment->id]) }}"
-                                    class="btn ms-btn-sm btn-outline-primary"><i class="fa-solid fa-pen"></i></a>
+                                    class="btn ms-btn-sm ms-btn-outline-primary"><i class="fa-solid fa-pen"></i></a>
                                 <a href="#"
-                                    class="btn ms-btn-sm btn-outline-dark"><i class="fa-solid fa-trash"></i></a>
+                                    class="btn ms-btn-sm ms-btn-outline-black"><i class="fa-solid fa-trash"></i></a>
                             </div>
                         </div>
                         {{-- end buttons --}}
