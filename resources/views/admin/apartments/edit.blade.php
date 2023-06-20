@@ -31,7 +31,7 @@
                     <input type="file" class="form-control @error('cover_image') is-invalid @enderror" id="cover_image"
                         name="cover_image">
                     @if ($apartment->cover_image)
-                        <div class="my-img-wrapper p-3">
+                        <div class="p-3">
                             <img class="img-thumbnail my-img-thumb" src="{{ asset('storage/' . $apartment->cover_image) }}"
                                 alt="{{ $apartment->title }}" />
                         </div>
