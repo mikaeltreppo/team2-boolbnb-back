@@ -31,8 +31,15 @@
                     <div class="p-0 card ms_card card-tile drop-shadow-sm bg-white rounded-4 flat-shadow">
                         <a href="{{ route('admin.apartments.show', ['apartment' => $apartment->id]) }}">
                             @if ($apartment->cover_image)
-                                <img src="{{ asset('storage/' . $apartment->cover_image) }}" class="card-img-top"
+                                <img src="{{ asset('storage/' . $apartment->cover_image) }}" class="card-img-top @if($apartment->visible == 0)? ms_img_grayscale :''@endif"
                                     alt="{{ $apartment->title }}">
+                            @endif
+
+                            @if ($apartment->visible == 0)
+                            <div class="position-absolute top-0 end-0 d-flex align-items-center mt-1 me-1 ms_black_text">
+                                <i class="fa-solid fa-eye-slash me-1"></i>
+                                <small>Non visibile</small>
+                            </div>
                             @endif
                         </a>
 
@@ -57,13 +64,18 @@
                             <div class="d-flex position-absolute mb-2 bottom-0 start-0 justify-content-between w-100">
                                 <a href="#" class="btn ms-btn ms-btn-sm ms-btn-premium ms-2"><i
                                         class="fa-solid fa-star me-2"></i>Sponsorizza</a>
-                                <div class="me-2">
+                                <div class="me-2 d-flex gap-2">
                                     <a href="{{ route('admin.apartments.edit', ['apartment' => $apartment->id]) }}" class="btn ms-btn-sm ms-btn-outline-primary">
                                         <i class="fa-solid fa-pen"></i>
                                     </a>
-                                    <a href="#" class="btn ms-btn-sm ms-btn-outline-black">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
+                        
+                                    {{-- delete form --}}
+                                    <form class="form_delete_post" method="POST" action="{{ route('admin.apartments.destroy', ['apartment' => $apartment->id]) }}">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="btn ms-btn-sm ms-btn-outline-black">
+                                            <i class="fa-solid fa-trash"></i></button>
+                                    </form>
                                 </div>
                             </div>
                             {{-- end buttons --}}
@@ -74,5 +86,7 @@
             {{-- end card apartment --}}
 
         </div>
+
+        
     </div>
 @endsection
