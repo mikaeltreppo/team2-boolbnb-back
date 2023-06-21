@@ -6,7 +6,7 @@ const ctx = document.getElementById('myChart');
 /* Impostazioni di default dei font */
 Chart.defaults.font.family = "'Montserrat', sans-serif";
 Chart.defaults.font.size = 14;
-Chart.defaults.borderColor = "#fff";
+Chart.defaults.borderColor = "#f8f9fa";
 
 new Chart(ctx, {
   type: 'line',

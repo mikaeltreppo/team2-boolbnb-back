@@ -13,7 +13,7 @@
 
             {{-- Sponsorsip Banner --}}
             <div class="col-12 col-lg-6">
-                <div class="card ms-bg-light rounded-4">
+                <div class="card ms-bg-light rounded-4 border-0">
                     <div class="card-body">
                        <div class="row align-items-center">
                             <div class="col-12 col-xl-1 col-lg-12 text-center text-xl-start text-muted ">
@@ -47,35 +47,38 @@
             <div class="col-lg-4 col-12">
                 
                 {{-- Messages --}}
-                <div class="card card-tile drop-shadow-md mb-4 py-3 bg-white rounded-4 flat-shadow">
-                    <div class="card-body position-relative">
-                      <div class="row align-items-center text-center text-lg-start g-0">
-
-                       <div class="col-12 col-xl-2 text-center order-3 order-lg-0">
-                            <h1 class="fw-bolder">50</h1>
-                       </div>
-
-                        <div class="col-12 col-xl-7 col-lg-12 text-center text-xl-start order-1 text-muted ">
-                            <div class="small mb-2 mb-xl-0">
-                                Messaggi
-                                <br/>
-                                Non letti
+                    <a href="{{ route('admin.messages.index') }}" class="text-decoration-none">
+                        <div class="card card-tile drop-shadow-md mb-4 py-3 bg-white rounded-4 flat-shadow">
+                            <div class="card-body position-relative">
+                            <div class="row align-items-center text-center text-lg-start g-0">
+        
+                            <div class="col-12 col-xl-2 text-center order-3 order-lg-0">
+                                    <h1 class="fw-bolder">50</h1>
+                            </div>
+        
+                                <div class="col-12 col-xl-7 col-lg-12 text-center text-xl-start order-1 text-muted ">
+                                    <div class="small mb-2 mb-xl-0">
+                                        Messaggi
+                                        <br/>
+                                        Non letti
+                                    </div>
+                                </div>
+        
+                                <div class="col-12 col-xl-3 text-center order-0 order-lg-3 text-muted">
+                                    <div class="rounded-icon animated mx-auto bg-success">
+                                        <i class="fa-solid fa-envelope mb-3 mb-lg-0"></i>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            
                             </div>
                         </div>
-
-                        <div class="col-12 col-xl-3 text-center order-0 order-lg-3 text-muted">
-                            <div class="rounded-icon animated mx-auto bg-success">
-                                <i class="fa-solid fa-envelope mb-3 mb-lg-0"></i>
-                            </div>
-                        </div>
-                      </div>
-
-                     
-                    </div>
-                  </div>
+                    </a>
                   {{-- End Messages --}}
 
                   {{-- Views --}}
+                   <a href="{{ route('admin.apartments.index') }}" class="text-decoration-none">
                     <div class="card card-tile drop-shadow-md mb-4 py-3 bg-white rounded-4 flat-shadow">
                         <div class="card-body position-relative">
 
@@ -100,10 +103,12 @@
                         </div>
                         </div>
                     </div>
+                   </a>
                   {{-- End Views --}}
 
                     {{-- Aparmtents --}}
-                    <div class="card card-tile drop-shadow-md py-3 bg-white rounded-4 flat-shadow">
+                    <a href="{{ route('admin.apartments.index') }}" class="text-decoration-none">
+                        <div class="card card-tile drop-shadow-md py-3 bg-white rounded-4 flat-shadow">
 
                             <div class="card-body position-relative">
 
@@ -128,6 +133,7 @@
                             </div>
                             </div>
                         </div>
+                    </a>
                     {{-- End Aparmtents --}}
             </div>
            {{-- Graph --}}

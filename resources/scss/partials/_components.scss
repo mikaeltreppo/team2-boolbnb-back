@@ -4,7 +4,7 @@
 /* CONTROLS */
 
 .card-tile {
-    transition: $transition_fast;
+    transition: transform $transition_fast, box-shadow $transition_fast;
 }
 
 // .card-tile:hover {
@@ -55,12 +55,12 @@
     border-radius: 50px;
     font-size: 1.5rem;
     color: white;
-    transition: $transition_fast;
+    transition: transform $transition_fast;
     overflow: hidden;
 }
 
 .rounded-icon i {
-    transition: $transition_fast;
+    transition: transform $transition_fast;
 }
 
 .rounded-icon.animated::after {
@@ -73,7 +73,7 @@
     line-height: 50px;
     top: 0;
     right: -50px;
-    transition: $transition_fast;
+    transition: transform $transition_fast;
     font-size: 0.8rem;
 }
 
@@ -98,7 +98,7 @@
 
 .btn.ms-btn {
     position: relative;
-    transition: $transition_fast;
+    transition: padding $transition_fast, background-color $transition_fast, box-shadow $transition_fast,  color $transition_fast;
     overflow: hidden;
 }
 
@@ -120,7 +120,7 @@
     position: absolute;
     top: auto;
     right: -20px;
-    transition: $transition_fast;
+    transition: transform $transition_fast;
 }
 
 .btn.ms-btn:hover:after {
@@ -204,7 +204,7 @@
     right: -20px;
     height: 20px;
     width: 20px;
-    transition: $transition_fast;
+    transition: transform $transition_fast, opacity $transition_fast, right $transition_fast;
     opacity: 0;
 }
 

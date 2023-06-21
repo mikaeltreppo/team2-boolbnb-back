@@ -17,7 +17,7 @@
                     {{-- Email --}}
                     <div class="form-floating mb-3">
                         <input id="email" type="email" placeholder="example@mail.com" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                            <label for="email">Email address</label>
+                            <label for="email">Email</label>
 
                             @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -43,17 +43,17 @@
 
                       <div class="row py-3 align-items-center">
                         {{-- Remember --}}
-                        <div class="col-12 col-lg-6">
+                        <div class="col-12 col-lg-4">
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" name="remember" id="remember" role="switch"  {{ old('remember') ? 'checked' : '' }}>
                                 <label class="form-check-label" for="remember">Ricordami</label>
                             </div>
                         </div>
                         {{-- Forgot Password --}}
-                        <div class="col-12 col-lg-6 text-lg-end text-start">
+                        <div class="col-12 col-lg-8 text-lg-end text-start">
                             @if (Route::has('password.request'))
                             <a class="btn btn-link" href="{{ route('password.request') }}">
-                                {{ __('Forgot Your Password?') }}
+                                {{ __('Password dimenticata?') }}
                             </a>
                             @endif
                         </div>
