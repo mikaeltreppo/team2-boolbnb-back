@@ -2,27 +2,43 @@
 @section('content')
 
 <div class="container">
-    <h2 class="fs-4 text-secondary my-4">
-        {{ __('Profile') }}
+    <h2 class="fs-1 mt-4 mb-2 text-center">
+        {{ __('Modifica Account') }}
     </h2>
-    <div class="card p-4 mb-4 bg-white shadow rounded-lg">
+    <span class="text-center d-block mb-5">
+        Modifica le informazioni del tuo account
+    </span>
 
-        @include('profile.partials.update-profile-information-form')
+    <div class="row mb-4">
+        <div class="col-6">
+            <div class="card p-5 bg-white rounded-lg rounded-4 flat-shadow h-100">
 
+                @include('profile.partials.update-profile-information-form')
+        
+            </div>
+        </div>
+        <div class="col-6">
+
+            <div class="card p-5  bg-white rounded-lg rounded-4 flat-shadow h-100">
+
+
+                @include('profile.partials.update-password-form')
+        
+            </div>
+        
+        </div>
     </div>
 
-    <div class="card p-4 mb-4 bg-white shadow rounded-lg">
+    <div class="row">
+        
+       <div class="col-6">
+        <div class="card p-5 mb-4 bg-white rounded-lg rounded-4 flat-shadow">
 
 
-        @include('profile.partials.update-password-form')
+            @include('profile.partials.delete-user-form')
 
-    </div>
-
-    <div class="card p-4 mb-4 bg-white shadow rounded-lg">
-
-
-        @include('profile.partials.delete-user-form')
-
+        </div>
+       </div>
     </div>
 </div>
 
