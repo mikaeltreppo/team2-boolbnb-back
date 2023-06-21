@@ -13,7 +13,7 @@
             @method('POST')
 
             <div class="row mt-5">
-                <div class="col-5">
+                <div class="col-5 mx-auto text-center">
                     <label for="apartmentSelect" class="mb-2 small">Scegli un appartamento</label>
                     <select class="form-select form-select mb-3" aria-label=".form-select-lg example" id="apartmentSelect">
                         <option selected>Open this select menu</option>
