@@ -100,11 +100,11 @@
                     @endif
                 </div>
                 <div class="card-text d-flex align-items-center gap-2 pb-4 border-bottom">
-                    @if ($apartment->visible == 0)
-                    <i class="fa-regular fa-face-sad-cry fs-4"></i>
+                    @if ($apartment->available == 0)
+                    <i class="fa-solid fa-square-xmark fs-4"></i>
                     <span>Non disponibile</span> 
                     @else
-                    <i class="fa-regular fa-face-grin-wide fs-4 ms_text_main_darker"></i>
+                    <i class="fa-solid fa-square-check fs-4 ms_text_main_darker"></i>
                     <span>Disponibile</span> 
                     @endif
                 </div>

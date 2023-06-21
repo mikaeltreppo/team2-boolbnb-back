@@ -31,8 +31,15 @@
                     <div class="p-0 card ms_card card-tile drop-shadow-sm bg-white rounded-4 flat-shadow">
                         <a href="{{ route('admin.apartments.show', ['apartment' => $apartment->id]) }}">
                             @if ($apartment->cover_image)
-                                <img src="{{ asset('storage/' . $apartment->cover_image) }}" class="card-img-top"
+                                <img src="{{ asset('storage/' . $apartment->cover_image) }}" class="card-img-top @if($apartment->visible == 0)? ms_img_grayscale :''@endif"
                                     alt="{{ $apartment->title }}">
+                            @endif
+
+                            @if ($apartment->visible == 0)
+                            <div class="position-absolute top-0 end-0 d-flex align-items-center mt-1 me-1 ms_black_text">
+                                <i class="fa-solid fa-eye-slash me-1"></i>
+                                <small>Non visibile</small>
+                            </div>
                             @endif
                         </a>
 
