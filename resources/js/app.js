@@ -1,4 +1,5 @@
 import "./bootstrap";
+import Chart from 'chart.js/auto';
 import "./validationsRegister";
 import './validationsCreateEditApartment'
 import "~resources/scss/app.scss";

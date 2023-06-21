@@ -259,6 +259,35 @@
     font-size: 1rem;
 }
 
+.card-radio-element:checked + .card-radio-content {
+    box-shadow: 0 0 1px 5px $main_darker_color;
+}
+
+.card-radio-element {
+    display: none;
+}
+
+.card-radio-content:hover {
+    cursor: pointer;
+}
+
+label.card-radio {
+    width: 100%;
+}
+
+.number-badge{
+    display: inline-block;
+    background-color: $main_darker_color;
+    padding: 1px;
+    font-size: .8rem;
+    color: white;
+    font-weight: bold;
+    width: 20px;
+    height: 100%;
+    border-radius: 25px;
+}
+
+
 //OTHER
 
 
