@@ -74,12 +74,14 @@
             @enderror
         </div> --}}
 
-        <div class="d-flex align-items-center gap-4 mt-4">
+        <div class="row mt-4">
+           <div class="col">
             <button type="submit" class="btn ms-btn ms-btn-primary btn-sm">
                 <i class="fa-solid fa-floppy-disk me-1"></i>
                 {{ __('Salva') }}
             </button>
-
+           </div>
+           <div class="col">
             @if (session('status') === 'password-updated')
             <script>
                 const show = true;
@@ -89,8 +91,12 @@
                     el.style.display = 'block';
                 }
             </script>
-            <p id='status' class=" fs-5 text-muted">{{ __('Saved.') }}</p>
+
+            <span id='status' class="text-success align-middle">{{ __('Modifiche salvate') }}</span>
             @endif
+           </div>
+
+          
         </div>
     </form>
 </section>

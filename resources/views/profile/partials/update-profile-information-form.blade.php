@@ -99,22 +99,28 @@
             @endif
         </div> --}}
 
-        <div class="d-flex align-items-center gap-4 mt-4">
-            <button class="btn ms-btn  ms-btn-primary btn-sm" type="submit">
-                <i class="fa-solid fa-floppy-disk me-1"></i>
-                {{ __('Salva') }}</button>
-
-            @if (session('status') === 'profile-updated')
-            <script>
-                const show = true;
-                setTimeout(() => show = false, 2000)
-                const el = document.getElementById('profile-status')
-                if (show) {
-                    el.style.display = 'block';
-                }
-            </script>
-            <p id='profile-status' class="fs-5 text-muted">{{ __('Saved.') }}</p>
-            @endif
+        <div class="row mt-4">
+            <div class="col">
+                <button class="btn ms-btn  ms-btn-primary btn-sm align-middle" type="submit">
+                    <i class="fa-solid fa-floppy-disk me-1"></i>
+                    {{ __('Salva') }}</button>
+            </div>
+            <div class="col text-end">
+                @if (session('status') === 'profile-updated')
+                <script>
+                    const show = true;
+                    setTimeout(() => show = false, 2000)
+                    const el = document.getElementById('profile-status')
+                    if (show) {
+                        el.style.display = 'block';
+                    }
+                </script>
+    
+                <span id='profile-status' class="text-success align-middle">{{ __('Modifiche salvate') }}</span>
+    
+                @endif
+            </div>
+           
         </div>
     </form>
 </section>

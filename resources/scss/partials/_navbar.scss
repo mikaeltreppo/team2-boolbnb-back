@@ -10,7 +10,7 @@
 }
 
 .nav-link.user-dropdown:hover .user-icon i{
-    transition: $transition_fast;
+    transition: opacity $transition_fast, transform $transition_fast;
 }
 
 .nav-link.user-dropdown:hover .user-icon i{
@@ -44,7 +44,7 @@
     line-height: 30px;
     top: 0;
     right: -30px;
-    transition: $transition_fast;
+    transition: transform $transition_fast;
     font-size: .8rem;
 }
 
