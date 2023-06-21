@@ -47,3 +47,108 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const inputDescription = document.getElementById("description");
+    const descriptionError = document.getElementById("descriptionError");
+    inputDescription.addEventListener("input", function () {
+        const descriptionValue = inputDescription.value.trim();
+
+        if (descriptionValue === "") {
+            descriptionError.textContent = "Descrizione mancante";
+        } else if (descriptionValue.length > 5000) {
+            descriptionError.textContent = "La descrizione deve contenere al massimo 5000 caratteri";
+        } else {
+            descriptionError.textContent = "";
+        }
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const inputBedrooms = document.getElementById("bedrooms");
+    const bedroomsError = document.getElementById("bedroomsError");
+    inputBedrooms.addEventListener("input", function () {
+        const bedroomsValue = inputBedrooms.value.trim();
+
+        if (bedroomsValue === "") {
+            bedroomsError.textContent = "Campo vuoto";
+        } else if (
+            !/^[1-9][0-9]*$/.test(bedroomsValue) ||
+            parseFloat(bedroomsValue) !== parseInt(bedroomsValue, 10)
+        ) {
+            bedroomsError.textContent = "Inserire un numero intero positivo";
+        } else {
+            bedroomsError.textContent = "";
+        }
+    });
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const inputBeds = document.getElementById("beds");
+    const bedsError = document.getElementById("bedsError");
+    inputBeds.addEventListener("input", function () {
+        const bedsValue = inputBeds.value.trim();
+
+        if (bedsValue === "") {
+            bedsError.textContent = "Campo vuoto";
+        } else if (
+            !/^[1-9][0-9]*$/.test(bedsValue) ||
+            parseFloat(bedsValue) !== parseInt(bedsValue, 10)
+        ) {
+            bedsError.textContent = "Inserire un numero intero positivo";
+        } else {
+            bedsError.textContent = "";
+        }
+    });
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const inputBathrooms = document.getElementById("bathrooms");
+    const bathroomsError = document.getElementById("bathroomsError");
+    inputBathrooms.addEventListener("input", function () {
+        const bathroomsValue = inputBathrooms.value.trim();
+
+        if (bathroomsValue === "") {
+            bathroomsError.textContent = "Campo vuoto";
+        } else if (
+            !/^[1-9][0-9]*$/.test(bathroomsValue) ||
+            parseFloat(bathroomsValue) !== parseInt(bathroomsValue, 10)
+        ) {
+            bathroomsError.textContent = "Inserire un numero intero positivo";
+        } else {
+            bathroomsError.textContent = "";
+        }
+    });
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const inputSize = document.getElementById("size_m2");
+    const sizeError = document.getElementById("sizeError");
+    inputSize.addEventListener("input", function () {
+        const sizeValue = inputSize.value.trim();
+
+        if (sizeValue === "") {
+            sizeError.textContent = "Campo vuoto";
+        } else if (
+            !/^[1-9][0-9]*$/.test(sizeValue) ||
+            parseFloat(sizeValue) !== parseInt(sizeValue, 10)
+        ) {
+            sizeError.textContent = "Inserire un numero intero positivo";
+        } else {
+            sizeError.textContent = "";
+        }
+    });
+});
+
+
+
+
+
+
+
