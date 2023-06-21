@@ -7,7 +7,7 @@
     <div class="card border-0 ms_big_card">
        
         {{-- card-top --}}
-        <div class="top row gx-2">
+        <div class="row gx-2">
 
             {{-- col left --}}
             <div class="col-8 position-relative">
@@ -33,7 +33,7 @@
         </div>
         
         {{-- card-bottom --}}
-        <div class="bottom row card-body">
+        <div class="row card-body">
 
             {{-- col left --}}
             <div class="col-8 border-end">
@@ -55,7 +55,7 @@
                         </div>
                         <div class="ms_box_feature">
                             <i class="fa-solid fa-restroom fs-5"></i>
-                            <span>Letti</span>
+                            <span>Bagni</span>
                             <span class="fw-bold">{{ $apartment->bathrooms }}</span>
                         </div>
                     </div>
@@ -117,7 +117,7 @@
 
                     <div class="my-3">oppure</div>
 
-                    <form method="POST" action="{{ route('admin.apartments.destroy', ['apartment' => $apartment->id]) }}">
+                    <form class="form_delete_post" method="POST" action="{{ route('admin.apartments.destroy', ['apartment' => $apartment->id]) }}">
                         @method('DELETE')
                         @csrf
                         <button type="submit" class="btn btn-outline-danger w-100">
@@ -129,4 +129,6 @@
         </div>
     </div>
     {{-- fine big-card apartment --}}
+
+    
 @endsection

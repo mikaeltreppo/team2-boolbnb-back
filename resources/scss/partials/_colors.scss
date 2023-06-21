@@ -14,6 +14,9 @@ $premium_color: #fcc419;
 .ms-bg-dark {
     background-color: $main_darker2_color !important;
 }
+.ms-bg-premium {
+    background-color: !important;
+}
 
 //text COLORS
 
@@ -28,6 +31,9 @@ $premium_color: #fcc419;
 }
 .ms_black_text {
     color: $black_text_color !important;
+}
+.ms_text_premium {
+    color: $premium_color !important;
 }
 
 .ms_svg_main_color {
