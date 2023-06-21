@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
 document.addEventListener("DOMContentLoaded", function () {
     const priceName = document.getElementById("price");
     const priceError = document.getElementById("priceError");
@@ -34,11 +33,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!regex.test(priceValue)) {
             if (priceValue.includes(",")) {
                 priceError.textContent = "Inserire il punto al posto della virgola.";
+            } else if (priceValue.includes(".") && priceValue.split(".")[1].length > 2) {
+                priceError.textContent = "Massimo 2 decimali consentiti";
             } else {
                 priceError.textContent = "Inserire un prezzo valido.";
             }
-        } else if (priceValue.includes(".") && priceValue.split(".")[1].length > 2) {
-            priceError.textContent = "Massimo 2 decimali consentiti";
         } else {
             priceError.textContent = "";
         }
@@ -46,36 +45,55 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
 document.addEventListener("DOMContentLoaded", function () {
     const inputAddress = document.getElementById("address");
     const addressError = document.getElementById("addressError");
     const regex = /[a-zA-Z]/; // Espressione regolare per almeno una lettera
+    const forbiddenCharacters = /[<>#$%^&()+=[\]{}|\\]/; // Caratteri pericolosi
+
     inputAddress.addEventListener("input", function () {
         const addressValue = inputAddress.value.trim();
 
         if (addressValue === "") {
             addressError.textContent = "Indirizzo mancante";
+        } else if (addressValue.length < 3) {
+            addressError.textContent = "Indirizzo troppo corto (minimo 3)";
+        } else if (!regex.test(addressValue)) {
+            addressError.textContent = "Inserire almeno una lettera nell'indirizzo";
+        } else if (forbiddenCharacters.test(addressValue)) {
+            addressError.textContent = "Contiene caratteri non validi";
         } else {
             addressError.textContent = "";
         }
     });
 });
 
+
 document.addEventListener("DOMContentLoaded", function () {
     const inputDescription = document.getElementById("description");
     const descriptionError = document.getElementById("descriptionError");
+    const forbiddenCharacters = /[<>#$%^&+={}|\\]/; // Caratteri pericolosi
+    const minLength = 5;
+    const maxLength = 5000;
+
     inputDescription.addEventListener("input", function () {
         const descriptionValue = inputDescription.value.trim();
 
         if (descriptionValue === "") {
             descriptionError.textContent = "Descrizione mancante";
-        } else if (descriptionValue.length > 5000) {
-            descriptionError.textContent = "La descrizione deve contenere al massimo 5000 caratteri";
+        } else if (descriptionValue.length < minLength) {
+            descriptionError.textContent = "La descrizione deve contenere almeno " + minLength + " caratteri";
+        } else if (descriptionValue.length > maxLength) {
+            descriptionError.textContent = "La descrizione deve contenere al massimo " + maxLength + " caratteri";
+        } else if (forbiddenCharacters.test(descriptionValue)) {
+            descriptionError.textContent = "La descrizione contiene caratteri non consentiti";
         } else {
             descriptionError.textContent = "";
         }
     });
 });
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
