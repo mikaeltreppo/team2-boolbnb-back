@@ -59,7 +59,7 @@ class SponsorshipController extends Controller
             'expired_at' => $expired_at,
         ]);
 */
-        return redirect()->routes('admin.sponsorships.result');
+        return redirect()->route('admin.result');
     }
 
     /**

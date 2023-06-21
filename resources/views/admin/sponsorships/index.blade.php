@@ -2,7 +2,7 @@
 @section('content')
 
 
-<form  method="POST">
+<form action="{{route('admin.sponsorships.store')}}" method="POST">
     @csrf
     @method('POST')
     @foreach ($sponsorships as $sponsorship)
