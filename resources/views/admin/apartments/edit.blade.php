@@ -15,7 +15,7 @@
 
             {{-- img-top --}}
             @if ($apartment->cover_image)
-                    <img class="card-img-top border-0 cover-image my-5" src="{{ asset('storage/' . $apartment->cover_image) }}"
+                    <img class="card-img-top border-0 cover-image mb-5" src="{{ asset('storage/' . $apartment->cover_image) }}"
                         alt="{{ $apartment->title }}" />
             @endif
 
@@ -70,10 +70,7 @@
                         </div>
                         <div class="p-3 w-100">
                             <label for="description" class="form-label">Descrizione</label>
-                            <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description"
-                                cols="30" rows="10" class="form-control">
-                                {{ old('apartment', $apartment->description) }}
-                            </textarea>
+                            <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" cols="30" rows="10" class="form-control">{{ old('apartment', $apartment->description) }}</textarea>
                             @error('description')
                                 <div class="invalid-feedback">
                                     {{ $message }}
