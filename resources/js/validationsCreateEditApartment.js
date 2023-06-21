@@ -1,36 +1,50 @@
 document.addEventListener("DOMContentLoaded", function () {
     const inputTitle = document.getElementById("title");
     const titleError = document.getElementById("titleError");
-    inputTitle.addEventListener("input", function () {
-        if (inputTitle.validity.valid) {
-            titleError.textContent = "";
+    const forbiddenCharacters = /[<>!@#$%^&*()+=[\]{}|\\]/; // Caratteri pericolosi
+    const minLength = 5;
+    const maxLength = 255;
 
-        } else if (inputTitle.value.trim() === "") {
+    inputTitle.addEventListener("input", function () {
+        const titleValue = inputTitle.value.trim();
+
+        if (inputTitle.validity.valid && titleValue.length >= minLength && titleValue.length <= maxLength && !forbiddenCharacters.test(titleValue)) {
+            titleError.textContent = "";
+        } else if (titleValue === "") {
             titleError.textContent = "Nome mancante";
+        } else if (titleValue.length < minLength) {
+            titleError.textContent = "Il titolo deve contenere almeno " + minLength + " caratteri";
+        } else if (titleValue.length > maxLength) {
+            titleError.textContent = "Il titolo deve contenere al massimo " + maxLength + " caratteri";
         } else {
-            titleError.textContent = "Inserisci un nome valido.";
+            titleError.textContent = "Il titolo contiene caratteri non validi.";
         }
     });
 });
 
+
 document.addEventListener("DOMContentLoaded", function () {
     const priceName = document.getElementById("price");
     const priceError = document.getElementById("priceError");
-    const regex = /^(\d+|\d+,\d{1,2}|\d+\.\d{1,2})$/;
+    const regex = /^\d+(\.\d{1,2})?$/;
+
     priceName.addEventListener("input", function () {
-        if (!regex.test(priceName.value)) {
-            if (priceName.value.includes(",")) {
-                priceError.textContent = "Inserire il punto invece della virgola";
-            } else if (priceName.value.split(".").length > 2) {
-                priceError.textContent = "Inserire al massimo due decimali";
+        const priceValue = priceName.value.trim();
+
+        if (!regex.test(priceValue)) {
+            if (priceValue.includes(",")) {
+                priceError.textContent = "Inserire il punto al posto della virgola.";
             } else {
-                priceError.textContent = "Non è un numero valido";
+                priceError.textContent = "Inserire un prezzo valido.";
             }
+        } else if (priceValue.includes(".") && priceValue.split(".")[1].length > 2) {
+            priceError.textContent = "Massimo 2 decimali consentiti";
         } else {
             priceError.textContent = "";
         }
     });
 });
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const inputAddress = document.getElementById("address");
