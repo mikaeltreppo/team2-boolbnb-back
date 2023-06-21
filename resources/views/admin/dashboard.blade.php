@@ -133,8 +133,11 @@
            {{-- Graph --}}
             <div class="col-xl-5 col-lg-8 col-12">
                 <div class="card h-100 bg-white rounded-4 flat-shadow card-tile drop-shadow-md">
-                    <div class="card-body p-3">
+                    <div class="card-body p-4">
                         <span class="small fw-bold">Statistiche Globali</span>
+                        <canvas id="myChart" class="mt-3">
+                            
+                        </canvas>
                     </div>
                 </div>
              </div>
