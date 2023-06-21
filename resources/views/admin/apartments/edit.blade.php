@@ -70,7 +70,8 @@
                         </div>
                         <div class="p-3 w-100">
                             <label for="description" class="form-label">Descrizione</label>
-                            <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" cols="30" rows="10" class="form-control">{{ old('apartment', $apartment->description) }}</textarea>
+                            <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" cols="30" rows="10" class="form-control">{{ old('apartment', $apartment->description) }}
+                            </textarea>
                             @error('description')
                                 <div class="invalid-feedback">
                                     {{ $message }}
