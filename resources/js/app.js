@@ -1,8 +1,8 @@
 import "./bootstrap";
-import Chart from "chart.js/auto";
 import "./validationsRegister";
 import "./validationsCreateEditApartment";
 import "~resources/scss/app.scss";
+import "./chartImplement"; // Contiene tutti i grafici delle statistiche!
 import * as bootstrap from "bootstrap";
 import.meta.glob(["../img/**"]);
 
