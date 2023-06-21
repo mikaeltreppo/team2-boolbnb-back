@@ -33,7 +33,8 @@ class StoreApartmentRequest extends FormRequest
             'beds' => 'required|integer',
             'bathrooms' => 'required|integer',
             'bedrooms' => 'required|integer',
-            'size_m2' => 'required|integer'
+            'size_m2' => 'required|integer',
+            'facilities'=> 'exists:facilities,id'
 
         ];
     }

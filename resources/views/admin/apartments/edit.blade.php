@@ -134,7 +134,14 @@
                             @enderror
                         </div>
                     </div>
-        
+                    @foreach ($facilities as $facility)
+                    <div class="p-3">
+                        <label class="form-check-label" for="facility_{{ $facility->id }}">{{ $facility->name }}</label>
+                        <input class="text" type="checkbox" id="facility_{{ $facility->id }}" name="facilities[]" role="switch"
+                            @if (in_array($facility->id, old('facilities', []))) checked @endif value="{{ $facility->id }}">
+                    </div>
+                @endforeach
+                
                     <div class="p-3">
                         <div class="form-check form-switch">
                             <label class="form-check-label" for="visible">Visibile da subito</label>
