@@ -23,7 +23,7 @@ use Symfony\Component\Mime\Message;
 /* dobbiamo ricontrolare */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 /* commentata perchè spostata in middleware con controller*/
