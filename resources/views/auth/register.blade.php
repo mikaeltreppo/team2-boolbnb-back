@@ -51,7 +51,7 @@
                         
                          {{-- Phone --}}
                          <div class="form-floating mb-3">      
-                            <input id="phone" type="text" placeholder="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" minlength="2" value="{{ old('phone') }}" required autocomplete="phone" autofocus  title="{{ __('articles.CreateTitleName') }}">
+                            <input id="phone" type="text" placeholder="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" minlength="10" value="{{ old('phone') }}" required autocomplete="phone" autofocus  title="{{ __('articles.CreateTitleName') }}">
                             <label for="phone" required_field>{{ __('Phone') }}</label>
                             <p id="phoneError" style="color: red;"></p>
                         <!--script per validazione live su file validationRegister.js-->
