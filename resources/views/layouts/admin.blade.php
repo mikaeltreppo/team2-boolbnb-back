@@ -44,6 +44,28 @@
                 </div>
             </div>
         </main>
+
+
+        {{-- modal per delete --}}
+        <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <i class="fa-solid fa-circle-exclamation fs-3 me-2"></i>
+                        <h1 class="modal-title fs-4" id="exampleModalLabel">Conferma eliminazione</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Confermi di voler eliminare l'appartamento? <br>
+                        I dati di questo appartamento andranno persi.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn ms-btn-outline-primary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger">Conferma eliminazione</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
