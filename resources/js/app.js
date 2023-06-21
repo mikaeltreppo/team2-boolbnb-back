@@ -6,6 +6,8 @@ import "./chartImplement"; // Contiene tutti i grafici delle statistiche!
 import * as bootstrap from "bootstrap";
 import.meta.glob(["../img/**"]);
 
+//funzioni
+
 const deleteButtons = document.querySelectorAll(
     '.form_delete_post button[type="submit"]'
 );
@@ -33,3 +35,5 @@ btnDelete.addEventListener("click", function () {
     const formDelete = document.getElementById("form-delete");
     formDelete.submit();
 });
+
+//loader pagina
