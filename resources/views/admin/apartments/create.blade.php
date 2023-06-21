@@ -18,7 +18,8 @@
                 <div class="w-50 p-3">
                     <label for="title" class="form-label">Nome Appartamento</label>
                     <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
-                        name="title" value="{{ old('title') }}">
+                        name="title" value="{{ old('title') }}" minlength="2" maxlength="255" required>
+                    <p id="titleError" style="color: red;"></p>
                     @error('title')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -38,7 +39,8 @@
                 <div class="w-50 p-3">
                     <label for="price" class="form-label">Prezzo</label>
                     <input type="text" class="form-control @error('price') is-invalid @enderror" id="price"
-                        name="price" value="{{ old('price') }}">
+                        name="price" value="{{ old('price') }}" required maxlength="5000">
+                    <p id="priceError" style="color: red;"></p>
                     @error('price')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -48,7 +50,8 @@
                 <div class="w-50 p-3">
                     <label for="address" class="form-label">Indirizzo</label>
                     <input type="text" class="form-control @error('address') is-invalid @enderror" id="address"
-                        name="address" value="{{ old('address') }}">
+                        name="address" value="{{ old('address') }}" required minlength="2">
+                    <p id="addressError" style="color: red;"></p>
                     @error('address')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -61,6 +64,7 @@
                         cols="30" rows="10" class="form-control">
                         {{ old('description') }}
                     </textarea>
+                    <p id="nameError" style="color: red;"></p>
                     @error('description')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -76,7 +80,8 @@
                     <label for="bedrooms" class="form-label">Camere da letto</label>
                     <input type="number" class="form-control @error('bedrooms') is-invalid @enderror" id="bedrooms"
                         name="bedrooms" min="1" max="130" step="1" value="{{ old('bedrooms') }}">
-                    @error('bedrooms')
+                    <p id="nameError" style="color: red;"></p>
+                        @error('bedrooms')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -86,7 +91,8 @@
                     <label for="beds" class="form-label">Letti</label>
                     <input type="number" class="form-control @error('beds') is-invalid @enderror" id="beds"
                         name="beds" min="1" max="130" step="1" value="{{ old('beds') }}">
-                    @error('beds')
+                    <p id="nameError" style="color: red;"></p>
+                        @error('beds')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -96,7 +102,8 @@
                     <label for="bathrooms" class="form-label">Bagni</label>
                     <input type="number" class="form-control @error('bathrooms') is-invalid @enderror" id="bathrooms"
                         name="bathrooms" min="1" max="130" step="1" value="{{ old('bathrooms') }}">
-                    @error('bathrooms')
+                        <p id="nameError" style="color: red;"></p>
+                        @error('bathrooms')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -106,6 +113,7 @@
                     <label for="size_m2" class="form-label">Metratura</label>
                     <input type="number" class="form-control @error('size_m2') is-invalid @enderror" id="size_m2"
                         name="size_m2" min="1" max="130" step="1" value="{{ old('size_m2') }}">
+                    <p id="nameError" style="color: red;"></p>
                     @error('size_m2')
                         <div class="invalid-feedback">
                             {{ $message }}
