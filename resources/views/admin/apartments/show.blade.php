@@ -40,6 +40,7 @@
                 <h5 class="card-title fs-2 font-semibold mb-3">{{ $apartment->title }}</h5>
                 <p class="card-text">{{ $apartment->description }}</p>
 
+                {{-- caratteristiche --}}
                 <div class="my-5 ">
                     <h3 class="font-primary border-bottom pb-2 fs-4 mb-4">Caratteristiche stanze</h3>
                     <div class="d-flex gap-3">
@@ -61,14 +62,20 @@
                     </div>
                 </div>
 
+                {{-- servizi --}}
                 <div class="my-5">
                     <h3 class="font-primary border-bottom pb-2 fs-4 mb-4">Servizi</h3>
-                    @foreach ( $apartment->facilities as $facility)
-                        <div>
-                            <div>{{$facility->icon}}</div>
-                            <div>{{$facility->name}}</div>
+
+                    <div class="row flex-wrap gy-4">
+                        @foreach ( $apartment->facilities as $facility)
+                        <div class="col-5">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="{{$facility->icon}} fs-5"></i>
+                                <div>{{$facility->name}}</div>
+                            </div>
                         </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             </div>
 
