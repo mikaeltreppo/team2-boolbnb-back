@@ -35,9 +35,9 @@
     <div class="offcanvas-header">
       <h5 class="offcanvas-title font-secondary" id="offcanvasExampleLabel">{{ Auth::user()->name }}</h5>
       <div class="offcanvas-right d-flex align-items-center">
-        <a href="{{ url('profile') }}" class="btn">
-            <i class="fa-solid fa-gear text-muted"></i>
-            <span class="small fw-bold">Account</span>
+        <a href="{{ url('profile') }}" class="btn btn-sm ms-btn-outline-primary rounded-4">
+     
+            <i class="fa-solid fa-gear align-middle fa-lg"></i>
         </a>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
