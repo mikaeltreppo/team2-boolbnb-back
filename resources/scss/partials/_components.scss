@@ -35,11 +35,11 @@
     cursor: pointer;
 }
 
-.card-tile:hover .rounded-icon i {
+.card-tile:hover .rounded-icon.animated i {
     transform: translateX(-50px);
 }
 
-.card-tile:hover .rounded-icon::after {
+.card-tile:hover .rounded-icon.animated::after {
     transform: translateX(-50px);
 }
 
@@ -63,7 +63,7 @@
     transition: $transition_fast;
 }
 
-.rounded-icon::after {
+.rounded-icon.animated::after {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f054";
@@ -253,4 +253,12 @@
     margin-left: -20px;
 }
 
+
+/* Sponsorship Page */
+.sponsorship-middle-badge{
+    font-size: 1rem;
+}
+
 //OTHER
+
+
