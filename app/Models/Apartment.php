@@ -21,7 +21,8 @@ class Apartment extends Model
         'size_m2',
         'available',
         'visible',
-        'user_id'
+        'user_id',
+        'facility_id'
     ];
 
     use HasFactory;

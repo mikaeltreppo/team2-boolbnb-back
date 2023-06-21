@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Apartment;
+use App\Models\Facility;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Str;
@@ -21,10 +22,10 @@ class ApartmentController extends Controller
 
     public function index()
     {
-
+        $facilities = Facility::all();
         $user = auth()->user();
         $apartments = $user->apartments;
-        return view('admin.apartments.index', compact('apartments'));
+        return view('admin.apartments.index', compact('apartments','facilities'));
     }
 
     /**
@@ -35,7 +36,8 @@ class ApartmentController extends Controller
     public function create()
     {
         $apartments = Apartment::all();
-        return view('admin.apartments.create', compact('apartments'));
+        $facilities = Facility::all();
+        return view('admin.apartments.create', compact('apartments','facilities'));
     }
 
     /**
@@ -47,35 +49,40 @@ class ApartmentController extends Controller
     public function store(StoreApartmentRequest $request)
     {
         $form_data = $request->validated();
-
+    
         $form_data['slug'] = Str::slug($request->title, '-');
-        //serve per ricavare l'utente
+        // Serve per ricavare l'utente
         $user = auth()->user();
-
+    
         if ($request->hasFile('cover_image')) {
             $path = Storage::put('cover', $request->cover_image);
             $form_data['cover_image'] = $path;
         }
-
+    
         if (isset($request->available)) {
             $form_data['available'] = true;
         } else {
             $form_data['available'] = false;
         }
-
+    
         if (isset($request->visible)) {
             $form_data['visible'] = true;
         } else {
             $form_data['visible'] = false;
         }
-
+    
         $form_data['user_id'] = $user->id;
-
+    
         $newApartment = Apartment::create($form_data);
-
-        $newApartment->save();
+    
+        if ($request->has('facility_id')) {
+            $facility_id = $request->input('facility_id');
+            $newApartment->facilities()->attach($facility_id);
+        }
+    
         return redirect()->route('admin.apartments.index', ['apartment' => $newApartment->slug]);
     }
+    
 
     /**
      * Display the specified resource.
@@ -102,11 +109,11 @@ class ApartmentController extends Controller
      */
     public function edit($id)
     {
-
+        $facilities =Facility::All();
         $apartment = Apartment::findOrFail($id);
         $user = auth()->user();
         if ($apartment->user_id == $user->id) {
-            return view('admin.apartments.edit', compact('apartment'));
+            return view('admin.apartments.edit', compact('apartment','facilities'));
         } else {
             return view('errors.403');
         }
@@ -119,7 +126,7 @@ class ApartmentController extends Controller
      * @param  \App\Models\Apartment  $apartment
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateApartmentRequest $request, $id)
+    public function update(UpdateApartmentRequest $request, $id,Facility $facilities)
     {
         $apartment = Apartment::findOrFail($id);
 
@@ -147,8 +154,11 @@ class ApartmentController extends Controller
         } else {
             $form_data['available'] = false;
         }
-
+       
+        $apartment->facilities()->sync($request->facilities);
         $apartment->update($form_data);
+        
+      
 
         return redirect()->route('admin.apartments.show', ['apartment' => $apartment->id]);
     }
