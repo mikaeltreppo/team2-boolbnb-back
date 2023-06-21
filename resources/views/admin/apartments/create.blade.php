@@ -39,7 +39,7 @@
                 <div class="w-50 p-3">
                     <label for="price" class="form-label">Prezzo</label>
                     <input type="text" class="form-control @error('price') is-invalid @enderror" id="price"
-                        name="price" value="{{ old('price') }}" required maxlength="5000">
+                        name="price" value="{{ old('price') }}" required>
                     <p id="priceError" style="color: red;"></p>
                     @error('price')
                         <div class="invalid-feedback">
@@ -90,7 +90,7 @@
                 <div class="p-3 w-25">
                     <label for="beds" class="form-label">Letti</label>
                     <input type="number" class="form-control @error('beds') is-invalid @enderror" id="beds"
-                        name="beds" min="1" max="130" step="1" value="{{ old('beds') }}">
+                        name="beds" min="1" max="130" step="1" value="{{ old('beds') }}" required> 
                     <p id="bedsError" style="color: red;"></p>
                         @error('beds')
                         <div class="invalid-feedback">
@@ -101,7 +101,7 @@
                 <div class="p-3 w-25">
                     <label for="bathrooms" class="form-label">Bagni</label>
                     <input type="number" class="form-control @error('bathrooms') is-invalid @enderror" id="bathrooms"
-                        name="bathrooms" min="1" max="130" step="1" value="{{ old('bathrooms') }}">
+                        name="bathrooms" min="1" max="130" step="1" value="{{ old('bathrooms') }}" required>
                         <p id="bathroomsError" style="color: red;"></p>
                         @error('bathrooms')
                         <div class="invalid-feedback">
@@ -112,7 +112,7 @@
                 <div class="p-3 w-25">
                     <label for="size_m2" class="form-label">Metratura</label>
                     <input type="number" class="form-control @error('size_m2') is-invalid @enderror" id="size_m2"
-                        name="size_m2" min="1" max="130" step="1" value="{{ old('size_m2') }}">
+                        name="size_m2" min="1" max="130" step="1" value="{{ old('size_m2') }}" required>
                     <p id="sizeError" style="color: red;"></p>
                     @error('size_m2')
                         <div class="invalid-feedback">
