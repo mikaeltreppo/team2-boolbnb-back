@@ -17,7 +17,7 @@
                     <div class="card-body">
                        <div class="row align-items-center">
                             <div class="col-12 col-xl-1 col-lg-12 text-center text-xl-start text-muted ">
-                                <div class="rounded-icon mx-auto ms-bg-dark">
+                                <div class="rounded-icon animated mx-auto ms-bg-dark">
                                     <i class="fa-solid fa-ranking-star mb-3 mb-lg-0"></i>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                         </div>
 
                         <div class="col-12 col-xl-3 text-center order-0 order-lg-3 text-muted">
-                            <div class="rounded-icon mx-auto bg-success">
+                            <div class="rounded-icon animated mx-auto bg-success">
                                 <i class="fa-solid fa-envelope mb-3 mb-lg-0"></i>
                             </div>
                         </div>
@@ -92,7 +92,7 @@
                             </div>
 
                             <div class="col-12 col-xl-3 text-center order-0 order-lg-3 text-muted">
-                                <div class="rounded-icon mx-auto bg-primary">
+                                <div class="rounded-icon animated mx-auto bg-primary">
                                     <i class="fa-solid fa-eye mb-3 mb-lg-0"></i>
                                 </div>
                             </div>
@@ -120,7 +120,7 @@
                                 </div>
 
                                 <div class="col-xl-3 col-12 text-center order-0 order-lg-3 text-muted">
-                                    <div class="rounded-icon mx-auto bg-warning">
+                                    <div class="rounded-icon animated mx-auto bg-warning">
                                         <i class="fa-solid fa-house mb-3 mb-lg-0"></i>
                                     </div>
                                 </div>
