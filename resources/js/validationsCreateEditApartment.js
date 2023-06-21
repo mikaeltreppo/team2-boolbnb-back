@@ -1,14 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
     const inputTitle = document.getElementById("title");
     const titleError = document.getElementById("titleError");
-    inputTitle.addEventListener("input", function () {
-        if (inputTitle.validity.valid) {
-            titleError.textContent = "";
+    const forbiddenCharacters = /[<>!@#$%^&*()+=[\]{}|\\]/; // Caratteri pericolosi
+    const minLength = 5;
+    const maxLength = 255;
 
-        } else if (inputTitle.value.trim() === "") {
+    inputTitle.addEventListener("input", function () {
+        const titleValue = inputTitle.value.trim();
+
+        if (inputTitle.validity.valid && titleValue.length >= minLength && titleValue.length <= maxLength && !forbiddenCharacters.test(titleValue)) {
+            titleError.textContent = "";
+        } else if (titleValue === "") {
             titleError.textContent = "Nome mancante";
+        } else if (titleValue.length < minLength) {
+            titleError.textContent = "Il titolo deve contenere almeno " + minLength + " caratteri";
+        } else if (titleValue.length > maxLength) {
+            titleError.textContent = "Il titolo deve contenere al massimo " + maxLength + " caratteri";
         } else {
-            titleError.textContent = "Inserisci un nome valido.";
+            titleError.textContent = "Il titolo contiene caratteri non validi.";
         }
     });
 });
@@ -16,15 +25,18 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     const priceName = document.getElementById("price");
     const priceError = document.getElementById("priceError");
-    const regex = /^(\d+|\d+,\d{1,2}|\d+\.\d{1,2})$/;
+    const regex = /^\d+(\.\d{1,2})?$/;
+
     priceName.addEventListener("input", function () {
-        if (!regex.test(priceName.value)) {
-            if (priceName.value.includes(",")) {
-                priceError.textContent = "Inserire il punto invece della virgola";
-            } else if (priceName.value.split(".").length > 2) {
-                priceError.textContent = "Inserire al massimo due decimali";
+        const priceValue = priceName.value.trim();
+
+        if (!regex.test(priceValue)) {
+            if (priceValue.includes(",")) {
+                priceError.textContent = "Inserire il punto al posto della virgola.";
+            } else if (priceValue.includes(".") && priceValue.split(".")[1].length > 2) {
+                priceError.textContent = "Massimo 2 decimali consentiti";
             } else {
-                priceError.textContent = "Non è un numero valido";
+                priceError.textContent = "Inserire un prezzo valido.";
             }
         } else {
             priceError.textContent = "";
@@ -32,36 +44,56 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const inputAddress = document.getElementById("address");
     const addressError = document.getElementById("addressError");
     const regex = /[a-zA-Z]/; // Espressione regolare per almeno una lettera
+    const forbiddenCharacters = /[<>#$%^&()+=[\]{}|\\]/; // Caratteri pericolosi
+
     inputAddress.addEventListener("input", function () {
         const addressValue = inputAddress.value.trim();
 
         if (addressValue === "") {
             addressError.textContent = "Indirizzo mancante";
+        } else if (addressValue.length < 3) {
+            addressError.textContent = "Indirizzo troppo corto (minimo 3)";
+        } else if (!regex.test(addressValue)) {
+            addressError.textContent = "Inserire almeno una lettera nell'indirizzo";
+        } else if (forbiddenCharacters.test(addressValue)) {
+            addressError.textContent = "Contiene caratteri non validi";
         } else {
             addressError.textContent = "";
         }
     });
 });
 
+
 document.addEventListener("DOMContentLoaded", function () {
     const inputDescription = document.getElementById("description");
     const descriptionError = document.getElementById("descriptionError");
+    const forbiddenCharacters = /[<>#$%^&+={}|\\]/; // Caratteri pericolosi
+    const minLength = 5;
+    const maxLength = 5000;
+
     inputDescription.addEventListener("input", function () {
         const descriptionValue = inputDescription.value.trim();
 
         if (descriptionValue === "") {
             descriptionError.textContent = "Descrizione mancante";
-        } else if (descriptionValue.length > 5000) {
-            descriptionError.textContent = "La descrizione deve contenere al massimo 5000 caratteri";
+        } else if (descriptionValue.length < minLength) {
+            descriptionError.textContent = "La descrizione deve contenere almeno " + minLength + " caratteri";
+        } else if (descriptionValue.length > maxLength) {
+            descriptionError.textContent = "La descrizione deve contenere al massimo " + maxLength + " caratteri";
+        } else if (forbiddenCharacters.test(descriptionValue)) {
+            descriptionError.textContent = "La descrizione contiene caratteri non consentiti";
         } else {
             descriptionError.textContent = "";
         }
     });
 });
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
