@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Sponsorship extends Model
 {
     use HasFactory;
-    public function apartments(){
-        return $this->belongsToMany(Apartment::class);
+    public function apartments()
+    {
+        return $this->belongsToMany(Apartment::class)
+            ->withPivot('start_date', 'expired_at');
     }
 }
