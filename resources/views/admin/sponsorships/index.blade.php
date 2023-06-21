@@ -2,7 +2,7 @@
 @section('content')
 
 
-<form action="{{route('admin.sponsorize.apartment')}}" method="POST">
+<form action="{{route('admin.sponsorize')}}" method="POST">
     @csrf
     @foreach ($sponsorships as $sponsorship)
         <div class="card m-3" style="width: 14rem;">

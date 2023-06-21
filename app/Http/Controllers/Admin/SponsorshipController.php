@@ -108,6 +108,6 @@ class SponsorshipController extends Controller
             'expired_at' => $expired_at,
         ]);
 
-        //return view('admin.apartments.index');
+        return view('admin.apartments.index');
     }
 }
