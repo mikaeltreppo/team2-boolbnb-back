@@ -15,7 +15,7 @@ $premium_color: #fcc419;
     background-color: $main_darker2_color !important;
 }
 .ms-bg-premium {
-    background-color: !important;
+    background-color: $premium_color !important;
 }
 
 //text COLORS

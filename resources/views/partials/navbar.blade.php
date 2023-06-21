@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white">
+<nav class="navbar navbar-expand-md navbar-light bg-white sticky-top">
     <div class="container-fluid">
     <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
