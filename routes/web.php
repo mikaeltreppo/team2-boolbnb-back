@@ -41,10 +41,15 @@ Route::middleware(['auth', 'verified'])
         Route::get('/', function () {
             return view('admin.dashboard');
         })->name('dashboard');
+
         /*rotte appartamenti con crud gestite qui*/
         Route::resource('apartments', ApartmentController::class);
         Route::resource('sponsorships', SponsorshipController::class);
         Route::resource('messages', MessageController::class);
+
+        /*Rotta per gestire il post delle sponsorizzazioni
+        Route::post('sponsorship', [SponsorshipController::class, 'sponsorizeApartment'])->name('sponsorize.apartment');
+        */
     });
 
 

@@ -27,7 +27,8 @@ class Apartment extends Model
     use HasFactory;
     public function sponsorships()
     {
-        return $this->belongsToMany(Sponsorship::class);
+        return $this->belongsToMany(Sponsorship::class)
+            ->withPivot('start_date', 'expired_at');
     }
     public function facilities()
     {
