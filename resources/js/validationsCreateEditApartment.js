@@ -177,3 +177,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+document.getElementById("formCreate").addEventListener("submit", function (event) {
+    var checkboxes = document.querySelectorAll("#formCreate input[type='checkbox']");
+    var checked = false;
+    const FacilitiesError = document.getElementById("FacilitiesError");
+
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+            checked = true;
+            break;
+        }
+    }
+
+    if (!checked) {
+        event.preventDefault(); // Impedisce l'invio del form
+        FacilitiesError.textContent = "Seleziona almeno un servizio";
+    }
+});

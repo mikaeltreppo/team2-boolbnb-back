@@ -16,7 +16,7 @@
             </div>
         @endif
         <h1 class="text-center">Aggiungi un nuovo appartamento</h1>
-        <form method="POST" action="{{ route('admin.apartments.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin.apartments.store') }}" enctype="multipart/form-data" id="formCreate">
             @csrf
             <div class="d-flex flex-wrap">
                 <div class="w-50 p-3">
@@ -130,15 +130,17 @@
             </div>
             <!--facilities-->
 
-            @foreach ($facilities as $facility)
+           <div>
+                @foreach ($facilities as $facility)
                 <div class="p-3">
 
                     <label class="form-check-label" for="facility_id">{{ $facility->name }}</label>
                     <input class="text" type="checkbox" id="facility_{{$facility->id}}" name="facility_id[]" role="switch"
                         @if (old('visible')) checked @endif value="{{ $facility->id }}">
                 </div>
-            @endforeach
-
+                @endforeach
+                <p id="FacilitiesError" style="color: red;"></p>
+           </div>
 
             <div class="p-3">
                 <div class="form-check form-switch">
