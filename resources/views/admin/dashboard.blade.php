@@ -27,10 +27,10 @@
                             </div>
 
                             <div class="col-xl-4 col-12 text-lg-end text-center">
-                                <button type="button" class="btn ms-btn ms-btn-sm ms-btn-primary">
+                                <a href="{{ route('admin.sponsorships.index') }}" class="btn ms-btn ms-btn-sm ms-btn-primary">
                                     <i class="fa-solid fa-star me-2"></i>
                                     Sponsorizza
-                                </button>
+                                </a>
                             </div>
                        </div>
                     </div>
