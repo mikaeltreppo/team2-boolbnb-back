@@ -51,6 +51,7 @@
             top: 0.5rem;
             right: 0.5rem;
         }
+
         &:hover {
             color: $premium_color;
         }
@@ -104,6 +105,27 @@
         justify-content: center;
         border-radius: 0.5rem;
     }
+}
+
+/* APARTMENT EDIT */
+.card {
+    .ms_arrow_back {
+        position: absolute;
+        left: -3rem;
+    }
+}
+
+.container-fluid {
+    .m-3 {
+        position: relative;
+
+        .ms_arrow_back {
+            position: absolute;
+            top: 0.3rem;
+            left: 1rem;
+        }
+    }
+
 }
 
 //LOADER
