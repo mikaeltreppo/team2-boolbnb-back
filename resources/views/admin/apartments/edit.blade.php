@@ -26,7 +26,7 @@
 
         <div class="card-body mt-5">
             <form method="POST" action="{{ route('admin.apartments.update', ['apartment' => $apartment->id]) }}"
-                enctype="multipart/form-data">
+                enctype="multipart/form-data" id="formEdit">
                 @csrf
                 @method('PUT')
                 <div class="d-flex flex-wrap">
@@ -139,7 +139,8 @@
                         @enderror
                     </div>
                 </div>
-                @foreach ($facilities as $facility)
+                <div>
+                    @foreach ($facilities as $facility)
                     <div class="p-3">
                         <label class="form-check-label" for="facility_{{ $facility->id }}">{{ $facility->name }}</label>
                         <input class="text" type="checkbox" id="facility_{{ $facility->id }}" name="facilities[]"
@@ -151,7 +152,9 @@
                                 type="checkbox" name="facilities[]" value="{{ $facility->id }}">
                         @endif 
                     </div>
-                @endforeach
+                    @endforeach
+                    <p id="FacilitiesError" style="color: red;"></p>
+                </div>
 
               
 
