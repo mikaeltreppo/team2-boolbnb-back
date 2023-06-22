@@ -11,6 +11,10 @@
     @endif
 
     <div class="card border-0 w-80 mx-auto">
+        {{-- buttons-top --}}
+        <a href="{{ route('admin.apartments.index') }}" class="btn ms-btn-outline-primary  ms_arrow_back">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
 
         {{-- img-top --}}
         @if ($apartment->cover_image)

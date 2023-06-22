@@ -1,6 +1,10 @@
 @extends('layouts.admin')
 @section('content')
     <div class="m-3">
+        {{-- buttons-top --}}
+        <a href="{{ route('admin.apartments.index') }}" class="btn ms-btn-outline-primary  ms_arrow_back">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
         <!--messaggi errori generali-->
         @if ($errors->any())
             <div class="alert alert-danger">
