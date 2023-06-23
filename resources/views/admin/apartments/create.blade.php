@@ -52,15 +52,17 @@
                     @enderror
                 </div>
                 <div class="w-50 p-3">
-                    <label for="address" class="form-label">Indirizzo</label>
-                    <input type="text" class="form-control @error('address') is-invalid @enderror" id="address"
-                        name="address" value="{{ old('address') }}" required minlength="2">
+                    <div class="w-50 p-3">
+                        <label for="address" class="form-label">Indirizzo</label>
+                        <div id="address"></div>
+                    </div>
                     <p id="addressError" style="color: red;"></p>
                     @error('address')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
+                      
                 </div>
                 <div class="p-3 w-100">
                     <label for="description" class="form-label">Descrizione</label>
@@ -130,17 +132,17 @@
             </div>
             <!--facilities-->
 
-           <div>
+            <div>
                 @foreach ($facilities as $facility)
-                <div class="p-3">
+                    <div class="p-3">
 
-                    <label class="form-check-label" for="facility_id">{{ $facility->name }}</label>
-                    <input class="text" type="checkbox" id="facility_{{$facility->id}}" name="facility_id[]" role="switch"
-                        @if (old('visible')) checked @endif value="{{ $facility->id }}">
-                </div>
+                        <label class="form-check-label" for="facility_id">{{ $facility->name }}</label>
+                        <input class="text" type="checkbox" id="facility_{{ $facility->id }}" name="facility_id[]"
+                            role="switch" @if (old('visible')) checked @endif value="{{ $facility->id }}">
+                    </div>
                 @endforeach
                 <p id="FacilitiesError" style="color: red;"></p>
-           </div>
+            </div>
 
             <div class="p-3">
                 <div class="form-check form-switch">
@@ -157,4 +159,22 @@
             <button type="submit" class="m-3 btn btn-success">Aggiungi</button>
         </form>
     </div>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps-web.min.js"></script>
+    <script>
+        var options = {
+            searchOptions: {
+                key: "aVjvNWJ9xnYI72ZDUSFsELvlUkaTS9kP",
+                language: "en-GB",
+                limit: 5,
+            },
+            autocompleteOptions: {
+                key: "aVjvNWJ9xnYI72ZDUSFsELvlUkaTS9kP",
+                language: "en-GB",
+            },
+        };
+        var ttSearchBox = new tt.plugins.SearchBox(tt.services, options);
+        var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
+        document.getElementById("address").appendChild(searchBoxHTML);
+    </script>
+
 @endsection
