@@ -37,7 +37,7 @@ class ApartmentController extends Controller
 
 
 
-        $n = 3;
+        $n = 4;
         $distance_array_shorter = array_slice($distance_array, 0, $n); //mantiene solo i primi 3 elementi dell'array $distance_array
 
         $apartmentIds = array_column($distance_array_shorter, 'id');
