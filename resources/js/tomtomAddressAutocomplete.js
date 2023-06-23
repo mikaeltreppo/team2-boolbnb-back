@@ -9,7 +9,7 @@ function initializeAddressAutocomplete() {
     var searchApi = tt.services.createSearchService(autocompleteOptions);
 
     // Ottenere l'elemento di input dell'indirizzo
-    var addressInput = document.getElementById('address-autocomplete');
+    var addressInput = document.getElementById('address');
 
     // Inizializzazione del suggerimento dell'indirizzo
     var addressAutocomplete = new tt.plugins.Autocomplete({

@@ -20,6 +20,9 @@
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
+    
+    <!-- Libreria di TomTom -->
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.14.0/maps/maps-web.min.js"></script>
 </head>
 
 <body>

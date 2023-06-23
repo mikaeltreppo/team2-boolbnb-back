@@ -1,6 +1,7 @@
 import "./bootstrap";
 import "./validationsRegister";
 import "./validationsCreateEditApartment";
+import "./tomtomAddressAutocomplete";
 import "~resources/scss/app.scss";
 import "./chartImplement"; // Contiene tutti i grafici delle statistiche!
 import * as bootstrap from "bootstrap";
