@@ -22,7 +22,9 @@ class Apartment extends Model
         'available',
         'visible',
         'user_id',
-        'facility_id'
+        'facility_id',
+        'longitude',
+        'latitude'
     ];
 
     use HasFactory;
