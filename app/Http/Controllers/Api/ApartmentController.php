@@ -8,16 +8,17 @@ use Illuminate\Http\Request;
 
 class ApartmentController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
-        $apartments = Apartment::with(['facilities','sponsorships','user','messages'])->paginate(6);
-        
+        $apartments = Apartment::with(['facilities', 'sponsorships', 'user', 'messages'])->paginate(6);
+
         return response()->json([
-            'success'=> true,
-            'results'=> $apartments,
+            'success' => true,
+            'results' => $apartments,
         ]);
     }
-    
+
     public function search($latitude, $longitude, $radius) //ricerca sul title dell'appartamento
     {
         $apartments = Apartment::All();
@@ -37,10 +38,18 @@ class ApartmentController extends Controller
 
 
 
+        $distanceFilteredByRadius = array_filter($distance_array, function ($object) use ($radius) {
+            return $object['distance'] <= $radius;
+        });
+
+
+
+        /*
         $n = 4;
         $distance_array_shorter = array_slice($distance_array, 0, $n); //mantiene solo i primi 3 elementi dell'array $distance_array
+        */
 
-        $apartmentIds = array_column($distance_array_shorter, 'id');
+        $apartmentIds = array_column($distanceFilteredByRadius, 'id');
 
         $results = Apartment::whereIn('id', $apartmentIds)->paginate(6);
 
@@ -65,7 +74,7 @@ class ApartmentController extends Controller
 
         $distance = $earthRadius * $c;
 
-        return $distance; //2300 5000
+        return $distance * 1000; //restituisce la distanza in metri
     }
-};
-
+}
+;

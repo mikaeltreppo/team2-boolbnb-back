@@ -24,4 +24,3 @@ Route::get('/apartments', [ApartmentController::class, 'index']);
 
 /*rotta tom tom*/
 Route::post('/apartments/search/{latitude}/{longitude}/{radius}', [ApartmentController::class, 'search']);
-
