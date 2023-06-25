@@ -22,7 +22,7 @@
                                     
                                     <input id="name" type="text" placeholder="Name" class="form-control @error('name') is-invalid @enderror" name="name" minlength="2" value="{{ old('name') }}" required autocomplete="name" autofocus  title="{{ __('articles.CreateTitleName') }}">
                                     <label for="name" required_field>{{ __('Name') }}</label>
-                                    <p id="nameError" style="color: red;"></p>
+                                    <p id="nameError" class="error-validation"></p>
                                 <!--script per validazione live su file validationRegister.js-->
 
                                     @error('name')
@@ -37,7 +37,7 @@
                             <div class="form-floating mb-3">      
                                     <input id="lastname" type="text" placeholder="lastname" class="form-control @error('lastname') is-invalid @enderror" name="lastname" minlength="2" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus  title="{{ __('articles.CreateTitleName') }}">
                                     <label for="lastname" required_field>{{ __('Lastname') }}</label>
-                                    <p id="lastnameError" style="color: red;"></p>
+                                    <p id="lastnameError" class="error-validation"></p>
                                 <!--script per validazione live su file validationRegister.js-->
 
                                     @error('lastname')
@@ -53,7 +53,7 @@
                          <div class="form-floating mb-3">      
                             <input id="phone" type="text" placeholder="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" minlength="10" value="{{ old('phone') }}" required autocomplete="phone" autofocus  title="{{ __('articles.CreateTitleName') }}">
                             <label for="phone" required_field>{{ __('Phone') }}</label>
-                            <p id="phoneError" style="color: red;"></p>
+                            <p id="phoneError" class="error-validation"></p>
                         <!--script per validazione live su file validationRegister.js-->
 
                             @error('phone')
@@ -68,7 +68,7 @@
                            <div class="form-floating mb-3">      
                             <input id="email" type="text" placeholder="email" class="form-control @error('email') is-invalid @enderror" name="email" minlength="2" value="{{ old('email') }}" required autocomplete="email" autofocus  title="{{ __('articles.CreateTitleName') }}">
                             <label for="email" required_field>{{ __('Email') }}</label>
-                            <p id="emailError" style="color: red;"></p>
+                            <p id="emailError" class="error-validation"></p>
                         <!--script per validazione live su file validationRegister.js-->
 
                             @error('email')
@@ -83,7 +83,7 @@
                           <div class="form-floating mb-3">      
                             <input id="password" type="password" placeholder="password" class="form-control @error('password') is-invalid @enderror" name="password" minlength="2" value="{{ old('password') }}" required autocomplete="password" autofocus  title="{{ __('articles.CreateTitleName') }}">
                             <label for="password" required_field>{{ __('Password') }}</label>
-                            <p id="emailError" style="color: red;"></p>
+                            <p id="emailError" class="error-validation"></p>
                         <!--script per validazione live su file validationRegister.js-->
 
                             @error('password')
@@ -120,7 +120,7 @@
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" minlength="2" value="{{ old('name') }}" required autocomplete="name" autofocus  title="{{ __('articles.CreateTitleName') }}">
-                                <p id="nameError" style="color: red;"></p>
+                                <p id="nameError" class="error-validation"></p>
                                 <!--script per validazione live su file validationRegister.js-->
                          
 
@@ -137,7 +137,7 @@
 
                             <div class="col-md-6">
                                 <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" minlength="2" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus title="{{ __('articles.CreateTitleName') }}">
-                                <p id="lastnameError" style="color: red;"></p>
+                                <p id="lastnameError" class="error-validation"></p>
                                 <!--script per validazione live su file validationRegister.js-->
                                 @error('lastname')
                                 <span class="invalid-feedback" role="alert">
@@ -153,7 +153,7 @@
 
                             <div class="col-md-6">
                                 <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" minlength="9" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus title="{{ __('articles.CreateTitleName') }}">
-                                <p id="phoneError" style="color: red;"></p>
+                                <p id="phoneError" class="error-validation"></p>
                                 <!--script per validazione live su file validationRegister.js-->
                                 @error('phone')
                                 <span class="invalid-feedback" role="alert">
@@ -168,7 +168,7 @@
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" minlength="4" name="email" value="{{ old('email') }}" required autocomplete="email" title="{{ __('articles.CreateTitleName') }}">
-                                <p id="emailError" style="color: red;"></p>
+                                <p id="emailError" class="error-validation"></p>
                                 <!--script per validazione live su file validationRegister.js-->
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -183,7 +183,7 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                                <p id="nameError" style="color: red;"></p>
+                                <p id="nameError" class="error-validation"></p>
                                 <!--script per validazione live su file validationRegister.js-->
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">

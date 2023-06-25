@@ -35,7 +35,7 @@
                         <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
                             name="title" value="{{ old('apartment', $apartment->title) }}" minlength="2" maxlength="255"
                             required>
-                        <p id="titleError" style="color: red;"></p>
+                        <p id="titleError" class="error-validation"></p>
                         @error('title')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -57,7 +57,7 @@
                         <label for="price" class="form-label">Prezzo</label>
                         <input type="text" class="form-control @error('price') is-invalid @enderror" id="price"
                             name="price" value="{{ old('apartment', $apartment->price) }}" required>
-                        <p id="priceError" style="color: red;"></p>
+                        <p id="priceError" class="error-validation"></p>
                         @error('price')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -68,7 +68,7 @@
                         <label for="address" class="form-label">Indirizzo</label>
                         <input type="text" class="form-control @error('address') is-invalid @enderror" id="address"
                             name="address" value="{{ old('apartment', $apartment->address) }}" required minlength="2">
-                        <p id="addressError" style="color: red;"></p>
+                        <p id="addressError" class="error-validation"></p>
                         @error('address')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -80,7 +80,7 @@
                         <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description"
                             cols="30" rows="10" class="form-control" required maxlength="5000">{{ old('apartment', $apartment->description) }} 
                             </textarea>
-                        <p id="descriptionError" style="color: red;"></p>
+                        <p id="descriptionError" class="error-validation"></p>
                         @error('description')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -95,7 +95,7 @@
                         <input type="number" class="form-control @error('bedrooms') is-invalid @enderror" id="bedrooms"
                             name="bedrooms" min="1" max="130" step="1" required
                             value="{{ old('apartment', $apartment->bedrooms) }}">
-                        <p id="bedroomsError" style="color: red;"></p>
+                        <p id="bedroomsError" class="error-validation"></p>
                         @error('bedrooms')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -107,7 +107,7 @@
                         <input type="number" class="form-control @error('beds') is-invalid @enderror" id="beds"
                             name="beds" min="1" max="130" step="1" required
                             value="{{ old('apartment', $apartment->beds) }}">
-                        <p id="bedsError" style="color: red;"></p>
+                        <p id="bedsError" class="error-validation"></p>
                         @error('beds')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -119,7 +119,7 @@
                         <input type="number" class="form-control @error('bathrooms') is-invalid @enderror"
                             id="bathrooms" name="bathrooms" min="1" max="130" step="1" required
                             value="{{ old('apartment', $apartment->bathrooms) }}">
-                        <p id="bathroomsError" style="color: red;"></p>
+                        <p id="bathroomsError" class="error-validation"></p>
                         @error('bathrooms')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -131,7 +131,7 @@
                         <input type="number" class="form-control @error('size_m2') is-invalid @enderror" id="size_m2"
                             name="size_m2" min="1" max="130" step="1" required
                             value="{{ old('apartment', $apartment->size_m2) }}">
-                        <p id="sizeError" style="color: red;"></p>
+                        <p id="sizeError" class="error-validation"></p>
                         @error('size_m2')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -153,7 +153,7 @@
                         @endif 
                     </div>
                     @endforeach
-                    <p id="FacilitiesError" style="color: red;"></p>
+                    <p id="FacilitiesError" class="error-validation"></p>
                 </div>
 
               
