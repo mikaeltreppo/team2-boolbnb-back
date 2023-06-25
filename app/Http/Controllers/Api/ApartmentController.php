@@ -19,39 +19,44 @@ class ApartmentController extends Controller
         ]);
     }
 
-    public function search($latitude, $longitude, $radius) //ricerca sul title dell'appartamento
+
+    /*  Metodo di ricerca degli appartamenti entro il raggio selezionato  */
+    public function search($latitude, $longitude, $radius)
     {
+        //prende tutti gli appartamenti del DB
         $apartments = Apartment::All();
-        $distance_array = [];
 
+        //array di oggetti vuoto per salvare l'id dell'appartamento e la distanza dalla coordinata dell'input
+        $distanceArray = [];
 
+        //cicla ogni appartamento del database per calcolare la distanza di ognuno dalla coordinata dell'input
         foreach ($apartments as $apartment) {
             $apartmentLatitude = $apartment->latitude;
             $apartmentLongitude = $apartment->longitude;
+
+            //metodo preso da internet per la distanza tra due coordinate terrestri
             $distance = $this->calculateDistance($latitude, $longitude, $apartmentLatitude, $apartmentLongitude);
-            $distance_array[] = ['id' => $apartment->id, 'distance' => $distance]; //aggiunge un oggetto a $distance_array con l'id dell'appartamento e la distanza dall'input del form
+
+            //aggiunge un oggetto a $distance_array con l'id dell'appartamento e la distanza dall'input del form
+            $distanceArray[] = ['id' => $apartment->id, 'distance' => $distance];
         }
 
-        usort($distance_array, function ($a, $b) { //$distance_array è stato ordinato per distanza crescente
+        //$distance_array è stato ordinato per distanza crescente
+        usort($distanceArray, function ($a, $b) {
             return $a['distance'] - $b['distance'];
         });
 
-
-
-        $distanceFilteredByRadius = array_filter($distance_array, function ($object) use ($radius) {
+        //viene creato un nuovo array che filtra tutti gli appartamenti che rientrano nel raggio richiesto
+        $distanceFilteredByRadius = array_filter($distanceArray, function ($object) use ($radius) {
             return $object['distance'] <= $radius;
         });
 
-
-
-        /*
-        $n = 4;
-        $distance_array_shorter = array_slice($distance_array, 0, $n); //mantiene solo i primi 3 elementi dell'array $distance_array
-        */
-
+        //crea un nuovo array in cui vengono salvati SOLO gli ID degli appartamenti che rientrano nel raggio
         $apartmentIds = array_column($distanceFilteredByRadius, 'id');
 
-        $results = Apartment::whereIn('id', $apartmentIds)->paginate(6);
+        /*viene fatta la richiesta degli appartamenti del database restituendo tutti quelli con l'id dell'array 
+        apartmentIds legando anche le tabelle facilities, sponsorship, user e messages*/
+        $results = Apartment::whereIn('id', $apartmentIds)->with(['facilities', 'sponsorships', 'user', 'messages'])->paginate(6);
 
 
         // Restituisci i risultati come risposta JSON
