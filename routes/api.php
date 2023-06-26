@@ -21,6 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 /*rotta avere tutti i gli appartamenti del DB */
 Route::get('/apartments', [ApartmentController::class, 'index']);
+Route::get('/apartments/{id}', [ApartmentController::class, 'show']);
 
 
 /*rotta avere tutti gli appartamenti che rientrano nel radius passato a partire dalla coordinata (lat/lon) */

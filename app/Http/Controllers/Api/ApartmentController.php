@@ -19,9 +19,23 @@ class ApartmentController extends Controller
         ]);
     }
 
+    public function show($id)
+    {
+        $apartments = Apartment::where('id', $id)->with(['facilities', 'sponsorships', 'user', 'messages'])->first();
+        return response()->json(
+            [
+                'success' => true,
+                'results' => $apartments,
+            ]
+        );
+    }
+
+
+
 
     /*  Metodo di ricerca degli appartamenti entro il raggio selezionato  */
     public function search($latitude, $longitude, $radius)
+
     {
         //prende tutti gli appartamenti del DB
         $apartments = Apartment::All();
