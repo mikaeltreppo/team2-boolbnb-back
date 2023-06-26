@@ -35,6 +35,12 @@ class ApartmentController extends Controller
     public function search($latitude, $longitude, $radius, $price, $beds, $meters, $rooms, $bathrooms, $wifi, $car, $pool, $door, $sauna, $water)
     {
 
+        $wifi = ($wifi === "true") ? true : false;
+        $car = ($car === "true") ? true : false;
+        $pool = ($pool === "true") ? true : false;
+        $door = ($door === "true") ? true : false;
+        $sauna = ($sauna === "true") ? true : false;
+        $water = ($water === "true") ? true : false;
         //prende tutti gli appartamenti del DB
         $apartments = Apartment::all();
 
@@ -63,8 +69,6 @@ class ApartmentController extends Controller
             return $object['distance'] <= $radius;
         });
 
-
-
         //crea un nuovo array in cui vengono salvati SOLO gli ID degli appartamenti che rientrano nel raggio
         $apartmentIds = array_column($distanceFilteredByRadius, 'id');
 
@@ -78,34 +82,8 @@ class ApartmentController extends Controller
                 $roomsCheck = $apartment->bedrooms < $rooms;
                 $bathroomsCheck = $apartment->bathrooms < $bathrooms;
 
-                $wifiCheck = false;
-                $carCheck = false;
-                $poolCheck = false;
-                $doorCheck = false;
-                $wifiCheck = false;
-                $wifiCheck = false;
-                $facilities = $apartment->facilities()->pluck('name')->toArray(); //array con i nomi dei servizi che l'appartamento contiene
-                if ($wifi) { //se wifi è spuntato, allora è un campo obbligatorio
-                    $wifiCheck = !in_array('Wi-Fi', $facilities); //false se l'appartamento lo contiene, true altrimenti
-                }
-                if ($car) { //se wifi è spuntato è un campo obbligatorio
-                    $carCheck = !in_array('Posto Macchina', $facilities); //false se l'appartamento lo contiene, true altrimenti
-                }
-                if ($pool) { //se wifi è spuntato è un campo obbligatorio
-                    $poolCheck = !in_array('Piscina', $facilities); //false se l'appartamento lo contiene, true altrimenti
-                }
-                if ($door) { //se wifi è spuntato è un campo obbligatorio
-                    $doorCheck = !in_array('Portineria', $facilities); //false se l'appartamento lo contiene, true altrimenti
-                }
-                if ($sauna) { //se wifi è spuntato è un campo obbligatorio
-                    $saunaCheck = !in_array('Sauna', $facilities); //false se l'appartamento lo contiene, true altrimenti
-                }
-                if ($water) { //se wifi è spuntato è un campo obbligatorio
-                    $waterCheck = !in_array('Vista Mare', $facilities); //false se l'appartamento lo contiene, true altrimenti
-                }
 
-
-                if ($priceCheck || $bedsCheck || $m2Check || $roomsCheck || $bathroomsCheck || $wifiCheck || $carCheck || $poolCheck || $doorCheck || $saunaCheck || $waterCheck) { //entra se anche solo uno è true
+                if ($priceCheck || $bedsCheck || $m2Check || $roomsCheck || $bathroomsCheck) { //entra se anche solo uno è true
                     $apartmentIdIndex = array_search($apartment->id, $apartmentIds); //è l'indice dell'appartamento in apartmentIds
                     unset($apartmentIds[$apartmentIdIndex]); //rimuovo l'elemento all'indice $apartmentIdIndex in $apartmentIds
                 }
@@ -140,4 +118,3 @@ class ApartmentController extends Controller
         return $distance * 1000; //restituisce la distanza in metri
     }
 }
-;
