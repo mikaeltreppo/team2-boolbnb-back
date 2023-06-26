@@ -42,7 +42,7 @@ class ApartmentController extends Controller
         $water = filter_var($water, FILTER_VALIDATE_BOOLEAN);
 
         //prende tutti gli appartamenti del DB
-        $apartments = Apartment::select('*')->with(['facilities'])->get();
+        $apartments = Apartment::query()->select('*')->with(['facilities'])->get();
 
 
         //array di oggetti vuoto per salvare l'id dell'appartamento e la distanza dalla coordinata dell'input
