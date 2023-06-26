@@ -29,4 +29,4 @@ Route::post('/apartments/search/{latitude}/{longitude}/{radius}', [ApartmentCont
 
 
 /*rotta avere tutti i servizi del DB */
-Route::get('facilities', [FacilitiesController::class, 'index']);
+Route::get('/facilities', [FacilitiesController::class, 'index']);
