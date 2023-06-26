@@ -8,16 +8,27 @@ use Illuminate\Http\Request;
 
 class ApartmentController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
-        $apartments = Apartment::with(['facilities','sponsorships','user','messages'])->paginate(6);
-        
+        $apartments = Apartment::with(['facilities', 'sponsorships', 'user', 'messages'])->paginate(6);
+
         return response()->json([
-            'success'=> true,
-            'results'=> $apartments,
+            'success' => true,
+            'results' => $apartments,
         ]);
     }
-    
+    public function show($id)
+    {
+        $apartments = Apartment::where('id', $id)->with(['facilities', 'sponsorships', 'user', 'messages'])->first();
+        return response()->json(
+            [
+                'success' => true,
+                'results' => $apartments,
+            ]
+        );
+    }
+
     public function search($latitude, $longitude, $radius) //ricerca sul title dell'appartamento
     {
         $apartments = Apartment::All();
@@ -67,5 +78,5 @@ class ApartmentController extends Controller
 
         return $distance; //2300 5000
     }
-};
-
+}
+;

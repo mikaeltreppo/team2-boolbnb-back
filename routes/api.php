@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/apartments', [ApartmentController::class, 'index']);
+Route::get('/apartments/{id}', [ApartmentController::class, 'show']);
 
 
 /*rotta tom tom*/
