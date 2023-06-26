@@ -98,16 +98,18 @@
 
 .btn.ms-btn {
     position: relative;
-    transition: padding $transition_fast, background-color $transition_fast, box-shadow $transition_fast,  color $transition_fast;
+    transition: padding $transition_fast, background-color $transition_fast, box-shadow $transition_fast, color $transition_fast;
     overflow: hidden;
 }
 
 .btn.ms-btn-sm {
     font-size: 0.8rem;
 }
+
 .btn.ms-btn-md {
     font-size: 1rem;
 }
+
 .btn.ms-btn-lg {
     font-size: 1.5rem;
 }
@@ -124,7 +126,7 @@
 }
 
 .btn.ms-btn:hover:after {
-    right:  10px;
+    right: 10px;
 }
 
 .btn.ms-btn:hover {
@@ -219,7 +221,7 @@
 }
 
 
-.btn.ms-btn-textual-primary.active{
+.btn.ms-btn-textual-primary.active {
     background-color: $main_darker_color;
     border: 1px solid $main_darker_color;
     color: white;
@@ -258,11 +260,11 @@
 
 
 /* Sponsorship Page */
-.sponsorship-middle-badge{
+.sponsorship-middle-badge {
     font-size: 1rem;
 }
 
-.card-radio-element:checked + .card-radio-content {
+.card-radio-element:checked+.card-radio-content {
     box-shadow: 0 0 1px 5px $main_darker_color;
 }
 
@@ -278,7 +280,7 @@ label.card-radio {
     width: 100%;
 }
 
-.number-badge{
+.number-badge {
     display: inline-block;
     background-color: $main_darker_color;
     padding: 1px;
@@ -294,3 +296,8 @@ label.card-radio {
 //OTHER
 
 
+//Error validation
+
+.error-validation {
+    color: red;
+}
