@@ -31,11 +31,8 @@ class ApartmentController extends Controller
     }
 
 
-
-
     /*  Metodo di ricerca degli appartamenti entro il raggio selezionato  */
-    public function search($latitude, $longitude, $radius)
-
+    public function search($latitude, $longitude, $radius, $price, $beds, $meters, $rooms, $bathrooms)
     {
         //prende tutti gli appartamenti del DB
         $apartments = Apartment::All();
