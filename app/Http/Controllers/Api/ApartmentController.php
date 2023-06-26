@@ -34,7 +34,7 @@ class ApartmentController extends Controller
 
 
     /*  Metodo di ricerca degli appartamenti entro il raggio selezionato  */
-    public function search($latitude, $longitude, $radius, $price, $beds, $m2, $rooms, $bathrooms, $facilities)
+    public function search($latitude, $longitude, $radius, $price, $beds, $m2, $rooms, $bathrooms)
     {
         //prende tutti gli appartamenti del DB
         $apartments = Apartment::All();
@@ -68,12 +68,17 @@ class ApartmentController extends Controller
         $apartmentIds = array_column($distanceFilteredByRadius, 'id');
 
         foreach ($apartments as $apartment) {
-            if (in_array($apartment->id, $apartmentIds)) { //cerca se l'id dell'appartamento è presente in apartmentIds
-                if ($apartment->price < $price) { //se il prezzo/notte è minore della soglia di filtraggio, rimuovi quell'id dalla lista di appartamenti da passare al front
-                    $apartmentIdIndex = array_search($apartment->id, $apartmentIds); //rappresenta l'indice dell'array apartmentIds che ha come valore l'id dell'appartamento analizzato in questo momento
-                    if ($apartmentIdIndex !== false) {
-                        unset($arr[$key]);
-                    }
+            if (in_array($apartment->id, $apartmentIds)) {
+                /* Faccio diversi check, se almeno uno di essi è true allora l'appartamento sarà da rimuovere */
+                $priceCheck = $apartment->price > $price;
+                $bedsCheck = $apartment->beds < $beds;
+                $m2Check = $apartment->size_m2 < $m2;
+                $roomsCheck = $apartment->bedrooms < $rooms;
+                $bathroomsCheck = $apartment->bathrooms < $bathrooms;
+                $facilitiesCheck = "";
+                if ($priceCheck || $bedsCheck || $m2Check || $roomsCheck || $bathroomsCheck) { //entra se anche solo uno è true
+                    $apartmentIdIndex = array_search($apartment->id, $apartmentIds); //è l'indice dell'appartamento in apartmentIds
+                    unset($apartmentIds[$apartmentIdIndex]); //rimuovo l'elemento all'indice $apartmentIdIndex in $apartmentIds
                 }
             }
         }

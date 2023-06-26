@@ -26,5 +26,5 @@ Route::get('/apartments/{id}', [ApartmentController::class, 'show']);
 
 /*rotta avere tutti gli appartamenti che rientrano nel radius passato a partire dalla coordinata (lat/lon) */
 //filtraggi
-$filterString = "/{price}/{beds}/{m2}/{rooms}/{bathrooms}/{facilities}";
+$filterString = "/{price}/{beds}/{m2}/{rooms}/{bathrooms}";
 Route::post(`/apartments/search/{latitude}/{longitude}/{radius}${filterString}`, [ApartmentController::class, 'search']);
