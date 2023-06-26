@@ -1,18 +1,16 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Mail\NewContact;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class MessageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
         $user = auth()->user();
@@ -32,23 +30,43 @@ class MessageController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $validator = Validator::make(
+            $data,
+            [
+                'name' => 'required',
+                'email' => 'required|email',
+                'message' => 'required',
+            ]
+        );
+
+        if($validator->fails()) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'erros' => $validator->erros()
+                ]
+            );
+        }
+
+        $newMessage = new Message();
+        $newMessage->fill($data);
+        $newMessage->save();
+
+        Mail::to('info@exampleuser.it')->send(new NewContact($newMessage));
+
+        return response()->json(
+            [
+                'success' => true
+            ]
+        );
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Message  $message
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show($id)
     {
         $message = Message::findOrFail($id); //trova il messaggio tramite id
