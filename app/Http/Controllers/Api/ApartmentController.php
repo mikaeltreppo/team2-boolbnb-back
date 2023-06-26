@@ -34,16 +34,9 @@ class ApartmentController extends Controller
     /*  Metodo di ricerca degli appartamenti entro il raggio selezionato  */
     public function search($latitude, $longitude, $radius, $price, $beds, $meters, $rooms, $bathrooms, $wifi, $car, $pool, $door, $sauna, $water)
     {
-        $wifi = filter_var($wifi, FILTER_VALIDATE_BOOLEAN);
-        $car = filter_var($car, FILTER_VALIDATE_BOOLEAN);
-        $pool = filter_var($pool, FILTER_VALIDATE_BOOLEAN);
-        $door = filter_var($door, FILTER_VALIDATE_BOOLEAN);
-        $sauna = filter_var($sauna, FILTER_VALIDATE_BOOLEAN);
-        $water = filter_var($water, FILTER_VALIDATE_BOOLEAN);
 
         //prende tutti gli appartamenti del DB
-        $apartments = Apartment::query()->select('*')->with(['facilities'])->get();
-
+        $apartments = Apartment::all();
 
         //array di oggetti vuoto per salvare l'id dell'appartamento e la distanza dalla coordinata dell'input
         $distanceArray = [];
@@ -89,8 +82,8 @@ class ApartmentController extends Controller
                 $carCheck = false;
                 $poolCheck = false;
                 $doorCheck = false;
-                $saunaCheck = false;
-                $waterCheck = false;
+                $wifiCheck = false;
+                $wifiCheck = false;
                 $facilities = $apartment->facilities()->pluck('name')->toArray(); //array con i nomi dei servizi che l'appartamento contiene
                 if ($wifi) { //se wifi è spuntato, allora è un campo obbligatorio
                     $wifiCheck = !in_array('Wi-Fi', $facilities); //false se l'appartamento lo contiene, true altrimenti
