@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\MessageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ApartmentController;
@@ -22,12 +23,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 /*rotta avere tutti i gli appartamenti del DB */
 Route::get('/apartments', [ApartmentController::class, 'index']);
-Route::get('/apartments/{id}', [ApartmentController::class, 'show']);
+Route::get('/apartment/{id}', [ApartmentController::class, 'show']);
 
 /*rotta avere tutti gli appartamenti che rientrano nel radius passato a partire dalla coordinata (lat/lon) */
 //filtraggi
-$filterString = "/{price}/{beds}/{m2}/{rooms}/{bathrooms}";
-Route::post(`/apartments/search/{latitude}/{longitude}/{radius}${filterString}`, [ApartmentController::class, 'search']);
+Route::get(`/apartments/search/{lat}/{lon}/{radius}`, [ApartmentController::class, 'search']);
 
 Route::post('/apartment/:id', [MessageController::class, 'store']);
 
