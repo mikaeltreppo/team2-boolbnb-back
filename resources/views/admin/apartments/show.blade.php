@@ -38,7 +38,7 @@
             {{-- col left --}}
             <div class="col-8 border-end">
                 <h5 class="card-title fs-2 font-semibold mb-3">{{ $apartment->title }}</h5>
-                <p class="card-text">{{ $apartment->description }}</p>
+                <p class="card-text">{{ $apartment->description }}</p>#
 
                 {{-- caratteristiche --}}
                 <div class="my-5 ">
