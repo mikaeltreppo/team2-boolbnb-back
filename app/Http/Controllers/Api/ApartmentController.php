@@ -34,7 +34,14 @@ class ApartmentController extends Controller
     /*  Metodo di ricerca degli appartamenti entro il raggio selezionato  */
     public function search($latitude, $longitude, $radius, $price, $beds, $meters, $rooms, $bathrooms, $wifi, $car, $pool, $door, $sauna, $water)
     {
-
+        $latitude = floatval($latitude);
+        $longitude = floatval($longitude);
+        $radius = intval($radius);
+        $price = floatval($price);
+        $beds = intval($beds);
+        $meters = intval($meters);
+        $rooms = intval($rooms);
+        $bathrooms = intval($bathrooms);
         $wifi = ($wifi === "true") ? true : false;
         $car = ($car === "true") ? true : false;
         $pool = ($pool === "true") ? true : false;
@@ -83,9 +90,10 @@ class ApartmentController extends Controller
                 $bathroomsCheck = $apartment->bathrooms < $bathrooms;
 
 
+
                 if ($priceCheck || $bedsCheck || $m2Check || $roomsCheck || $bathroomsCheck) { //entra se anche solo uno è true
                     $apartmentIdIndex = array_search($apartment->id, $apartmentIds); //è l'indice dell'appartamento in apartmentIds
-                    unset($apartmentIds[$apartmentIdIndex]); //rimuovo l'elemento all'indice $apartmentIdIndex in $apartmentIds
+                    array_splice($apartmentIds, $apartmentIdIndex, 1); //rimuovo l'elemento all'indice $apartmentIdIndex in $apartmentIds
                 }
             }
         }
