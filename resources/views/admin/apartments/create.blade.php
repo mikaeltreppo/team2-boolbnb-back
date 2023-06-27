@@ -51,6 +51,7 @@
                         </div>
                     @enderror
                 </div>
+                <!--search-->
                 <div class="w-50 p-3">
                     <div class="w-50 p-3">
                         <label for="address" class="form-label">Indirizzo</label>
@@ -62,14 +63,15 @@
                             {{ $message }}
                         </div>
                     @enderror
-                      
+                    <input type="hidden" id="longitude" name="longitude" value="">
+                    <input type="hidden" id="latitude" name="latitude" value="">
                 </div>
                 <div class="p-3 w-100">
                     <label for="description" class="form-label">Descrizione</label>
                     <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description"
                         cols="30" rows="10" class="form-control" required maxlength="5000">
-                        {{ old('description') }}
-                    </textarea>
+{{ old('description') }}
+</textarea>
                     <p id="descriptionError" style="color: red;"></p>
                     @error('description')
                         <div class="invalid-feedback">
@@ -78,7 +80,6 @@
                     @enderror
                 </div>
             </div>
-
             <!--sezione numeri del form-->
 
             <div class="d-flex flex-wrap">
@@ -132,9 +133,9 @@
             </div>
             <!--facilities-->
 
-                   <div>
-                       @foreach ($facilities as $facility)
-                           <div class="p-3">
+            <div>
+                @foreach ($facilities as $facility)
+                    <div class="p-3">
 
                         <label class="form-check-label" for="facility_id">{{ $facility->name }}</label>
                         <input class="text" type="checkbox" id="facility_{{ $facility->id }}" name="facility_id[]"
@@ -144,45 +145,45 @@
                 <p id="FacilitiesError" style="color: red;"></p>
             </div>
 
-                   <div class="p-3">
-                       <div class="form-check form-switch">
-                           <label class="form-check-label" for="visible">Visibile da subito</label>
-                           <input class="form-check-input" type="checkbox" id="visible" name="visible" role="switch"
-                               @if (old('visible')) checked @endif>
-                       </div>
-                       <div class="form-check form-switch">
-                           <label class="form-check-label" for="available">Disponibile da subito</label>
-                           <input class="form-check-input" type="checkbox" id="available" name="available"
-                               role="switch" @if (old('available')) checked @endif>
-                       </div>
-                   </div>
-                   <button type="submit" class="m-3 btn btn-success">Aggiungi</button>
-               </form>
-           </div>
-           <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps-web.min.js"></script>
-           <script>
-               var options = {
-                   searchOptions: {
-                       key: "aVjvNWJ9xnYI72ZDUSFsELvlUkaTS9kP",
-                       language: "en-GB",
-                       limit: 5,
-                   },
-                   autocompleteOptions: {
-                       key: "aVjvNWJ9xnYI72ZDUSFsELvlUkaTS9kP",
-                       language: "en-GB",
-                   },
-               };
-               var ttSearchBox = new tt.plugins.SearchBox(tt.services, options);
-               var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
-               document.getElementById("address").appendChild(searchBoxHTML);
+            <div class="p-3">
+                <div class="form-check form-switch">
+                    <label class="form-check-label" for="visible">Visibile da subito</label>
+                    <input class="form-check-input" type="checkbox" id="visible" name="visible" role="switch"
+                        @if (old('visible')) checked @endif>
+                </div>
+                <div class="form-check form-switch">
+                    <label class="form-check-label" for="available">Disponibile da subito</label>
+                    <input class="form-check-input" type="checkbox" id="available" name="available" role="switch"
+                        @if (old('available')) checked @endif>
+                </div>
+            </div>
+            <button type="submit" class="m-3 btn btn-success">Aggiungi</button>
+        </form>
+    </div>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps-web.min.js"></script>
+    <script>
+        var options = {
+            searchOptions: {
+                key: "aVjvNWJ9xnYI72ZDUSFsELvlUkaTS9kP",
+                language: "en-GB",
+                limit: 5,
+            },
+            autocompleteOptions: {
+                key: "aVjvNWJ9xnYI72ZDUSFsELvlUkaTS9kP",
+                language: "en-GB",
+            },
+        };
+        var ttSearchBox = new tt.plugins.SearchBox(tt.services, options);
+        var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
+        document.getElementById("address").appendChild(searchBoxHTML);
 
-               ttSearchBox.on('tomtom.searchbox.resultselected', function(data) {
-                   var result = data.data.result;
-                   var longitude = result.position.lng;
-                   var latitude = result.position.lat;
+        ttSearchBox.on('tomtom.searchbox.resultselected', function(data) {
+            var result = data.data.result;
+            var longitude = result.position.lng;
+            var latitude = result.position.lat;
 
-                   document.getElementById("longitude").value = longitude;
-                   document.getElementById("latitude").value = latitude;
-               });
-           </script>
-       @endsection
+            document.getElementById("longitude").value = longitude;
+            document.getElementById("latitude").value = latitude;
+        });
+    </script>
+@endsection
