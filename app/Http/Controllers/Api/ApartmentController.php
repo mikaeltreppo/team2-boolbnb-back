@@ -49,7 +49,7 @@ class ApartmentController extends Controller
         $sauna = ($sauna === "true") ? true : false;
         $water = ($water === "true") ? true : false;
         //prende tutti gli appartamenti del DB
-        $apartments = Apartment::all();
+        $apartments = Apartment::with('facilities')->get();
 
         //array di oggetti vuoto per salvare l'id dell'appartamento e la distanza dalla coordinata dell'input
         $distanceArray = [];
