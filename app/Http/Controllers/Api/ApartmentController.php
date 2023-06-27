@@ -83,7 +83,12 @@ class ApartmentController extends Controller
         foreach ($apartments as $apartment) {
             if (in_array($apartment->id, $apartmentIds)) {
                 /* Faccio diversi check, se almeno uno di essi è true allora l'appartamento sarà da rimuovere*/
-                $priceCheck = $apartment->price > $price;
+                $priceCheck;
+                if ($price == 0 || $price == null) {
+                    $priceCheck = false;
+                } else {
+                    $priceCheck = $apartment->price > $price;
+                }
                 $bedsCheck = $apartment->beds < $beds;
                 $m2Check = $apartment->size_m2 < $meters;
                 $roomsCheck = $apartment->bedrooms < $rooms;
