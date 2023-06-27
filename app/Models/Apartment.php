@@ -14,7 +14,6 @@ class Apartment extends Model
         'cover_image',
         'price',
         'description',
-        'address',
         'beds',
         'bathrooms',
         'bedrooms',
