@@ -34,6 +34,7 @@ class ApartmentController extends Controller
     /*  Metodo di ricerca degli appartamenti entro il raggio selezionato  */
     public function search($latitude, $longitude, $radius, $price, $beds, $meters, $rooms, $bathrooms, $wifi, $car, $pool, $door, $sauna, $water)
     {
+        //i valori passati sono inizialmente tutte stringhe, qui li trasforma in int, float, boolean effettivi
         $latitude = floatval($latitude);
         $longitude = floatval($longitude);
         $radius = intval($radius);
@@ -146,10 +147,51 @@ class ApartmentController extends Controller
                 }
             }
         }
+
+
+        //ORDINAMENTO PER SPONSORIZZAZIONE////////////////
+
+        /* Voglio ordinare prima per gli sponsorizzati e poi per ordine di distanza*/
+        $idsString = implode(',', $apartmentIds);
+
+        // Ottieni gli appartamenti in base agli ID specificati nell'ordine desiderato
+        $apartmentsFiltered = Apartment::whereIn('id', $apartmentIds)->with(['sponsorships'])->orderByRaw("FIELD(id, $idsString)")->get();
+
+        // Crea un array per tenere traccia degli id degli appartamenti sponsorizzati
+        $sponsoredIds = [];
+
+        // Filtra gli appartamenti sponsorizzati e spostali all'inizio dell'array $apartmentIds
+        foreach ($apartmentsFiltered as $apartment) {
+
+            // Verifica se ci sono sponsorizzazioni attive
+            $sponsorships = $apartment->sponsorships;
+            $activeSponsorship = $sponsorships->first(function ($sponsorship) {
+                return $sponsorship->pivot->start_date <= now() && $sponsorship->pivot->expired_at >= now();
+            });
+            if ($activeSponsorship) {
+                // Aggiungi l'ID dell'appartamento sponsorizzato all'array sponsoredIds
+                $sponsoredIds[] = $apartment->id;
+
+                // Rimuovi l'appartamento sponsorizzato dall'array apartmentIds
+                $index = array_search($apartment->id, $apartmentIds);
+                if ($index !== false) {
+                    unset($apartmentIds[$index]);
+                }
+            }
+        }
+
+        // Unisci gli ID degli appartamenti sponsorizzati all'inizio dell'array apartmentIds
+        $orderedApartmentIds = array_merge($sponsoredIds, $apartmentIds);
+
+        // FINE ORDINAMENTO PER SPONSORIZZAZIONE////////////////
+
+
+
+
         /*viene fatta la richiesta degli appartamenti del database restituendo tutti quelli con l'id dell'array 
         apartmentIds legando anche le tabelle facilities, sponsorship, user e messages*/
-        $idsString = implode(',', $apartmentIds);
-        $results = Apartment::whereIn('id', $apartmentIds)->with(['facilities', 'sponsorships', 'user', 'messages'])->orderByRaw("FIELD(id, $idsString)")->paginate(20);
+        $idsString = implode(',', $orderedApartmentIds);
+        $results = Apartment::whereIn('id', $orderedApartmentIds)->with(['facilities', 'sponsorships', 'user', 'messages'])->orderByRaw("FIELD(id, $idsString)")->paginate(20);
 
 
         // Restituisci i risultati come risposta JSON
