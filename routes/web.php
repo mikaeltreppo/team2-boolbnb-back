@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Models\Sponsorship;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Mime\Message;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,25 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+//rotte di braintree
+
+
+
+Route::get('/hosted', function () {
+    $gateway = new Braintree\Gateway([
+        'environment' => config('services.braintree.environment'),
+        'merchantId' => config('services.braintree.merchantId'),
+        'publicKey' => config('services.braintree.publicKey'),
+        'privateKey' => config('services.braintree.privateKey')
+    ]);
+
+    $token = $gateway->ClientToken()->generate();
+
+    return view('hosted', [
+        'token' => $token
+    ]);
 });
 
 require __DIR__ . '/auth.php';

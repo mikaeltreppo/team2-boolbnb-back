@@ -6,6 +6,7 @@ use App\Models\Apartment;
 use App\Models\Sponsorship;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Braintree\Gateway;
 
 class SponsorshipController extends Controller
 {
@@ -19,7 +20,17 @@ class SponsorshipController extends Controller
         $sponsorships = Sponsorship::all();
         $user = auth()->user();
         $apartments = $user->apartments;
-        return view('admin.sponsorships.index', compact('sponsorships', 'apartments'));
+
+        $gateway = new Gateway([
+            'environment' => config('services.braintree.environment'),
+            'merchantId' => config('services.braintree.merchantId'),
+            'publicKey' => config('services.braintree.publicKey'),
+            'privateKey' => config('services.braintree.privateKey')
+        ]);
+
+        $token = $gateway->ClientToken()->generate();
+
+        return view('admin.sponsorships.index', compact('sponsorships', 'apartments'), ['token' => $token]);
     }
 
     /**
@@ -59,7 +70,6 @@ class SponsorshipController extends Controller
             'expired_at' => $expired_at,
         ]);
 */
-        return redirect()->routes('admin.sponsorships.result');
     }
 
     /**
@@ -70,7 +80,6 @@ class SponsorshipController extends Controller
      */
     public function show(Request $request, $sponsorship_id)
     {
-        return redirect()->routes('admin.sponsorships.result');
     }
 
     /**
@@ -112,4 +121,63 @@ class SponsorshipController extends Controller
 
         }
     */
+
+    public function checkout(Request $request)
+    {
+        $gateway = new Gateway([
+            'environment' => config('services.braintree.environment'),
+            'merchantId' => config('services.braintree.merchantId'),
+            'publicKey' => config('services.braintree.publicKey'),
+            'privateKey' => config('services.braintree.privateKey')
+        ]);
+
+        $amount = $request->amount;
+        $nonce = $request->payment_method_nonce;
+
+        $result = $gateway->transaction()->sale([
+            'amount' => $amount,
+            'paymentMethodNonce' => $nonce,
+            'customer' => [
+                'firstName' => 'Tony',
+                'lastName' => 'Stark',
+                'email' => 'tony@avengers.com',
+            ],
+            'options' => [
+                'submitForSettlement' => true
+            ]
+        ]);
+
+        if ($result->success) {
+            $transaction = $result->transaction;
+            // header("Location: transaction.php?id=" . $transaction->id);
+
+            return back()->with('success_message', 'Transaction successful. The ID is:' . $transaction->id);
+        } else {
+            $errorString = "";
+
+            foreach ($result->errors->deepAll() as $error) {
+                $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
+            }
+
+            // $_SESSION["errors"] = $errorString;
+            // header("Location: index.php");
+            return back()->withErrors('An error occurred with the message: ' . $result->message);
+        }
+    }
+
+    public function hosted(Sponsorship $sponsorship)
+    {
+        $gateway = new Gateway([
+            'environment' => config('services.braintree.environment'),
+            'merchantId' => config('services.braintree.merchantId'),
+            'publicKey' => config('services.braintree.publicKey'),
+            'privateKey' => config('services.braintree.privateKey')
+        ]);
+
+        $token = $gateway->ClientToken()->generate();
+
+        return view('hosted', [
+            'token' => $token
+        ]);
+    }
 }
