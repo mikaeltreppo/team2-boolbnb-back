@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Api;
 use App\Mail\NewContact;
 use App\Models\Message;
 use Illuminate\Http\Request;
