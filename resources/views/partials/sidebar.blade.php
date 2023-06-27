@@ -1,7 +1,7 @@
 <div class="sidebar ms-bg-dark vh-100 py-4 panel-shadow-right px-3">
 <div class="brand mb-3">
     {{-- <h3 class="text-white">LOGO</h3> --}}
-    <img src="{{URL('images/logo.png')}}" alt="" class="sidebar-logo align-middle">
+    {{-- <img src="{{URL('images/logo.png')}}" alt="" class="sidebar-logo align-middle"> --}}
     <h6 class="font-secondary fw-bold text-white d-inline align-middle ms-2">BoolBNB</h6>
 </div>
 <hr>
