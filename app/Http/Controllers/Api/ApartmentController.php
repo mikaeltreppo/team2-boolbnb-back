@@ -32,10 +32,17 @@ class ApartmentController extends Controller
 
 
     /*  Metodo di ricerca degli appartamenti entro il raggio selezionato  */
-    public function search($latitude, $longitude, $radius, $price, $beds, $meters, $rooms, $bathrooms)
+    public function search($latitude, $longitude, $radius, $price, $beds, $meters, $rooms, $bathrooms, $wifi, $car, $pool, $door, $sauna, $water)
     {
+
+        $wifi = ($wifi === "true") ? true : false;
+        $car = ($car === "true") ? true : false;
+        $pool = ($pool === "true") ? true : false;
+        $door = ($door === "true") ? true : false;
+        $sauna = ($sauna === "true") ? true : false;
+        $water = ($water === "true") ? true : false;
         //prende tutti gli appartamenti del DB
-        $apartments = Apartment::All();
+        $apartments = Apartment::all();
 
         //array di oggetti vuoto per salvare l'id dell'appartamento e la distanza dalla coordinata dell'input
         $distanceArray = [];
@@ -62,8 +69,6 @@ class ApartmentController extends Controller
             return $object['distance'] <= $radius;
         });
 
-
-
         //crea un nuovo array in cui vengono salvati SOLO gli ID degli appartamenti che rientrano nel raggio
         $apartmentIds = array_column($distanceFilteredByRadius, 'id');
 
@@ -76,7 +81,8 @@ class ApartmentController extends Controller
                 $m2Check = $apartment->size_m2 < $meters;
                 $roomsCheck = $apartment->bedrooms < $rooms;
                 $bathroomsCheck = $apartment->bathrooms < $bathrooms;
-                $facilitiesCheck = "";
+
+
                 if ($priceCheck || $bedsCheck || $m2Check || $roomsCheck || $bathroomsCheck) { //entra se anche solo uno è true
                     $apartmentIdIndex = array_search($apartment->id, $apartmentIds); //è l'indice dell'appartamento in apartmentIds
                     unset($apartmentIds[$apartmentIdIndex]); //rimuovo l'elemento all'indice $apartmentIdIndex in $apartmentIds
@@ -112,4 +118,3 @@ class ApartmentController extends Controller
         return $distance * 1000; //restituisce la distanza in metri
     }
 }
-;
