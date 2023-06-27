@@ -45,10 +45,27 @@
 
                         <div class="card-body">
                             <h5 class="card-title fs-5 font-semibold">{{ $apartment->title }}</h5>
-                            <span class="card-text">
-                                <i class="fa-solid fa-location-dot ms_light_gray_text me-2 mt-1"></i>
-                                {{ $apartment->address }}
-                            </span>
+                            <div class="d-flex">
+                                    <i class="fa-solid fa-location-dot ms_light_gray_text me-2 mt-1"></i>
+                                    <span class="card-text" >
+                                    @php 
+                                    $data = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/reverseGeocode/'. $apartment -> latitude .','. $apartment -> longitude .'.json?key=ZPskuspkrrcmchd9ut4twltuw96h5bWH');
+                                    $responseData = $data->json();
+                                    
+                                    //dd($responseData);
+                        
+                                        $apartment->city = $responseData['addresses'][0]['address']['municipality'];
+                                        $apartment->country = $responseData['addresses'][0]['address']['country'];
+                                        $apartment->completeAddress = $responseData['addresses'][0]['address']['streetNameAndNumber'];
+                                        //$apartment->address = $responseData['addresses'][0]['address']['streetName'];
+                                        //$apartment->number = $responseData['addresses'][0]['address']['streetNumber'];
+                                        //$address = $responseData['addresses'][0]['address'];
+                            
+                                        echo $apartment->completeAddress.', '.$apartment->city.', '.$apartment->country ;
+                                    @endphp
+                                </span>
+                            </div>
+                            
 
                             <div class="d-flex mt-2 justify-content-between">
                                 <div class="card-text">
@@ -89,4 +106,9 @@
 
     </div>
 
+  
+
 @endsection
+
+
+

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Support\Facades\Http;
 use App\Models\Apartment;
 use App\Models\Facility;
 use Illuminate\Http\Request;
@@ -13,11 +13,6 @@ use Illuminate\Support\Facades\Storage;
 
 class ApartmentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
 
     public function index()
@@ -25,6 +20,7 @@ class ApartmentController extends Controller
         $facilities = Facility::all();
         $user = auth()->user();
         $apartments = $user->apartments;
+     
         return view('admin.apartments.index', compact('apartments', 'facilities'));
     }
 
