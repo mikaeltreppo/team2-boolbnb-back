@@ -64,17 +64,22 @@
                             </div>
                         @enderror
                     </div>
+
                     <div class="w-50 p-3">
-                        <label for="address" class="form-label">Indirizzo</label>
-                        <input type="text" class="form-control @error('address') is-invalid @enderror" id="address"
-                            name="address" value="{{ old('apartment', $apartment->address) }}" required minlength="2">
-                        <p id="addressError" class="error-validation"></p>
+                        <div class="w-50 p-3">
+                            <label for="address" class="form-label">Indirizzo</label>
+                            <div id="address"></div>
+                        </div>
+                        <p id="addressError" style="color: red;"></p>
                         @error('address')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
+                        <input type="hidden" id="longitude" name="longitude" value="">
+                        <input type="hidden" id="latitude" name="latitude" value="">
                     </div>
+                   
                     <div class="p-3 w-100">
                         <label for="description" class="form-label">Descrizione</label>
                         <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description"
@@ -141,44 +146,71 @@
                 </div>
                 <div>
                     @foreach ($facilities as $facility)
-                    <div class="p-3">
-                        <label class="form-check-label" for="facility_{{ $facility->id }}">{{ $facility->name }}</label>
-                        <input class="text" type="checkbox" id="facility_{{ $facility->id }}" name="facilities[]"
-                            role="switch"
-                        @if (in_array($facility->id, old('facilities', [])))
-                            checked value="{{ $facility->id }}">
+                        <div class="p-3">
+                            <label class="form-check-label"
+                                for="facility_{{ $facility->id }}">{{ $facility->name }}</label>
+                            <input class="text" type="checkbox" id="facility_{{ $facility->id }}" name="facilities[]"
+                                role="switch"
+                                @if (in_array($facility->id, old('facilities', []))) checked value="{{ $facility->id }}">
                         @else
                             <input id="facility_{{ $facility->id }}" @if ($apartment->facilities->contains($facility->id)) checked @endif
                                 type="checkbox" name="facilities[]" value="{{ $facility->id }}">
-                        @endif 
-                    </div>
-                    @endforeach
-                    <p id="FacilitiesError" class="error-validation"></p>
+                    @endif
                 </div>
-
-              
-
-                @error('tags')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-
-                <div class="p-3">
-                    <div class="form-check form-switch">
-                        <label class="form-check-label" for="visible">Visibile da subito</label>
-                        <input class="form-check-input" type="checkbox" id="visible" name="visible" role="switch"
-                            @if ($apartment->visible == 1) checked @endif>
-                    </div>
-                    <div class="form-check form-switch">
-                        <label class="form-check-label" for="available">Disponibile da subito</label>
-                        <input class="form-check-input" type="checkbox" id="available" name="available" role="switch"
-                            @if ($apartment->available == 1) checked @endif>
-                    </div>
-                </div>
-                <button type="submit" class="m-3 btn ms-btn ms-btn-primary">Modifica</button>
-            </form>
+                @endforeach
+                <p id="FacilitiesError" class="error-validation"></p>
         </div>
 
+
+
+        @error('tags')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+        @enderror
+
+        <div class="p-3">
+            <div class="form-check form-switch">
+                <label class="form-check-label" for="visible">Visibile da subito</label>
+                <input class="form-check-input" type="checkbox" id="visible" name="visible" role="switch"
+                    @if ($apartment->visible == 1) checked @endif>
+            </div>
+            <div class="form-check form-switch">
+                <label class="form-check-label" for="available">Disponibile da subito</label>
+                <input class="form-check-input" type="checkbox" id="available" name="available" role="switch"
+                    @if ($apartment->available == 1) checked @endif>
+            </div>
+        </div>
+        <button type="submit" class="m-3 btn ms-btn ms-btn-primary">Modifica</button>
+        </form>
     </div>
+
+    </div>
+
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps-web.min.js"></script>
+    <script>
+        var options = {
+            searchOptions: {
+                key: "aVjvNWJ9xnYI72ZDUSFsELvlUkaTS9kP",
+                language: "en-GB",
+                limit: 5,
+            },
+            autocompleteOptions: {
+                key: "aVjvNWJ9xnYI72ZDUSFsELvlUkaTS9kP",
+                language: "en-GB",
+            },
+        };
+        var ttSearchBox = new tt.plugins.SearchBox(tt.services, options);
+        var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
+        document.getElementById("address").appendChild(searchBoxHTML);
+
+        ttSearchBox.on('tomtom.searchbox.resultselected', function(data) {
+            var result = data.data.result;
+            var longitude = result.position.lng;
+            var latitude = result.position.lat;
+
+            document.getElementById("longitude").value = longitude;
+            document.getElementById("latitude").value = latitude;
+        });
+    </script>
 @endsection
