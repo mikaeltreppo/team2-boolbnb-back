@@ -28,7 +28,7 @@ Route::get('/apartments/{id}', [ApartmentController::class, 'show']);
 Route::post('/apartments/search/{latitude}/{longitude}/{radius}/{price}/{beds}/{m2}/{rooms}/{bathrooms}/{wifi}/{car}/{pool}/{door}/{sauna}/{water}', [ApartmentController::class, 'search']);
 
 
-Route::post('/apartment/:id', [MessageController::class, 'store']);
+Route::post('/apartment/{id}', [MessageController::class, 'store']);
 
 /*rotta avere tutti i servizi del DB */
 Route::get('/facilities', [FacilitiesController::class, 'index']);
