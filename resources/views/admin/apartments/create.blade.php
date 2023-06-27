@@ -23,7 +23,7 @@
                     <label for="title" class="form-label">Nome Appartamento</label>
                     <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
                         name="title" value="{{ old('title') }}" minlength="2" maxlength="255" required>
-                    <p id="titleError" class="error-validation"></p>
+                    <p id="titleError" style="color: red;"></p>
                     @error('title')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -44,33 +44,35 @@
                     <label for="price" class="form-label">Prezzo</label>
                     <input type="text" class="form-control @error('price') is-invalid @enderror" id="price"
                         name="price" value="{{ old('price') }}" required>
-                    <p id="priceError" class="error-validation"></p>
+                    <p id="priceError" style="color: red;"></p>
                     @error('price')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
                 </div>
+                <!--search-->
                 <div class="w-50 p-3">
                     <div class="w-50 p-3">
                         <label for="address" class="form-label">Indirizzo</label>
                         <div id="address"></div>
                     </div>
-                    <p id="addressError" class="error-validation"></p>
+                    <p id="addressError" style="color: red;"></p>
                     @error('address')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
-                      
+                    <input type="hidden" id="longitude" name="longitude" value="">
+                    <input type="hidden" id="latitude" name="latitude" value="">
                 </div>
                 <div class="p-3 w-100">
                     <label for="description" class="form-label">Descrizione</label>
                     <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description"
                         cols="30" rows="10" class="form-control" required maxlength="5000">
-                        {{ old('description') }}
-                    </textarea>
-                    <p id="descriptionError" class="error-validation"></p>
+{{ old('description') }}
+</textarea>
+                    <p id="descriptionError" style="color: red;"></p>
                     @error('description')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -78,7 +80,6 @@
                     @enderror
                 </div>
             </div>
-
             <!--sezione numeri del form-->
 
             <div class="d-flex flex-wrap">
@@ -87,7 +88,7 @@
                     <input type="number" class="form-control @error('bedrooms') is-invalid @enderror" id="bedrooms"
                         name="bedrooms" min="1" max="130" step="1" value="{{ old('bedrooms') }}"
                         required>
-                    <p id="bedroomsError" class="error-validation"></p>
+                    <p id="bedroomsError" style="color: red;"></p>
                     @error('bedrooms')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -98,7 +99,7 @@
                     <label for="beds" class="form-label">Letti</label>
                     <input type="number" class="form-control @error('beds') is-invalid @enderror" id="beds"
                         name="beds" min="1" max="130" step="1" value="{{ old('beds') }}" required>
-                    <p id="bedsError" class="error-validation"></p>
+                    <p id="bedsError" style="color: red;"></p>
                     @error('beds')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -110,7 +111,7 @@
                     <input type="number" class="form-control @error('bathrooms') is-invalid @enderror" id="bathrooms"
                         name="bathrooms" min="1" max="130" step="1" value="{{ old('bathrooms') }}"
                         required>
-                    <p id="bathroomsError" class="error-validation"></p>
+                    <p id="bathroomsError" style="color: red;"></p>
                     @error('bathrooms')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -122,7 +123,7 @@
                     <input type="number" class="form-control @error('size_m2') is-invalid @enderror" id="size_m2"
                         name="size_m2" min="1" max="130" step="1" value="{{ old('size_m2') }}"
                         required>
-                    <p id="sizeError" class="error-validation"></p>
+                    <p id="sizeError" style="color: red;"></p>
                     @error('size_m2')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -141,7 +142,7 @@
                             role="switch" @if (old('visible')) checked @endif value="{{ $facility->id }}">
                     </div>
                 @endforeach
-                <p id="FacilitiesError" class="error-validation"></p>
+                <p id="FacilitiesError" style="color: red;"></p>
             </div>
 
             <div class="p-3">
@@ -175,6 +176,14 @@
         var ttSearchBox = new tt.plugins.SearchBox(tt.services, options);
         var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
         document.getElementById("address").appendChild(searchBoxHTML);
-    </script>
 
+        ttSearchBox.on('tomtom.searchbox.resultselected', function(data) {
+            var result = data.data.result;
+            var longitude = result.position.lng;
+            var latitude = result.position.lat;
+
+            document.getElementById("longitude").value = longitude;
+            document.getElementById("latitude").value = latitude;
+        });
+    </script>
 @endsection
