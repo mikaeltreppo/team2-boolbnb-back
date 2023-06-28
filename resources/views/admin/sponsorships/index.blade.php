@@ -8,7 +8,7 @@
         <h1 class=" text-center mb-2">Sponsorizza</h1>
         <p class="text-center">Dai una marcia in più ai tuoi annunci!</p>
         
-        <form  method="POST">
+        <form method="POST" action="salva-relazione">
             @csrf
             @method('POST')
 
@@ -18,12 +18,15 @@
                         <span class="number-badge me-2">1</span>
                         Scegli un <span class="fw-bold">appartamento</span>
                     </label>
-                    <select class="form-select form-select-sm mb-3 mt-3" aria-label=".form-select-lg example" id="apartmentSelect">
+                    
+                    <select class="form-select form-select-sm mb-3 mt-3" aria-label=".form-select-lg example" id="apartmentSelect" name="apartment_id">
                         <option selected>-</option>
-                        @foreach ($apartments as $apartment)         
-                            <option value="{{$apartment->id}}" name="apartment_id">{{$apartment->title}}</option>
+                        @foreach ($apartments as $apartment)    
+                            <option value="{{ $apartment->id }}" {{ old('apartment_id') == $apartment->id ? 'selected' : '' }}>{{ $apartment->title }}</option>
                         @endforeach
-                      </select>
+                    </select>
+                      
+
                 </div>
             
             </div>
@@ -75,6 +78,19 @@
                 </div>
              </div>
         </form>
+        <h1>Test:</h1>
+        @if (session('apartment_id'))
+            <p>Apartment ID: {{ session('apartment_id') }}</p><br>
+        @endif
+        @if (session('sponsorship_id'))
+            <p>Sponsorship ID: {{ session('sponsorship_id') }}</p><br>
+        @endif
+        @if (session('start_date'))
+            <p>Start date: {{ session('start_date') }}</p><br>
+        @endif
+        @if (session('expired_date'))
+            <p>Expire at: {{ session('expired_date') }}</p><br>
+        @endif
     </div>
 </div>
     

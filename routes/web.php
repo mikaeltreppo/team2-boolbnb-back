@@ -19,8 +19,7 @@ use Symfony\Component\Mime\Message;
 |
 */
 
-
-/* dobbiamo ricontrolare */
+Route::post('/admin/salva-relazione', [SponsorshipController::class, 'salvaRelazione'])->name('salva.relazione');
 
 Route::get('/', function () {
     return view('auth.login');
@@ -47,10 +46,14 @@ Route::middleware(['auth', 'verified'])
         Route::resource('sponsorships', SponsorshipController::class);
         Route::resource('messages', MessageController::class);
 
-        /*Rotta per gestire il post delle sponsorizzazioni
-        Route::post('sponsorship', [SponsorshipController::class, 'sponsorizeApartment'])->name('sponsorize.apartment');
+
+        //Rotta per gestire il post delle sponsorizzazioni
+    
+        /*
+            Route::post('sponsorship', [SponsorshipController::class, 'sponsorizeApartment'])->name('sponsorize.apartment');
         */
     });
+
 
 
 /*rotte di profilo*/
