@@ -11,13 +11,32 @@ use Braintree;
 
 class SponsorshipController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
+        $sponsorships = Sponsorship::all();
+        $user = auth()->user();
+        $apartments = $user->apartments;
+
+        return view('admin.sponsorships.index', compact('sponsorships', 'apartments')); //Passo sia il token che le variabili
+    }
+
+    public function show(Request $request, $sponsorships, $apartment)
+    {
+
+    }
+
+
+    public function payement(Request $request){
+        
+
+        $apartment_id = $request->apartment_id;
+
+        $sponsorship_id = $request->sponsorship_id;
+
+        $curSponsorship = Sponsorship::findOrFail($sponsorship_id);
+        $sponsorship_price = $curSponsorship->price;
+
+
         /* Variabili dell'account Braintree */
         $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
@@ -29,15 +48,16 @@ class SponsorshipController extends Controller
         /* Genero un Token per autorizzare il pagamento */
         $token = $gateway->ClientToken()->generate();
 
-
-        $sponsorships = Sponsorship::all();
-        $user = auth()->user();
-        $apartments = $user->apartments;
-
-        return view('admin.sponsorships.index', compact('sponsorships', 'apartments','token','gateway')); //Passo sia il token che le variabili
+        return view('admin.sponsorships.payement',compact('token', 'gateway', 'apartment_id', 'sponsorship_id', 'curSponsorship', 'sponsorship_price') );
     }
 
     public function checkouts(Request $request){
+
+        $sponsorship_id = $request->sponsorship_id;
+        $sponsorship_price = $request->sponsorship_price;
+
+
+
 
         $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
@@ -58,10 +78,16 @@ class SponsorshipController extends Controller
             ]
         ]);
 
+        // Verifica del prezzo !!!! USARE UNA REQUEST CUSTOM !!!!
+        // $currentSponsorship = Sponsorship::findOrFail($sponsorship_id);
+
+        // if($currentSponsorship->price != $request->amout){
+        //     $result->success = false;
+        // }
+
         // Se il pagamento avviene con successo
         if ($result->success) {
             $transaction = $result->transaction;
-
             return view('admin.sponsorships.checkouts', ['transaction' => $transaction->id]);
            
                  
@@ -94,19 +120,11 @@ class SponsorshipController extends Controller
      */
     public function store(Request $request)
     {
+        
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Sponsorship  $sponsorship
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Request $request, $sponsorship_id)
-    {
-        
-     
-    }
+
+ 
 
     /**
      * Show the form for editing the specified resource.
