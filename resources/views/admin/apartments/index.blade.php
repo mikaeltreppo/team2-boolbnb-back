@@ -48,31 +48,33 @@
                             <div class="d-flex">
                                     <i class="fa-solid fa-location-dot ms_light_gray_text me-2 mt-1"></i>
                                     <span class="card-text" >
-                                    @php 
-                                    $data = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/reverseGeocode/'. $apartment -> latitude .','. $apartment -> longitude .'.json?key=ZPskuspkrrcmchd9ut4twltuw96h5bWH');
-                                    $responseData = $data->json();
-                                    
-                                    dd($responseData['addresses'][0]['address']);
-                        
-                                    /*
-                                        $apartment->city = $responseData['addresses'][0]['address']['municipality'];
-                                        $apartment->country = $responseData['addresses'][0]['address']['country'];
-                                        $apartment->completeAddress = $responseData['addresses'][0]['address']['streetNameAndNumber'];
-                                        $apartment->address = $responseData['addresses'][0]['address']['streetName'];
-                                        //$apartment->number = $responseData['addresses'][0]['address']['streetNumber'];
-                                        $address = $responseData['addresses'][0]['address'];
+                                        @php 
+                                        $data = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/reverseGeocode/'. $apartment -> latitude .','. $apartment -> longitude .'.json?key=ZPskuspkrrcmchd9ut4twltuw96h5bWH');
+                                        $responseData = $data->json();
+                                        
+                                        //dd($responseData['addresses'][0]['address']);
                             
-                                        //echo $apartment->completeAddress.', '. $apartment->city;
-                                        if(array_key_exists('streetNameAndNumber', $address)){
-                                            echo $apartment->completeAddress;
-                                        }else{
-                                            echo  $apartment->address;
-                                        }
-                                        //echo array_key_exists('streetNameAndNumber', $address)? $apartment->completeAddress : "" ;
-                                        echo array_key_exists('municipality', $address)? ', '. $apartment->city : "" ;
-                                        echo array_key_exists('country', $address)? ', '. $apartment->country : "" ;
-                                        */
-                                    @endphp
+                                        
+                                            $apartment->city = $responseData['addresses'][0]['address']['municipality'];
+                                            $apartment->country = $responseData['addresses'][0]['address']['country'];
+                                            $apartment->completeAddress = $responseData['addresses'][0]['address']['streetNameAndNumber'];
+                                            $apartment->address = $responseData['addresses'][0]['address']['streetName'];
+                                            //$apartment->number = $responseData['addresses'][0]['address']['streetNumber'];
+                                            $address = $responseData['addresses'][0]['address'];
+                                
+                                            
+                                            if(array_key_exists('streetNameAndNumber', $address)){
+                                                echo $apartment->completeAddress;
+                                            }else{
+                                                echo $apartment->address;
+                                            }
+                                            
+                                            //echo array_key_exists('streetNameAndNumber', $address)? $apartment->completeAddress : "" ;
+                                            echo array_key_exists('municipality', $address)? ', '. $apartment->city : "" ;
+                                            echo array_key_exists('country', $address)? ', '. $apartment->country : "" ;
+                                            
+                                            
+                                        @endphp
                                 </span>
                             </div>
                             
