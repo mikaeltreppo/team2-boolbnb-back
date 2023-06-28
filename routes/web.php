@@ -41,10 +41,17 @@ Route::middleware(['auth', 'verified'])
             return view('admin.dashboard');
         })->name('dashboard');
 
+
         /*rotte appartamenti con crud gestite qui*/
         Route::resource('apartments', ApartmentController::class);
         Route::resource('sponsorships', SponsorshipController::class);
+        Route::prefix('sponsorships')->group(function () {
+            // Rotta "checkouts" all'interno del gruppo "sponsorships"
+            Route::post('checkouts', [SponsorshipController::class, 'checkouts'])->name('sponsorships.checkouts');
+        });
+
         Route::resource('messages', MessageController::class);
+        
 
 
         //Rotta per gestire il post delle sponsorizzazioni
