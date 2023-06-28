@@ -19,8 +19,7 @@ use Symfony\Component\Mime\Message;
 |
 */
 
-
-/* dobbiamo ricontrolare */
+Route::post('/admin/salva-relazione', [SponsorshipController::class, 'salvaRelazione'])->name('salva.relazione');
 
 Route::get('/', function () {
     return view('auth.login');
@@ -42,15 +41,26 @@ Route::middleware(['auth', 'verified'])
             return view('admin.dashboard');
         })->name('dashboard');
 
+
         /*rotte appartamenti con crud gestite qui*/
         Route::resource('apartments', ApartmentController::class);
         Route::resource('sponsorships', SponsorshipController::class);
-        Route::resource('messages', MessageController::class);
+        Route::prefix('sponsorships')->group(function () {
+            // Rotta "checkouts" all'interno del gruppo "sponsorships"
+            Route::post('checkouts', [SponsorshipController::class, 'checkouts'])->name('sponsorships.checkouts');
+        });
 
-        /*Rotta per gestire il post delle sponsorizzazioni
-        Route::post('sponsorship', [SponsorshipController::class, 'sponsorizeApartment'])->name('sponsorize.apartment');
+        Route::resource('messages', MessageController::class);
+        
+
+
+        //Rotta per gestire il post delle sponsorizzazioni
+    
+        /*
+            Route::post('sponsorship', [SponsorshipController::class, 'sponsorizeApartment'])->name('sponsorize.apartment');
         */
     });
+
 
 
 /*rotte di profilo*/

@@ -8,7 +8,7 @@
         <h1 class=" text-center mb-2">Sponsorizza</h1>
         <p class="text-center">Dai una marcia in più ai tuoi annunci!</p>
         
-        <form  method="POST">
+        <form method="POST" action="salva-relazione">
             @csrf
             @method('POST')
 
@@ -18,12 +18,15 @@
                         <span class="number-badge me-2">1</span>
                         Scegli un <span class="fw-bold">appartamento</span>
                     </label>
-                    <select class="form-select form-select-sm mb-3 mt-3" aria-label=".form-select-lg example" id="apartmentSelect">
+                    
+                    <select class="form-select form-select-sm mb-3 mt-3" aria-label=".form-select-lg example" id="apartmentSelect" name="apartment_id">
                         <option selected>-</option>
-                        @foreach ($apartments as $apartment)         
-                            <option value="{{$apartment->id}}" name="apartment_id">{{$apartment->title}}</option>
+                        @foreach ($apartments as $apartment)    
+                            <option value="{{ $apartment->id }}" {{ old('apartment_id') == $apartment->id ? 'selected' : '' }}>{{ $apartment->title }}</option>
                         @endforeach
-                      </select>
+                    </select>
+                      
+
                 </div>
             
             </div>
@@ -75,7 +78,67 @@
                 </div>
              </div>
         </form>
+
+        {{-- Form di pagamento --}}
+        <form method="post" id="payment-form" action="{{route('admin.sponsorships.checkouts')}}">
+            @csrf
+            <section>
+                {{-- Importo --}}
+                <label for="amount">
+                    <span class="input-label">Amount</span>
+                    <div class="input-wrapper amount-wrapper">
+                        <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
+                    </div>
+                </label>
+
+                {{-- Render dell'interfaccia di pagamento Drop-In --}}
+                <div class="bt-drop-in-wrapper">
+                    <div id="bt-dropin"></div>
+                </div>
+            </section>
+
+            <input id="nonce" name="payment_method_nonce" type="hidden" />
+            <button class="button" type="submit"><span>Test Transaction</span></button>
+        </form>
+        {{-- Fine form di pagamento --}}
+
+
+
+
     </div>
 </div>
+
+<script src="https://js.braintreegateway.com/web/dropin/1.38.1/js/dropin.min.js"></script>
+<script>
+    var form = document.querySelector('#payment-form');
+    var client_token = "{{$token}}";
+
+    braintree.dropin.create({
+      authorization: client_token,
+      selector: '#bt-dropin',
+      paypal: {
+        flow: 'vault'
+      }
+    }, function (createErr, instance) {
+      if (createErr) {
+        console.log('Create Error', createErr);
+        return;
+      }
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        instance.requestPaymentMethod(function (err, payload) {
+          if (err) {
+            console.log('Request Payment Method Error', err);
+            return;
+          }
+
+          // Add the nonce to the form and submit
+          document.querySelector('#nonce').value = payload.nonce;
+          form.submit();
+        });
+      });
+    });
+</script>
     
 @endsection
