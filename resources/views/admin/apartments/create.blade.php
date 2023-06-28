@@ -65,6 +65,7 @@
                     @enderror
                     <input type="hidden" id="longitude" name="longitude" value="">
                     <input type="hidden" id="latitude" name="latitude" value="">
+                   
                 </div>
                 <div class="p-3 w-100">
                     <label for="description" class="form-label">Descrizione</label>
@@ -179,11 +180,16 @@
 
         ttSearchBox.on('tomtom.searchbox.resultselected', function(data) {
             var result = data.data.result;
+            console.log(result);
             var longitude = result.position.lng;
             var latitude = result.position.lat;
+           
 
+     
             document.getElementById("longitude").value = longitude;
             document.getElementById("latitude").value = latitude;
+       
         });
+        console.log(result)
     </script>
 @endsection
