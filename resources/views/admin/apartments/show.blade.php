@@ -87,7 +87,7 @@
                 <div class="card-text ">
                     <i class="fa-solid fa-location-dot ms_light_gray_text me-2 mt-1"></i>
                     <span>
-                        @php 
+                        {{-- @php 
                         $data = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/reverseGeocode/'. $apartment -> latitude .','. $apartment -> longitude .'.json?key=ZPskuspkrrcmchd9ut4twltuw96h5bWH');
                         $responseData = $data->json();
                         
@@ -101,7 +101,7 @@
                             //$address = $responseData['addresses'][0]['address'];
                 
                             echo $apartment->completeAddress.', '.$apartment->city.', '.$apartment->country ;
-                        @endphp
+                        @endphp --}}
                     </span>
                 </div>
                 <div class="card-text my-3 ">
