@@ -18,11 +18,15 @@
                         <span class="number-badge me-2">1</span>
                         Scegli un <span class="fw-bold">appartamento</span>
                     </label>
+
                     
                     <select class="form-select form-select-sm mb-3 mt-3" aria-label=".form-select-lg example" id="apartmentSelect" name="apartment_id">
-                        <option selected>-</option>
-                        @foreach ($apartments as $apartment)    
-                            <option value="{{ $apartment->id }}" {{ old('apartment_id') == $apartment->id ? 'selected' : '' }}>{{ $apartment->title }}</option>
+                        @foreach ($apartments as $apartment)  
+                            @if($default_apartment == $apartment->id)  
+                                <option value="{{ $apartment->id }}" selected>{{ $apartment->title }}</option>
+                            @else
+                                <option value="{{ $apartment->id }}" {{ old('apartment_id') == $apartment->id ? 'selected' : '' }}>{{ $apartment->title }}</option>
+                            @endif
                         @endforeach
                     </select>
                       
@@ -35,10 +39,10 @@
                 
                 <span class="small text-center mb-3"><span class="number-badge me-2">2</span> Scegli un <span class="fw-bold">piano di sponsorizzazione</span></span>
 
-                @foreach ($sponsorships as $sponsorship)
+                @foreach ($sponsorships as $index => $sponsorship)
                 <div class="col-3">
                     <label class="card-radio">
-                        <input type="radio" id="sponsorship_{{$sponsorship->id}}" name="sponsorship_id" value="{{$sponsorship->id}}" class="card-radio-element">
+                        <input type="radio" id="sponsorship_{{$sponsorship->id}}" name="sponsorship_id" value="{{$sponsorship->id}}" class="card-radio-element" {{$index == 0 ? 'checked' : ''}}>
 
                         <div class="card card-tile flat-shadow m-3 drop-shadow-sm card-radio-content">
                             <div class="card-header py-4 bg-secondary text-light">

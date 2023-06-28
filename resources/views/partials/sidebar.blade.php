@@ -1,11 +1,11 @@
 <div class="sidebar ms-bg-dark vh-100 py-4 panel-shadow-right px-3">
-<div class="brand mb-3">
+<div class="brand my-4 text-center">
     {{-- <h3 class="text-white">LOGO</h3> --}}
-    {{-- <img src="{{URL('images/logo.png')}}" alt="" class="sidebar-logo align-middle"> --}}
-    <h6 class="font-secondary fw-bold text-white d-inline align-middle ms-2">BoolBNB</h6>
+    <img src="{{URL('images/logo.svg')}}" alt="" class="sidebar-logo logo-light align-middle">
+    {{-- <h6 class="font-secondary fw-bold text-white d-inline align-middle ms-2">BoolBNB</h6> --}}
 </div>
-<hr>
-<ul class="nav nav-pills flex-column mb-auto">
+
+<ul class="nav nav-pills flex-column mb-auto mt-5">
     <!-- reindirizzamento DASHBOARD -->
     <span class="sidebar-title ps-3 text-uppercase mb-3 d-none d-md-inline text-light">main</span>
     <li>

@@ -11,13 +11,14 @@ use Braintree;
 
 class SponsorshipController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $default_apartment = $request->id;
         $sponsorships = Sponsorship::all();
         $user = auth()->user();
         $apartments = $user->apartments;
 
-        return view('admin.sponsorships.index', compact('sponsorships', 'apartments')); //Passo sia il token che le variabili
+        return view('admin.sponsorships.index', compact('sponsorships', 'apartments', 'default_apartment')); //Passo sia il token che le variabili
     }
 
     public function show(Request $request, $sponsorships, $apartment)
@@ -29,12 +30,8 @@ class SponsorshipController extends Controller
     public function payement(Request $request){
         
 
-        $apartment_id = $request->apartment_id;
-
-        $sponsorship_id = $request->sponsorship_id;
-
-        $curSponsorship = Sponsorship::findOrFail($sponsorship_id);
-        $sponsorship_price = $curSponsorship->price;
+        $apartment = Apartment::findOrFail($request->apartment_id);
+        $sponsorship = Sponsorship::findOrFail($request->sponsorship_id);
 
 
         /* Variabili dell'account Braintree */
@@ -48,16 +45,14 @@ class SponsorshipController extends Controller
         /* Genero un Token per autorizzare il pagamento */
         $token = $gateway->ClientToken()->generate();
 
-        return view('admin.sponsorships.payement',compact('token', 'gateway', 'apartment_id', 'sponsorship_id', 'curSponsorship', 'sponsorship_price') );
+        return view('admin.sponsorships.payement',compact('token', 'gateway', 'apartment', 'sponsorship') );
     }
 
     public function checkouts(Request $request){
 
-        $sponsorship_id = $request->sponsorship_id;
-        $sponsorship_price = $request->sponsorship_price;
-
-
-
+        $sponsorships = Sponsorship::findOrFail($request->sponsorship);
+        $amount = $request->amount;
+        $nonce = $request->payment_method_nonce;
 
         $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
@@ -67,9 +62,6 @@ class SponsorshipController extends Controller
         ]);
 
 
-        $amount = $request->amount;
-        $nonce = $request->payment_method_nonce;
-
         $result = $gateway->transaction()->sale([
             'amount' => $amount,
             'paymentMethodNonce' => $nonce,
@@ -78,16 +70,17 @@ class SponsorshipController extends Controller
             ]
         ]);
 
-        // Verifica del prezzo !!!! USARE UNA REQUEST CUSTOM !!!!
-        // $currentSponsorship = Sponsorship::findOrFail($sponsorship_id);
-
-        // if($currentSponsorship->price != $request->amout){
-        //     $result->success = false;
-        // }
 
         // Se il pagamento avviene con successo
         if ($result->success) {
             $transaction = $result->transaction;
+
+
+            // $sponsorships->start_date = date('Y-m-d');
+            // $sponsorships->start_date = date('Y-m-d');
+            // $apartments = Apartment::findOrFail($request->apartment);
+            // $apartments->sponsorships()->sync($sponsorships);
+
             return view('admin.sponsorships.checkouts', ['transaction' => $transaction->id]);
            
                  

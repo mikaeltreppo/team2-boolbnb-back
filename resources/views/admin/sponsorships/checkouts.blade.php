@@ -8,15 +8,29 @@
             <h1 class=" text-center mb-5">Pagamento Completato!</h1>
             <p>Il pagamento è stato completato con successo</p>
             <div class="token">Il tuo ID transazione è: <span class="fw-bold">{{$transaction}}</span></div>
+            <div class="mt-4 small">
+                Sarai reindirizzato automaticamente alla dashboard
+            </div>
         </div>
+
+        <script>
+            setTimeout(function() {
+                window.location.href = '{{ route('admin.dashboard') }}';
+            }, 5000); // Redirect dopo 5 secondi (5000 millisecondi)
+        </script>
        
     @else
     <div class="col-10 mx-auto text-center h-100">
         <i class="fa-solid fa-circle-exclamation fa-3x text-danger mb-5"></i>
         <h1 class=" text-center mb-5 text-danger">Pagamento Rifiutato</h1>
         <p>Qualcosa è andato storto. Riprova.</p>
+
+        <a href="{{route('admin.sponsorships.index')}}" class="btn ms-btn ms-btn-primary">Riprova</a>
     </div>
     @endif
+    
+   
+
 
 </div>
     {{-- @if (session('success_message'))
@@ -36,6 +50,6 @@
     @endif --}}
 
 
-
+</script>
     
 @endsection

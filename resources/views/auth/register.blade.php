@@ -14,7 +14,9 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <h2 class="mb-5 text-center">- Registrati -</h2>
+                        <div class="auth-brand text-center mb-5 mt-3">
+                            <img src="{{URL('images/logo.svg')}}" alt="" class="login-logo">
+                        </div>
 
                           {{-- Name --}}
                             <div class="form-floating mb-3">
