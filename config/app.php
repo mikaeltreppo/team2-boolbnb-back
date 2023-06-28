@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Facade;
 
 return [
 
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -15,7 +16,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => 'Boolbnb | Dashboard',
 
     /*
     |--------------------------------------------------------------------------
