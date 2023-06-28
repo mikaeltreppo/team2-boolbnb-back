@@ -48,6 +48,7 @@ Route::middleware(['auth', 'verified'])
         Route::prefix('sponsorships')->group(function () {
             // Rotta "checkouts" all'interno del gruppo "sponsorships"
             Route::post('checkouts', [SponsorshipController::class, 'checkouts'])->name('sponsorships.checkouts');
+            Route::post('payement', [SponsorshipController::class, 'payement'])->name('sponsorships.payement');
         });
 
         Route::resource('messages', MessageController::class);
