@@ -83,7 +83,13 @@
             <p>Apartment ID: {{ session('apartment_id') }}</p><br>
         @endif
         @if (session('sponsorship_id'))
-            <p>Sponsorship ID: {{ session('sponsorship_id') }}</p>
+            <p>Sponsorship ID: {{ session('sponsorship_id') }}</p><br>
+        @endif
+        @if (session('start_date'))
+            <p>Start date: {{ session('start_date') }}</p><br>
+        @endif
+        @if (session('expired_date'))
+            <p>Expire at: {{ session('expired_date') }}</p><br>
         @endif
     </div>
 </div>
