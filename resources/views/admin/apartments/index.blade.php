@@ -54,6 +54,7 @@
                                     
                                     //dd($responseData['addresses'][0]['address']);
                         
+                                    /*
                                         $apartment->city = $responseData['addresses'][0]['address']['municipality'];
                                         $apartment->country = $responseData['addresses'][0]['address']['country'];
                                         $apartment->completeAddress = $responseData['addresses'][0]['address']['streetNameAndNumber'];
@@ -70,6 +71,7 @@
                                         //echo array_key_exists('streetNameAndNumber', $address)? $apartment->completeAddress : "" ;
                                         echo array_key_exists('municipality', $address)? ', '. $apartment->city : "" ;
                                         echo array_key_exists('country', $address)? ', '. $apartment->country : "" ;
+                                        */
                                     @endphp
                                 </span>
                             </div>
