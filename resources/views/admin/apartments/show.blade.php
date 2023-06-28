@@ -27,7 +27,9 @@
             <div class="col-4">
                 {{-- map --}}
                 <div class="ms_map h-100">
-                    Anteprima mappa
+                    <div id="map-div">
+                     
+                    </div>
                 </div>
             </div>
         </div>
@@ -153,5 +155,26 @@
     </div>
     {{-- fine big-card apartment --}}
 
+    <script>
+
+            const apiKey = 'ZPskuspkrrcmchd9ut4twltuw96h5bWH';
+
+        function createMap(lat, long) {
+                var map = tt.map({
+                key: apiKey,
+
+                container: "map-div",
+
+                center: { lng: long, lat: lat },
+
+                zoom: 12,
+                });
+            }
+
+            window.onload = (event) => {
+            createMap({{$apartment->latitude}}, {{$apartment->longitude}});
+            };
+        
+    </script>
     
 @endsection
