@@ -8,7 +8,7 @@
         <h1 class=" text-center mb-2">Sponsorizza</h1>
         <p class="text-center">Dai una marcia in più ai tuoi annunci!</p>
         
-        <form  method="POST">
+        <form method="POST" action="salva-relazione">
             @csrf
             @method('POST')
 
