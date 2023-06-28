@@ -39,7 +39,7 @@ class MessageController extends Controller
         $newMessage->fill($data);
         $newMessage->save();
 
-        Mail::to('info@owner.it')->send(new NewContact($newMessage));
+        Mail::to('info@owner.it')->send(new Newcontact($newMessage));
 
         return response()->json(
             [
