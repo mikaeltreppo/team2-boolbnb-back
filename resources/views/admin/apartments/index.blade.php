@@ -52,7 +52,7 @@
                                     $data = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/reverseGeocode/'. $apartment -> latitude .','. $apartment -> longitude .'.json?key=ZPskuspkrrcmchd9ut4twltuw96h5bWH');
                                     $responseData = $data->json();
                                     
-                                    //dd($responseData['addresses'][0]['address']);
+                                    dd($responseData['addresses'][0]['address']);
                         
                                     /*
                                         $apartment->city = $responseData['addresses'][0]['address']['municipality'];
