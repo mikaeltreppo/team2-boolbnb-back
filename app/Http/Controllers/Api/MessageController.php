@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 
 
+
 class MessageController extends Controller
 {
     public function store(Request $request)
@@ -30,7 +31,7 @@ class MessageController extends Controller
             return response()->json(
                 [
                     'success' => false,
-                    'erros' => $validator->erros()
+                    'errors' => $validator->errors()
                 ]
             );
         }
