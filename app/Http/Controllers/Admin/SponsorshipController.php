@@ -40,26 +40,6 @@ class SponsorshipController extends Controller
      */
     public function store(Request $request)
     {
-        /*
-        $apartment_id = $request->input('apartment_id');
-        $apartment = Apartment::findOrFail($apartment_id);
-        $sponsorship_id = $request->input('sponsorship_id'); //da modificare in base al name del form
-        $sponsorship = Sponsorship::findOrFail($sponsorship_id);
-
-        $start_date = now(); //data presa dal server su cui viene eseguito il codice Laravel quindi occhio ai conflitti 
-        $expired_at = $start_date->addHours($sponsorship->duration);
-
-
-        if (!$apartment) { // L'appartamento non è stato trovato
-            echo $apartment_id;
-        }
-
-        $apartment->sponsorships()->attach($sponsorship->id, [
-            'start_date' => $start_date,
-            'expired_at' => $expired_at,
-        ]);
-
-        return redirect()->routes('admin.sponsorships.result');*/
     }
 
     /**
@@ -109,32 +89,35 @@ class SponsorshipController extends Controller
 
     public function salvaRelazione(Request $request)
     {
-        /*
+
         $apartmentId = $request->input('apartment_id');
         $sponsorshipId = $request->input('sponsorship_id');
 
         $apartment = Apartment::findOrFail($apartmentId);
-        $apartment->sponsorships()->attach($sponsorshipId);
-
-        // Altre operazioni o reindirizzamenti successivi
-
-        $sponsorship = Sponsorship::findOrFail($sponsorship_id);
+        $sponsorship = Sponsorship::findOrFail($sponsorshipId);
 
         $start_date = now(); //data presa dal server su cui viene eseguito il codice Laravel quindi occhio ai conflitti 
         $expired_at = $start_date->addHours($sponsorship->duration);
 
 
         if (!$apartment) { // L'appartamento non è stato trovato
-            echo $apartment_id;
+            echo $apartmentId;
         }
 
+        /*
         $apartment->sponsorships()->attach($sponsorship->id, [
             'start_date' => $start_date,
             'expired_at' => $expired_at,
         ]);
-         */
+        */
 
 
-        return redirect()->back()->with('success', 'Relazione salvata correttamente.');
+        return redirect()->back()->with([
+            'success' => 'Relazione salvata correttamente.',
+            'apartment_id' => $apartmentId,
+            'sponsorship_id' => $sponsorshipId,
+            'start_date' => $start_date,
+            'expired_date' => $expired_at
+        ]);
     }
 }
