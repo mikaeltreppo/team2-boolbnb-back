@@ -6,6 +6,8 @@ use App\Models\Apartment;
 use App\Models\Sponsorship;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Braintree;
+
 
 class SponsorshipController extends Controller
 {
@@ -16,10 +18,62 @@ class SponsorshipController extends Controller
      */
     public function index()
     {
+        /* Variabili dell'account Braintree */
+        $gateway = new Braintree\Gateway([
+            'environment' => config('services.braintree.environment'),
+            'merchantId' => config('services.braintree.merchantId'),
+            'publicKey' => config('services.braintree.publicKey'),
+            'privateKey' => config('services.braintree.privateKey')
+        ]);
+
+        /* Genero un Token per autorizzare il pagamento */
+        $token = $gateway->ClientToken()->generate();
+
+
         $sponsorships = Sponsorship::all();
         $user = auth()->user();
         $apartments = $user->apartments;
-        return view('admin.sponsorships.index', compact('sponsorships', 'apartments'));
+
+        return view('admin.sponsorships.index', compact('sponsorships', 'apartments','token','gateway')); //Passo sia il token che le variabili
+    }
+
+    public function checkouts(Request $request){
+
+        $gateway = new Braintree\Gateway([
+            'environment' => config('services.braintree.environment'),
+            'merchantId' => config('services.braintree.merchantId'),
+            'publicKey' => config('services.braintree.publicKey'),
+            'privateKey' => config('services.braintree.privateKey')
+        ]);
+
+
+        $amount = $request->amount;
+        $nonce = $request->payment_method_nonce;
+
+        $result = $gateway->transaction()->sale([
+            'amount' => $amount,
+            'paymentMethodNonce' => $nonce,
+            'options' => [
+                'submitForSettlement' => true
+            ]
+        ]);
+
+        // Se il pagamento avviene con successo
+        if ($result->success) {
+            $transaction = $result->transaction;
+
+            return view('admin.sponsorships.checkouts', ['transaction' => $transaction->id]);
+           
+                 
+        } else {  // Se il pagamento no va a buon fine
+            $errorString = "";
+
+            foreach($result->errors->deepAll() as $error) {
+                $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
+            }
+
+            return view('admin.sponsorships.checkouts')->withErrors('Error with' . $result->message);
+        }
     }
 
     /**
@@ -50,7 +104,8 @@ class SponsorshipController extends Controller
      */
     public function show(Request $request, $sponsorship_id)
     {
-        return redirect()->routes('admin.sponsorships.result');
+        
+     
     }
 
     /**
@@ -75,6 +130,7 @@ class SponsorshipController extends Controller
     {
         //
     }
+    
 
     /**
      * Remove the specified resource from storage.
