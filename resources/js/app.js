@@ -6,6 +6,8 @@ import "./chartImplement"; // Contiene tutti i grafici delle statistiche!
 import * as bootstrap from "bootstrap";
 import.meta.glob(["../img/**"]);
 
+
+
 //funzioni
 
 const deleteButtons = document.querySelectorAll(
