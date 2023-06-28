@@ -11,8 +11,12 @@
 }
 
 .sidebar-logo{
-    height: 30px;
+    height: 25px;
     // filter: brightness(1) invert(1);
+}
+
+.sidebar-logo.logo-light{
+    filter: brightness(100);
 }
 
 @media screen and (max-width: 767px) {

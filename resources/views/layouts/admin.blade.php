@@ -35,6 +35,7 @@
 </head>
 
 <body>
+    @include('partials.loader')
     <div id="app">
         <main>
             <div class="container-fluid bg-light g-0">

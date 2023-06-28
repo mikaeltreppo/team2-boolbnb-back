@@ -7,7 +7,7 @@
 
 
         {{-- Form di pagamento --}}
-        <form method="post" id="payment-form" action="{{route('admin.sponsorships.checkouts', compact('sponsorship_id', 'sponsorship_price'))}}">
+        <form method="post" id="payment-form" action="{{route('admin.sponsorships.checkouts', compact('sponsorship','apartment'))}}">
             @csrf
             
             <section>
@@ -21,14 +21,14 @@
                             <div class="row">
                                 <div class="col">
                                     <label for="" class="fw-bold small mb-3">Piano di Sponsorship</label>
-                                    <h5 class="font-secondary fw-bold text-muted">{{$curSponsorship->name}} <span class="fw-secondary">({{$curSponsorship->duration}} h)</span></h5>
+                                    <h5 class="font-secondary fw-bold text-muted">{{$sponsorship->name}} <span class="fw-secondary">({{$sponsorship->duration}} h)</span></h5>
                                 </div>
                                 <div class="col">
                                     <label for="amount" class="mb-3 small fw-bold">
                                         Prezzo
                                     </label>
                                     <div class="input-wrapper amount-wrapper">
-                                        <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="{{$sponsorship_price}}">
+                                        <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="{{$sponsorship->price}}">
                                     </div>
                                 </div>
                             </div>
