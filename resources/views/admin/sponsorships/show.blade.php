@@ -8,41 +8,6 @@
        ?>
 
 
-    {{-- <div class="container-payment-empty">
-
-    </div>
-    <div class="container-payment-maxwidth">
-        <div class="container-payment-form">
-
-            <form method="post" id="payment-form" action="{{ route('admin.sponsorships.checkouts') }}">
-                @csrf
-                <section>
-                    
-                    <input type="hidden" name="apartment_id" value="{{ $apartment_id }}">
-                    <input type="hidden" name="sponsorship_id" value="{{ $sponsorship_id }}">
-                    <label for="amount">
-                        <span class="input-label">Amount</span>
-                        <div class="input-wrapper amount-wrapper">
-                            <input id="amount" name="amount" type="tel" min="1" placeholder="Amount"
-                                value="{{$amount}}">
-                        </div>
-                    </label>
-
-
-                    <div class="bt-drop-in-wrapper">
-                        <div id="bt-dropin"></div>
-                    </div>
-                </section>
-
-                <input id="nonce" name="payment_method_nonce" type="hidden" />
-                <button class="button" type="submit"><span>Test Transaction</span></button>
-            </form>
-
-        </div>
-
-    </div> --}}
-
-
     <div class="col-6 mx-auto">
         {{-- Form di pagamento --}}
         <form method="post" id="payment-form" action="{{route('admin.sponsorships.checkouts')}}">
@@ -68,7 +33,7 @@
                                         Prezzo
                                     </label>
                                     <div class="input-wrapper amount-wrapper">
-                                        <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="12">
+                                        <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="{{$amount}}">
                                     </div>
                                 </div>
                             </div>
