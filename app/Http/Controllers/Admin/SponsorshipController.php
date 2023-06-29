@@ -94,6 +94,7 @@ class SponsorshipController extends Controller
             $errorString = "";
 
             foreach ($result->errors->deepAll() as $error) {
+            foreach ($result->errors->deepAll() as $error) {
                 $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
             }
 
@@ -197,6 +198,7 @@ class SponsorshipController extends Controller
     }
 
 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -225,7 +227,6 @@ class SponsorshipController extends Controller
             echo $apartmentId;
         }
 
-        /*
         $apartment->sponsorships()->attach($sponsorship->id, [
             'start_date' => $start_date,
             'expired_at' => $expired_at,

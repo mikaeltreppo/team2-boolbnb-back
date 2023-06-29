@@ -27,6 +27,7 @@ Route::get('/apartments/{id}', [ApartmentController::class, 'show']);
 
 /*rotta avere tutti gli appartamenti che rientrano nel radius passato a partire dalla coordinata (lat/lon) */
 Route::post('/apartments/search/{latitude}/{longitude}/{radius}/{price}/{beds}/{m2}/{rooms}/{bathrooms}/{wifi}/{car}/{pool}/{door}/{sauna}/{water}', [ApartmentController::class, 'search']);
+Route::post('/apartments/sponsorized', [ApartmentController::class, 'all_sponsorized']);
 
 /*rotta per email*/
 Route::post('/apartment/{id}', [MessageController::class, 'store']);
