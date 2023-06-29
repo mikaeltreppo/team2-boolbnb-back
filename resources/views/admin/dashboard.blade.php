@@ -153,7 +153,22 @@
              <div class="col-xl-3 col-lg-12 col-12">
                 <div class="card h-100 bg-white rounded-4 flat-shadow card-tile drop-shadow-md">
                     <div class="card-body p-3">
-                        <span class="small fw-bold">Altro?</span>
+                        <span class="small fw-bold">Supporto Clienti</span>
+
+                        <div class="row text-center py-5">
+                           <div class="col-7 mx-auto">
+                                <div class="rounded-icon mx-auto ms-bg-dark mb-5 p-5">
+                                    <i class="fa-solid fa-envelope mb-3 mb-lg-0 fa-2x"></i>
+                                </div>
+                                <h5 class="font-secondary">Non sai come usare la dashboard?</h5>
+                                <h6 class="font-secondary text-muted mb-4">Ti aiutiamo noi!</h6>
+                                <a href="http://localhost:5174/support" target="_blank" class="btn ms-btn ms-btn-sm ms-btn-primary">
+                                    <i class="fa-solid fa-headset me-2"></i>
+                                    Contattaci
+                                </a>
+                           </div>
+                        </div>
+                        
                     </div>
                 </div>
              </div>
