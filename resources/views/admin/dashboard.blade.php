@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
+
         {{-- Top Container --}}
         <div class="row align-items-center text-center text-lg-start mb-5">
 
@@ -53,7 +54,7 @@
                             <div class="row align-items-center text-center text-lg-start g-0">
         
                             <div class="col-12 col-xl-2 text-center order-3 order-lg-0">
-                                    <h1 class="fw-bolder">50</h1>
+                                    <h1 class="fw-bolder">{{$messages_count}}</h1>
                             </div>
         
                                 <div class="col-12 col-xl-7 col-lg-12 text-center text-xl-start order-1 text-muted ">
@@ -115,7 +116,7 @@
                             <div class="row align-items-center text-center text-lg-start g-0">
 
                                 <div class="col-xl-2 col-12 text-center order-3 order-lg-0">
-                                        <h1 class="fw-bolder">5</h1>
+                                        <h1 class="fw-bolder">{{$apartment_count}}</h1>
                                 </div>
 
                                 <div class="col-12 col-xl-7 col-lg-12 text-center text-xl-start order-1 text-muted ">
