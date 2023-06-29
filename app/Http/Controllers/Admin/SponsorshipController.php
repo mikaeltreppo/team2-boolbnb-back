@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Http\Requests\PayementRequest;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 use Braintree;
 
 
@@ -26,6 +27,7 @@ class SponsorshipController extends Controller
 
     public function payement(Request $request)
     {
+
 
 
         $apartment = Apartment::findOrFail($request->apartment_id);
@@ -149,6 +151,11 @@ class SponsorshipController extends Controller
      */
     public function show(Request $request, $sponsorship_id)
     {
+
+        $apartment_id = Session::get('apartment_id'); 
+        $sponsorship_id = Session::get('sponsorship_id');
+
+
         /* Variabili dell'account Braintree */
         $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
@@ -170,7 +177,7 @@ class SponsorshipController extends Controller
         }
 
 
-        return view('admin.sponsorships.show', compact('token', 'gateway', 'amount'));
+        return view('admin.sponsorships.show', compact('token', 'gateway', 'amount', 'apartment_id', 'sponsorship_id'));
     }
 
     /**
