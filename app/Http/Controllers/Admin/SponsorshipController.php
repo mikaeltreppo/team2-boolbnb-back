@@ -34,10 +34,11 @@ class SponsorshipController extends Controller
         $user = auth()->user();
         $apartments = $user->apartments;
 
-        return view('admin.sponsorships.index', compact('sponsorships', 'apartments','token','gateway')); //Passo sia il token che le variabili
+        return view('admin.sponsorships.index', compact('sponsorships', 'apartments', 'token', 'gateway')); //Passo sia il token che le variabili
     }
 
-    public function checkouts(Request $request){
+    public function checkouts(Request $request)
+    {
 
         $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
@@ -63,12 +64,12 @@ class SponsorshipController extends Controller
             $transaction = $result->transaction;
 
             return view('admin.sponsorships.checkouts', ['transaction' => $transaction->id]);
-           
-                 
-        } else {  // Se il pagamento no va a buon fine
+
+
+        } else { // Se il pagamento no va a buon fine
             $errorString = "";
 
-            foreach($result->errors->deepAll() as $error) {
+            foreach ($result->errors->deepAll() as $error) {
                 $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
             }
 
@@ -104,8 +105,8 @@ class SponsorshipController extends Controller
      */
     public function show(Request $request, $sponsorship_id)
     {
-        
-     
+
+
     }
 
     /**
@@ -130,7 +131,7 @@ class SponsorshipController extends Controller
     {
         //
     }
-    
+
 
     /**
      * Remove the specified resource from storage.
@@ -160,20 +161,19 @@ class SponsorshipController extends Controller
             echo $apartmentId;
         }
 
-        /*
         $apartment->sponsorships()->attach($sponsorship->id, [
             'start_date' => $start_date,
             'expired_at' => $expired_at,
         ]);
+
+        /*
+            return redirect()->back()->with([
+                'success' => 'Relazione salvata correttamente.',
+                'apartment_id' => $apartmentId,
+                'sponsorship_id' => $sponsorshipId,
+                'start_date' => $start_date,
+                'expired_date' => $expired_at
+            ]);
         */
-
-
-        return redirect()->back()->with([
-            'success' => 'Relazione salvata correttamente.',
-            'apartment_id' => $apartmentId,
-            'sponsorship_id' => $sponsorshipId,
-            'start_date' => $start_date,
-            'expired_date' => $expired_at
-        ]);
     }
 }

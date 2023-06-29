@@ -30,6 +30,33 @@ class ApartmentController extends Controller
         );
     }
 
+    public function all_sponsorized()
+    {
+        $sponsorized = Apartment::with(['sponsorships'])->get();
+        $sponsoredIds = [];
+
+        // Filtra gli appartamenti sponsorizzati e li mette in sponsoredIds
+        foreach ($sponsorized as $apartment) {
+            // Verifica se ci sono sponsorizzazioni attive
+            $sponsorships = $apartment->sponsorships;
+            $activeSponsorship = $sponsorships->first(function ($sponsorship) { //trova la prima sponsorizzazione attiva
+                return $sponsorship->pivot->start_date <= now() && $sponsorship->pivot->expired_at >= now();
+            });
+            if ($activeSponsorship) {
+                // Aggiungi l'ID dell'appartamento sponsorizzato all'array sponsoredIds
+                $sponsoredIds[] = $apartment->id;
+            }
+        }
+
+        $results = Apartment::whereIn('id', $sponsoredIds)->with(['facilities', 'sponsorships', 'user'])->paginate(20);
+
+        return response()->json([
+            'success' => true,
+            'date' => now(),
+            'results' => $results
+        ]);
+    }
+
 
     /*  Metodo di ricerca degli appartamenti entro il raggio selezionato  */
     public function search($latitude, $longitude, $radius, $price, $beds, $meters, $rooms, $bathrooms, $wifi, $car, $pool, $door, $sauna, $water)
