@@ -13,4 +13,9 @@ class Sponsorship extends Model
         return $this->belongsToMany(Apartment::class)
             ->withPivot('start_date', 'expired_at');
     }
+
+    public function apartment_sponsorship()
+    {
+        return $this->belongsToMany(Apartment::class);
+    }
 }
