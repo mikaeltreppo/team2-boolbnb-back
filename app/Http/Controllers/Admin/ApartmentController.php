@@ -126,7 +126,9 @@ class ApartmentController extends Controller
     public function show($id)
     {
         $user = auth()->user();
-        $apartment = Apartment::findOrFail($id);
+        // $apartment = Apartment::findOrFail($id)->with('sponsorships')->get();
+        $apartment = Apartment::with('sponsorships')->findOrFail($id)->load('sponsorships');
+
 
         $facilities = Facility::all();
 

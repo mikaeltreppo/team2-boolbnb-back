@@ -21,8 +21,22 @@
                 <img src="{{ asset('storage/' . $apartment->cover_image) }}" alt="{{ $apartment->title }}" class="card-img-top w-100 img-fluid border-0 d-none d-lg-block">
                 @endif
 
-                <a href="{{route('admin.sponsorships.index', ['id' => $apartment->id])}}" class="btn ms-btn ms-btn-sm ms-btn-premium position-absolute top-0 end-0 mt-lg-2 mt-2 me-lg-4 me-3">
-                <i class="fa-solid fa-star me-1"></i>Sponsorizza</a>
+   
+
+
+                @if($apartment->sponsorships->max('pivot.start_date') < $apartment->sponsorships->max('pivot.expired_at'))
+                    <div class="badge ms-bg-dark position-absolute top-0 end-0 mt-lg-2 mt-2 me-lg-4 me-3">
+                        <i class="fa-solid fa-star text-light me-2"></i>
+                        <span class="xsmall text-uppercase fw-bolder text-light">
+                        in evidenza
+                        </span>
+                    </div>
+                @else
+                    <a href="{{route('admin.sponsorships.index', ['id' => $apartment->id])}}" class="btn ms-btn ms-btn-sm ms-btn-premium position-absolute top-0 end-0 mt-lg-2 mt-2 me-lg-4 me-3">
+                        <i class="fa-solid fa-star me-1"></i>
+                        Sponsorizza
+                    </a>
+                @endif
 
                 <a href="{{ route('admin.apartments.index') }}" class="btn ms-btn-outline-primary  ms_arrow_back d-none d-lg-block ms_arrow_back">
                     <i class="fa-solid fa-arrow-left"></i>

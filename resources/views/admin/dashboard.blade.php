@@ -164,7 +164,7 @@
                                 <h6 class="font-secondary text-muted mb-4">Ti aiutiamo noi!</h6>
                                 <a href="http://localhost:5174/support" target="_blank" class="btn ms-btn ms-btn-sm ms-btn-primary">
                                     <i class="fa-solid fa-headset me-2"></i>
-                                    Contattaci
+                                    Vai alle FAQ
                                 </a>
                            </div>
                         </div>

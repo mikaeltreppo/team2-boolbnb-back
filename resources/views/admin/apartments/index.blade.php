@@ -9,7 +9,7 @@
         <div class="row flex-wrap gy-4">
 
             {{-- card add --}}
-            <div class="col-lg-3 col-md-6 col-sm-12 ">
+            <div class="col-lg-4 col-xlg-3 col-md-6 col-sm-12 ">
 
                 <a href="{{ route('admin.apartments.create') }}" class="card ms_card ms_btn_add flat-shadow">
                     <div class="ms_box_info">
@@ -28,7 +28,7 @@
             {{-- card apartment --}}
 
             @foreach ($apartments as $apartment)
-                <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="col-lg-4 col-xlg-3 col-md-6 col-sm-12">
                     <div class="p-0 card ms_card card-tile drop-shadow-sm bg-white rounded-4 flat-shadow">
                         <a href="{{ route('admin.apartments.show', ['apartment' => $apartment->id]) }}">
                             @if ($apartment->cover_image)
