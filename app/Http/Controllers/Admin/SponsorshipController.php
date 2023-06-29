@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Apartment;
 use App\Models\Sponsorship;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -72,12 +73,15 @@ class SponsorshipController extends Controller
         if ($result->success) {
             $transaction = $result->transaction;
 
-            $start_date = now(); //data presa dal server su cui viene eseguito il codice Laravel quindi occhio ai conflitti 
-            $expired_at = $start_date->addHours($sponsorship->duration);
+            $start_date = Carbon::now(); // Utilizza Carbon::now() invece di now()
+            $expired_at = $start_date->copy()->addHours($sponsorship->duration); // Utilizza copy() per creare una copia di $start_date
+
+            $format_start_date = $start_date->format('Y-m-d H:i:s');
+            $format_expired_at = $expired_at->format('Y-m-d H:i:s');
 
             $apartment->apartment_sponsorship()->attach($sponsorship->id, [
-                'start_date' => $start_date,
-                'expired_at' => $expired_at,
+                'start_date' => $format_start_date,
+                'expired_at' => $format_expired_at,
             ]);
             // $sponsorships->start_date = date('Y-m-d');
             // $sponsorships->start_date = date('Y-m-d');
