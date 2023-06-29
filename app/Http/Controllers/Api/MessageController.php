@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 
 
+
 class MessageController extends Controller
 {
     public function store(Request $request)
@@ -19,6 +20,7 @@ class MessageController extends Controller
         $validator = Validator::make(
             $data,
             [
+                'apartment_id'=> 'required',
                 'name' => 'required',
                 'email' => 'required|email',
                 'message' => 'required',
@@ -29,7 +31,7 @@ class MessageController extends Controller
             return response()->json(
                 [
                     'success' => false,
-                    'erros' => $validator->erros()
+                    'errors' => $validator->errors()
                 ]
             );
         }
@@ -38,7 +40,7 @@ class MessageController extends Controller
         $newMessage->fill($data);
         $newMessage->save();
 
-        Mail::to('info@owner.it')->send(new NewContact($newMessage));
+        ///Mail::to('info@owner.it')->send(new Newcontact($newMessage));
 
         return response()->json(
             [

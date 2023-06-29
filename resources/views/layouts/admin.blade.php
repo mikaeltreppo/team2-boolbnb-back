@@ -20,7 +20,10 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="icon" href="{{ URL::asset('favicon.ico') }}" type="image/x-icon"/>
+
+
+    <title>{{ config('app.name', 'Boolbnb Dashboard') }}</title>
 
     {{-- Google Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,6 +38,7 @@
 </head>
 
 <body>
+    @include('partials.loader')
     <div id="app">
         <main>
             <div class="container-fluid bg-light g-0">

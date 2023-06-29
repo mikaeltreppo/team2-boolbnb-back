@@ -15,7 +15,7 @@
                 <a href="{{ route('admin.apartments.index') }}" class="btn ms-btn-outline-primary  ms_arrow_back">
                     <i class="fa-solid fa-arrow-left"></i>
                 </a>
-                <a href="#" class="btn ms-btn ms-btn-sm ms-btn-premium ms-2 mb-2 position-absolute bottom-0">
+                <a href="{{route('admin.sponsorships.index', ['id' => $apartment->id])}}" class="btn ms-btn ms-btn-sm ms-btn-premium ms-2 mb-2 position-absolute bottom-0">
                     <i class="fa-solid fa-star me-2"></i>Sponsorizza</a>
                 {{-- image --}}
                 @if ($apartment->cover_image)
@@ -87,7 +87,7 @@
                 <div class="card-text ">
                     <i class="fa-solid fa-location-dot ms_light_gray_text me-2 mt-1"></i>
                     <span>
-                        @php 
+                        {{-- @php 
                         $data = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/reverseGeocode/'. $apartment -> latitude .','. $apartment -> longitude .'.json?key=ZPskuspkrrcmchd9ut4twltuw96h5bWH');
                         $responseData = $data->json();
                         
@@ -101,7 +101,7 @@
                             //$address = $responseData['addresses'][0]['address'];
                 
                             echo $apartment->completeAddress.', '.$apartment->city.', '.$apartment->country ;
-                        @endphp
+                        @endphp --}}
                     </span>
                 </div>
                 <div class="card-text my-3 ">
@@ -171,10 +171,6 @@
                 });
             }
 
-            window.onload = (event) => {
-            createMap({{$apartment->latitude}}, {{$apartment->longitude}});
-            };
-        
     </script>
     
 @endsection

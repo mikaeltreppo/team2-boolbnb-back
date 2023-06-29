@@ -12,22 +12,44 @@ use Braintree;
 
 class SponsorshipController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(Request $request)
     {
+        $default_apartment = $request->id;
         $sponsorships = Sponsorship::all();
         $user = auth()->user();
         $apartments = $user->apartments;
 
-        return view('admin.sponsorships.index', compact('sponsorships', 'apartments')); //Passo sia il token che le variabili
+        return view('admin.sponsorships.index', compact('sponsorships', 'apartments', 'default_apartment')); //Passo sia il token che le variabili
+    }
+
+    public function payement(Request $request)
+    {
+
+
+        $apartment = Apartment::findOrFail($request->apartment_id);
+        $sponsorship = Sponsorship::findOrFail($request->sponsorship_id);
+
+
+        /* Variabili dell'account Braintree */
+        $gateway = new Braintree\Gateway([
+            'environment' => config('services.braintree.environment'),
+            'merchantId' => config('services.braintree.merchantId'),
+            'publicKey' => config('services.braintree.publicKey'),
+            'privateKey' => config('services.braintree.privateKey')
+        ]);
+
+        /* Genero un Token per autorizzare il pagamento */
+        $token = $gateway->ClientToken()->generate();
+
+        return view('admin.sponsorships.payement', compact('token', 'gateway', 'apartment', 'sponsorship'));
     }
 
     public function checkouts(Request $request)
     {
+
+        $sponsorships = Sponsorship::findOrFail($request->sponsorship);
+        $amount = $request->amount;
+        $nonce = $request->payment_method_nonce;
 
         $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
@@ -47,9 +69,16 @@ class SponsorshipController extends Controller
             ]
         ]);
 
+
         // Se il pagamento avviene con successo
         if ($result->success) {
             $transaction = $result->transaction;
+
+
+            // $sponsorships->start_date = date('Y-m-d');
+            // $sponsorships->start_date = date('Y-m-d');
+            // $apartments = Apartment::findOrFail($request->apartment);
+            // $apartments->sponsorships()->sync($sponsorships);
 
             return view('admin.sponsorships.checkouts', ['transaction' => $transaction->id]);
         } else {  // Se il pagamento no va a buon fine
