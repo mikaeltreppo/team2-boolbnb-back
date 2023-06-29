@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Apartment;
+use App\Models\Message;
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index(Request $request){
+    public function index($userId){
 
-        // $apartment = Apartment::all()->where('user_id', Auth::user()->id);
-
-        dd($request->userId);
+        $user = auth()->user();
         
-
-        return view('admin.dashboard', compact('apartments', 'messages'));
+        $apartment_count = Apartment::where('user_id', $userId)->count();
+        $apartments = $user->apartments()->pluck('id');
+        $messages_count = Message::whereIn('apartment_id', $apartments)->count();
+            
+        return view('admin.dashboard', compact('apartment_count', 'messages_count'));
     }
 }
