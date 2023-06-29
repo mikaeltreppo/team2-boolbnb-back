@@ -1,8 +1,8 @@
 <div class="sidebar ms-bg-dark vh-100 py-4 panel-shadow-right px-3">
 <div class="brand my-4 text-center">
     {{-- <h3 class="text-white">LOGO</h3> --}}
-    <img src="{{URL('images/logo.svg')}}" alt="" class="sidebar-logo logo-light align-middle d-lg-block d-none">
-    <h1 class="display-3 font-secondary fw-bold text-white d-inline align-middle ms-2 d-lg-none">B</h1>
+    <img src="{{URL('images/logo.svg')}}" alt="" class="sidebar-logo logo-light align-middle d-md-block d-none">
+    <h1 class="display-3 font-secondary fw-bold text-white d-inline align-middle ms-2 d-md-none">B</h1>
 </div>
 
 <ul class="nav nav-pills flex-column mb-auto mt-5">

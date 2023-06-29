@@ -52,7 +52,7 @@
                     {{-- Main Content --}}
                     <div class="col-xl-10 col-lg-9 col-md-8 col-10 vh-100 overflow-y-auto">
                         @include('partials.navbar')
-                        <div class="container-fluid p-5">
+                        <div class="container-fluid p-lg-5">
                             @yield('content')   
                         </div>     
                     </div>       

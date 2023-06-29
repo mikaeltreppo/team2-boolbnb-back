@@ -33,7 +33,7 @@
                   
             </div>
              {{-- button- torna indietro lg--}}
-             <a href="{{ route('admin.messages.index') }}" class="btn ms-btn-outline-primary d-lg-none mt-5
+             <a href="{{ route('admin.messages.index') }}" class="btn ms-btn-outline-primary d-lg-none my-5
              ">
                  <i class="fa-solid fa-arrow-left"></i>
                  Torna ai miei appartamenti
