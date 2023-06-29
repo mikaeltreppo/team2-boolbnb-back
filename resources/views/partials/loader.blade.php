@@ -12,6 +12,7 @@
 
 <script>
     window.onload = function() {
+        console.log('loaded')
         let loader = document.querySelector('.loader-wrapper')
         loader.classList.add("d-none")
     };
