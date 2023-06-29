@@ -45,7 +45,7 @@
         <div class="row">
 
 
-            <div class="col-lg-4 col-12">
+            <div class="col-lg-4 col-12 d-flex flex-column justify-content-between">
                 
                 {{-- Messages --}}
                     <a href="{{ route('admin.messages.index') }}" class="text-decoration-none">
