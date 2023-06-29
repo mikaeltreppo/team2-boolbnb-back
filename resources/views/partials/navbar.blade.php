@@ -1,7 +1,12 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white sticky-top">
     <div class="container-fluid">
-    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" aria-label="{{ __('Toggle navigation') }}">
-            <span class="navbar-toggler-icon"></span>
+    <div class="navbar-logo h-100 d-flex align-items-middle">
+        <img src="{{URL('images/logo.svg')}}" alt="" class="navbar-logo d-inline-block d-md-none">
+    </div>
+    <button class="navbar-toggler ms-auto shadow-none" type="button" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" aria-label="{{ __('Toggle navigation') }}">
+            <div class="line-1"></div>
+            <div class="line-2"></div>
+            <div class="line-3"></div>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">      
@@ -10,6 +15,8 @@
                 <i class="fa-solid fa-plus me-2"></i>
                 Aggiungi
             </a>
+
+         
 
             {{-- Right Side Of Navbar --}}
             <ul class="navbar-nav ms-auto">
@@ -50,28 +57,28 @@
                    <li>
                 <a href="{{ route('admin.dashboard') }}" class="fw-bold mb-1 text-start btn ms-btn-textual-dark rounded-4 btn-sm w-100" data-dismiss="offcanvas">
                     <i class="fa-solid fa-gauge me-2"></i>
-                    <span class="d-none d-md-inline">Dashboard</span>
+                    <span class="d-md-inline">Dashboard</span>
                 </a>
             </li>
 
             <li>
                 <a href="{{ route('admin.apartments.index') }}" class="fw-bold mb-1 text-start btn ms-btn-textual-dark rounded-4 btn-sm w-100" data-dismiss="offcanvas">
                     <i class="fa-solid fa-list me-2"></i>
-                    <span class="d-none d-md-inline">I Miei Appartamenti</span>
+                    <span class="d-md-inline">I Miei Appartamenti</span>
                 </a>
             </li>
 
             <li>
                 <a href="{{ route('admin.messages.index') }}" class="fw-bold mb-1 text-start btn ms-btn-textual-dark rounded-4 btn-sm w-100" data-dismiss="offcanvas">
                     <i class="fa-solid fa-envelope me-2"></i>
-                    <span class="d-none d-md-inline">Messaggi</span>
+                    <span class="d-md-inline">Messaggi</span>
                 </a>
             </li>
 
             <li>
                 <a href="{{ route('admin.sponsorships.index') }}" class="fw-bold mb-1 text-start btn ms-btn-textual-dark rounded-4 btn-sm w-100" data-dismiss="offcanvas">
                     <i class="fa-solid fa-star me-2"></i>
-                    <span class="d-none d-md-inline">Sponsorizza</span>
+                    <span class="d-md-inline">Sponsorizza</span>
                 </a>
             </li>
         </ul>

@@ -6,7 +6,7 @@
         <div class="row align-items-center text-center text-lg-start mb-5">
 
             {{-- Heading --}}
-            <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+            <div class="col-12 col-lg-6 mb-4 mb-lg-0 pt-5 pt-lg-0">
                 <h1 class="fw-lighter mb-1">Bentornato, <span class="fw-bold font-primary">{{ Auth::user()->name }}</span></h1>
                 <p>Questa è la tua dashboard, una panoramica dei tuoi annunci</p>
             </div>
