@@ -17,12 +17,12 @@ class SponsorshipController extends Controller
 {
     public function index(Request $request)
     {
-        $default_apartment = $request->id;
+        $apartment_id = $request->id;
         $sponsorships = Sponsorship::all();
         $user = auth()->user();
         $apartments = $user->apartments;
 
-        return view('admin.sponsorships.index', compact('sponsorships', 'apartments', 'default_apartment')); //Passo sia il token che le variabili
+        return view('admin.sponsorships.index', compact('sponsorships', 'apartments', 'apartment_id')); //Passo sia il token che le variabili
     }
 
     public function payement(Request $request)

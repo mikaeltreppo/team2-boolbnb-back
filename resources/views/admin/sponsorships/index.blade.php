@@ -20,9 +20,14 @@
                         <select class="form-select form-select-sm mb-3 mt-3" aria-label=".form-select-lg example"
                             id="apartmentSelect" name="apartment_id">
                             @foreach ($apartments as $apartment)
-                                <option value="{{ $apartment->id }}"
-                                    {{ old('apartment_id') == $apartment->id ? 'selected' : '' }}>{{ $apartment->title }}
-                                </option>
+                                 @if($apartment_id != null && $apartment_id == $apartment->id)
+                                    <option value="{{ $apartment->id }}" selected>{{ $apartment->title }}
+                                    </option>
+                                @else
+                                    <option value="{{ $apartment->id }}"
+                                        {{ old('apartment_id') == $apartment->id ? 'selected' : '' }}>{{ $apartment->title }}
+                                    </option>
+                                @endif
                             @endforeach
                         </select>
 
