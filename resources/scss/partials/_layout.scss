@@ -1,13 +1,30 @@
 /* LAYOUT */
 
-
 /* width */
 
-.w-80{
-    width: 80%!important;
+.w-80 {
+    width: 80% !important;
 }
 
-.cover-image{
+.cover-image {
     height: 150px;
     object-fit: cover;
 }
+
+// @include media-breakpoint-up(sm) {
+//     .sm-layout {
+//         display: block;
+//     }
+// }
+
+// @include media-breakpoint-up(md) {
+//     .md-layout {
+//         display: block;
+//     }
+// }
+
+// @include media-breakpoint-up(lg) {
+//     .lg-layout {
+//         display: block;
+//     }
+// }
