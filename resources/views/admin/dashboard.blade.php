@@ -49,7 +49,7 @@
                 
                 {{-- Messages --}}
                     <a href="{{ route('admin.messages.index') }}" class="text-decoration-none">
-                        <div class="card card-tile drop-shadow-md mb-4 py-3 bg-white rounded-4 flat-shadow">
+                        <div class="card card-tile drop-shadow-md mb-4 py-4 bg-white rounded-4 flat-shadow">
                             <div class="card-body position-relative">
                             <div class="row align-items-center text-center text-lg-start g-0">
         
@@ -58,10 +58,10 @@
                             </div>
         
                                 <div class="col-12 col-xl-7 col-lg-12 text-center text-xl-start order-1 text-muted ">
-                                    <div class="small mb-2 mb-xl-0">
+                                    <div class="mb-2 mb-xl-0">
                                         Messaggi
                                         <br/>
-                                        Non letti
+                                        nella tua inbox
                                     </div>
                                 </div>
         
@@ -80,7 +80,7 @@
 
                   {{-- Views --}}
                    <a href="{{ route('admin.apartments.index') }}" class="text-decoration-none">
-                    <div class="card card-tile drop-shadow-md mb-4 py-3 bg-white rounded-4 flat-shadow">
+                    <div class="card card-tile drop-shadow-md mb-4 py-4 bg-white rounded-4 flat-shadow">
                         <div class="card-body position-relative">
 
                         <div class="row align-items-center text-center text-lg-start  g-0">
@@ -109,7 +109,7 @@
 
                     {{-- Aparmtents --}}
                     <a href="{{ route('admin.apartments.index') }}" class="text-decoration-none">
-                        <div class="card card-tile drop-shadow-md py-3 bg-white rounded-4 flat-shadow">
+                        <div class="card card-tile drop-shadow-md py-4 bg-white rounded-4 flat-shadow">
 
                             <div class="card-body position-relative">
 
