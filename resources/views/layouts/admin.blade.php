@@ -45,13 +45,13 @@
             <div class="container-fluid bg-light g-0">
                 <div class="row g-0">
                     {{-- Sidebar --}}
-                    <div class="col-xl-2 col-lg-3 col-md-4 col-2 vh-100">
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-0 vh-100 d-none d-md-flex">
                         @include('partials.sidebar')
                     </div>
                     {{-- End Sidebar --}}
 
                     {{-- Main Content --}}
-                    <div class="col-xl-10 col-lg-9 col-md-8 col-10 vh-100 overflow-y-auto">
+                    <div class="col-xl-10 col-lg-9 col-md-8 col-12 vh-100 overflow-y-auto">
                         @include('partials.navbar')
                         <div class="container-fluid p-lg-5">
                             @yield('content')   
