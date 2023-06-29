@@ -17,9 +17,11 @@
         let loader = document.querySelector('.loader-wrapper')
         loader.classList.add("d-none")
 
-        if(document.getElementById('map-div') != null){
-            createMap({{$apartment->latitude}}, {{$apartment->longitude}});
-        }
+        @if (isset($apartment))
+                if(document.getElementById('map-div') != null){
+                    createMap({{$apartment->latitude}}, {{$apartment->longitude}});
+                }
+        @endif
          
         
     };

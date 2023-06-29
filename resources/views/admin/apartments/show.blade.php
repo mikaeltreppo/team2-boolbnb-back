@@ -15,7 +15,7 @@
                 <a href="{{ route('admin.apartments.index') }}" class="btn ms-btn-outline-primary  ms_arrow_back">
                     <i class="fa-solid fa-arrow-left"></i>
                 </a>
-                <a href="#" class="btn ms-btn ms-btn-sm ms-btn-premium ms-2 mb-2 position-absolute bottom-0">
+                <a href="{{route('admin.sponsorships.index', ['id' => $apartment->id])}}" class="btn ms-btn ms-btn-sm ms-btn-premium ms-2 mb-2 position-absolute bottom-0">
                     <i class="fa-solid fa-star me-2"></i>Sponsorizza</a>
                 {{-- image --}}
                 @if ($apartment->cover_image)
