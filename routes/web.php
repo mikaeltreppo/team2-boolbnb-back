@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\Admin\SponsorshipController;
 use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Sponsorship;
 use Illuminate\Support\Facades\Route;
@@ -28,7 +29,8 @@ Route::get('/', function () {
 /* commentata perchè spostata in middleware con controller*/
 
 Route::get('/dashboard', function () {
-    return view('admin.dashboard');
+    $userId = Auth::id(); // Ottiene l'ID dell'utente autenticato
+    return view('admin.dashboard', ['userId' => $userId]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
@@ -37,9 +39,9 @@ Route::middleware(['auth', 'verified'])
     ->name('admin.')
     ->prefix('admin')
     ->group(function () {
-        Route::get('/', function () {
-            return view('admin.dashboard');
-        })->name('dashboard');
+        // Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+        Route::get('/', [DashboardController::class, 'index'], ['userId' => Auth::id()] )->name('dashboard');
 
 
         /*rotte appartamenti con crud gestite qui*/
@@ -53,14 +55,7 @@ Route::middleware(['auth', 'verified'])
 
         Route::resource('messages', MessageController::class);
         
-
-
-        //Rotta per gestire il post delle sponsorizzazioni
-    
-        /*
-            Route::post('sponsorship', [SponsorshipController::class, 'sponsorizeApartment'])->name('sponsorize.apartment');
-        */
-    });
+});
 
 
 
