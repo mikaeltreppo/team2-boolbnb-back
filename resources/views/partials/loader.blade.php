@@ -11,10 +11,17 @@
 </div>
 
 <script>
-    window.onload = function() {
-        console.log('loaded')
+
+    window.onload = (event) => {
+
         let loader = document.querySelector('.loader-wrapper')
         loader.classList.add("d-none")
+
+        if(document.getElementById('map-div') != null){
+            createMap({{$apartment->latitude}}, {{$apartment->longitude}});
+        }
+         
+        
     };
 
     // Mostra il loader quando viene inviato un modulo
