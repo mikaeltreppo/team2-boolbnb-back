@@ -17,7 +17,7 @@
         let loader = document.querySelector('.loader-wrapper')
         loader.classList.add("d-none")
 
-        @if (isset($apartment))
+        @if (isset($apartment) && isset($apartment->latitude) && isset($apartment->longitude))
                 if(document.getElementById('map-div') != null){
                     createMap({{$apartment->latitude}}, {{$apartment->longitude}});
                 }

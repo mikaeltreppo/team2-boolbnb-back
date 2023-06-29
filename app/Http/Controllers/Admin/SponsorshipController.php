@@ -6,6 +6,7 @@ use App\Models\Apartment;
 use App\Models\Sponsorship;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use App\Http\Requests\PayementRequest;
 use Illuminate\Support\Facades\Validator;
 use Braintree;
 

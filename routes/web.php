@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+
 use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\Admin\SponsorshipController;
 use App\Http\Controllers\Admin\MessageController;
@@ -27,9 +29,11 @@ Route::get('/', function () {
 
 /* commentata perchè spostata in middleware con controller*/
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+// Route::get('/dashboard', function () {
+//     return view('admin.dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 
 
@@ -37,8 +41,15 @@ Route::middleware(['auth', 'verified'])
     ->name('admin.')
     ->prefix('admin')
     ->group(function () {
+
+        // Route::get('/', function () {
+        //     return view('admin.dashboard');
+        // })->name('dashboard');
+
         Route::get('/', function () {
-            return view('admin.dashboard');
+            $userId = Auth::id();// Il dato che desideri passare
+            $dashboardController = new DashboardController();
+            return $dashboardController->index($userId);
         })->name('dashboard');
 
 
