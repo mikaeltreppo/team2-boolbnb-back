@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var checked = false;
         const FacilitiesError = document.getElementById("FacilitiesError");
 
-        for (var i = 0; i < checkboxes.length; i++) {
+        for (var i = 0; i < 6; i++) {
             if (checkboxes[i].checked) {
                 checked = true;
                 break;
@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var checked = false;
         const FacilitiesError = document.getElementById("FacilitiesError");
 
-        for (var i = 0; i < checkboxes.length; i++) {
+        for (var i = 0; i < 6; i++) {
             if (checkboxes[i].checked) {
                 checked = true;
                 break;

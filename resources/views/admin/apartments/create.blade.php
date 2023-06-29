@@ -17,6 +17,7 @@
         @endif
         <h1 class="text-center">Aggiungi un nuovo appartamento</h1>
         <form method="POST" action="{{ route('admin.apartments.store') }}" enctype="multipart/form-data" id="formCreate">
+    
             @csrf
             <div class="d-flex flex-wrap">
                 <div class="w-50 p-3">
