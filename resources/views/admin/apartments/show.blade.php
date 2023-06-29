@@ -171,10 +171,6 @@
                 });
             }
 
-            window.onload = (event) => {
-            createMap({{$apartment->latitude}}, {{$apartment->longitude}});
-            };
-        
     </script>
     
 @endsection
