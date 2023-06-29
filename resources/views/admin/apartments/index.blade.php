@@ -50,7 +50,8 @@
                                     <i class="fa-solid fa-location-dot ms_light_gray_text me-2 mt-1"></i>
                                     <span class="card-text" >
 
-                                {{ $apartment->address}}
+                                {{ $apartment->address}}.
+                                {{$apartment->city}}
 
 
                                 </span>

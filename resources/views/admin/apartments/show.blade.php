@@ -21,10 +21,13 @@
                 <img src="{{ asset('storage/' . $apartment->cover_image) }}" alt="{{ $apartment->title }}" class="card-img-top w-100 img-fluid border-0 d-none d-lg-block">
                 @endif
 
-                <a href="{{route('admin.sponsorships.index', ['id' => $apartment->id])}}" class="btn ms-btn ms-btn-sm ms-btn-premium position-absolute top-0 end-0 mt-lg-2 mt-2 me-lg-4 me-5">
-                <i class="fa-solid fa-star me-2"></i>Sponsorizza</a>
+                <a href="{{route('admin.sponsorships.index', ['id' => $apartment->id])}}" class="btn ms-btn ms-btn-sm ms-btn-premium position-absolute top-0 end-0 mt-lg-2 mt-2 me-lg-4 me-3">
+                <i class="fa-solid fa-star me-1"></i>Sponsorizza</a>
 
                 <a href="{{ route('admin.apartments.index') }}" class="btn ms-btn-outline-primary  ms_arrow_back d-none d-lg-block ms_arrow_back">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                <a href="{{ route('admin.apartments.index') }}" class="btn ms-btn-outline-primary d-lg-none position-absolute top-0 start-0 mt-2 ms-3">
                     <i class="fa-solid fa-arrow-left"></i>
                 </a>
 
@@ -101,21 +104,8 @@
                     <div class="card-text mt-5">
                         <i class="fa-solid fa-location-dot ms_light_gray_text me-2 mt-1"></i>
                         <span>
-                            {{-- @php 
-                            $data = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/reverseGeocode/'. $apartment -> latitude .','. $apartment -> longitude .'.json?key=ZPskuspkrrcmchd9ut4twltuw96h5bWH');
-                            $responseData = $data->json();
-                            
-                            //dd($responseData);
-                
-                                $apartment->city = $responseData['addresses'][0]['address']['municipality'];
-                                $apartment->country = $responseData['addresses'][0]['address']['country'];
-                                $apartment->completeAddress = $responseData['addresses'][0]['address']['streetNameAndNumber'];
-                                //$apartment->address = $responseData['addresses'][0]['address']['streetName'];
-                                //$apartment->number = $responseData['addresses'][0]['address']['streetNumber'];
-                                //$address = $responseData['addresses'][0]['address'];
-                    
-                                echo $apartment->completeAddress.', '.$apartment->city.', '.$apartment->country ;
-                            @endphp --}}
+                            {{ $apartment->address}}.
+                                {{$apartment->city}}
                         </span>
                     </div>
                     <div class="card-text my-3 ">
