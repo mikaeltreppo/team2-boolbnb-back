@@ -19,7 +19,6 @@
 
                         <select class="form-select form-select-sm mb-3 mt-3" aria-label=".form-select-lg example"
                             id="apartmentSelect" name="apartment_id">
-                            <option selected>-</option>
                             @foreach ($apartments as $apartment)
                                 <option value="{{ $apartment->id }}"
                                     {{ old('apartment_id') == $apartment->id ? 'selected' : '' }}>{{ $apartment->title }}
@@ -37,11 +36,11 @@
                     <span class="small text-center mb-5"><span class="number-badge me-2">2</span> Scegli un <span
                             class="fw-bold">piano di sponsorizzazione</span></span>
 
-                    @foreach ($sponsorships as $sponsorship)
+                    @foreach ($sponsorships as $key => $sponsorship)
                         <div class="col-12 col-lg-3  col-md-4 col-sm-6 mb-4 mx-lg-3">
                             <label class="card-radio">
                                 <input type="radio" id="sponsorship_{{ $sponsorship->id }}" name="sponsorship_id"
-                                    value="{{ $sponsorship->id }}" class="card-radio-element">
+                                    value="{{ $sponsorship->id }}" class="card-radio-element" @if($key == 0) checked  @endif>
 
                                 <div class="card card-tileflat-shadow  drop-shadow-sm card-radio-content">
                                     <div class="card-header py-4 bg-secondary text-light">
