@@ -46,8 +46,9 @@ class SponsorshipController extends Controller
 
     public function checkouts(Request $request)
     {
+        $sponsorship = Sponsorship::findOrFail($request->sponsorship_id);
+        $apartment = Apartment::findOrFail($request->apartment_id);
 
-        $sponsorships = Sponsorship::findOrFail($request->sponsorship);
         $amount = $request->amount;
         $nonce = $request->payment_method_nonce;
 
@@ -57,9 +58,6 @@ class SponsorshipController extends Controller
             'publicKey' => config('services.braintree.publicKey'),
             'privateKey' => config('services.braintree.privateKey')
         ]);
-
-        $amount = $request->amount;
-        $nonce = $request->payment_method_nonce;
 
         $result = $gateway->transaction()->sale([
             'amount' => $amount,
@@ -74,14 +72,20 @@ class SponsorshipController extends Controller
         if ($result->success) {
             $transaction = $result->transaction;
 
+            $start_date = now(); //data presa dal server su cui viene eseguito il codice Laravel quindi occhio ai conflitti 
+            $expired_at = $start_date->addHours($sponsorship->duration);
 
+            $apartment->apartment_sponsorship()->attach($sponsorship->id, [
+                'start_date' => $start_date,
+                'expired_at' => $expired_at,
+            ]);
             // $sponsorships->start_date = date('Y-m-d');
             // $sponsorships->start_date = date('Y-m-d');
             // $apartments = Apartment::findOrFail($request->apartment);
             // $apartments->sponsorships()->sync($sponsorships);
 
             return view('admin.sponsorships.checkouts', ['transaction' => $transaction->id]);
-        } else {  // Se il pagamento no va a buon fine
+        } else { // Se il pagamento no va a buon fine
             $errorString = "";
 
             foreach ($result->errors->deepAll() as $error) {
@@ -123,13 +127,13 @@ class SponsorshipController extends Controller
             return redirect()->back()->with('status', 'Campo mancante')->withErrors($validator)->withInput();
         }
 
-        $apartment->apartment_sponsorship()->attach([$data['sponsorship_id']]);
 
         // Trovo l'id della promozione selezionata
         $sponsorship = Sponsorship::findOrFail($data['sponsorship_id']);
 
-
-        return redirect()->route('admin.sponsorships.show', $sponsorship->id);
+        $apartment_id = $data['apartment_id'];
+        $sponsorship_id = $data['sponsorship_id'];
+        return redirect()->route('admin.sponsorships.show', $sponsorship->id)->with(['apartment_id' => $apartment_id, 'sponsorship_id' => $sponsorship_id]);
     }
 
     /**
@@ -150,8 +154,18 @@ class SponsorshipController extends Controller
 
         /* Genero un Token per autorizzare il pagamento */
         $token = $gateway->ClientToken()->generate();
+        if ($sponsorship_id == 1) {
+            $amount = 2.99;
+        } else if ($sponsorship_id == 2) {
+            $amount = 5.99;
+        } else if ($sponsorship_id == 3) {
+            $amount = 9.99;
+        } else {
+            $amount = null;
+        }
 
-        return view('admin.sponsorships.show', compact('token', 'gateway'));
+
+        return view('admin.sponsorships.show', compact('token', 'gateway', 'amount'));
     }
 
     /**

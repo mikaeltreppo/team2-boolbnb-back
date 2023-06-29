@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 @section('content')
+<?php   $apartment_id = Session::get('apartment_id'); 
+        $sponsorship_id = Session::get('sponsorship_id');?>
     <div class="container-payment-empty">
 
     </div>
@@ -9,12 +11,14 @@
             <form method="post" id="payment-form" action="{{ route('admin.sponsorships.checkouts') }}">
                 @csrf
                 <section>
-
+                    
+                    <input type="hidden" name="apartment_id" value="{{ $apartment_id }}">
+                    <input type="hidden" name="sponsorship_id" value="{{ $sponsorship_id }}">
                     <label for="amount">
                         <span class="input-label">Amount</span>
                         <div class="input-wrapper amount-wrapper">
                             <input id="amount" name="amount" type="tel" min="1" placeholder="Amount"
-                                value="10">
+                                value="{{$amount}}">
                         </div>
                     </label>
 
