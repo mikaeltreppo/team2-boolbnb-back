@@ -141,7 +141,7 @@ class SponsorshipController extends Controller
 
         $apartment_id = $data['apartment_id'];
         $sponsorship_id = $data['sponsorship_id'];
-        return redirect()->route('admin.sponsorships.show', $sponsorship->id)->with(['apartment_id' => $apartment_id, 'sponsorship_id' => $sponsorship_id]);
+        return redirect()->route('admin.sponsorships.show', $sponsorship->id)->with(['apartment_id' => $apartment_id, 'sponsorship_id' => $sponsorship_id, 'sponsorship_name' => $sponsorship->name, 'sponsorship_duration' => $sponsorship->duration]);
     }
 
     /**
@@ -155,7 +155,8 @@ class SponsorshipController extends Controller
 
         $apartment_id = Session::get('apartment_id');
         $sponsorship_id = Session::get('sponsorship_id');
-
+        $sponsorship_name = Session::get('sponsorship_name');
+        $sponsorship_duration = Session::get('sponsorship_duration');
 
         /* Variabili dell'account Braintree */
         $gateway = new Braintree\Gateway([
@@ -178,7 +179,7 @@ class SponsorshipController extends Controller
         }
 
 
-        return view('admin.sponsorships.show', compact('token', 'gateway', 'amount', 'apartment_id', 'sponsorship_id'));
+        return view('admin.sponsorships.show', compact('token', 'gateway', 'amount', 'apartment_id', 'sponsorship_id', 'sponsorship_name', 'sponsorship_duration'));
     }
 
     /**

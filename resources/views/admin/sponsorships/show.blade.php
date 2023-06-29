@@ -1,7 +1,11 @@
 @extends('layouts.admin')
 @section('content')
-<?php   $apartment_id = Session::get('apartment_id'); 
-        $sponsorship_id = Session::get('sponsorship_id');?>
+    <?php   
+        $apartment_id = Session::get('apartment_id'); 
+        $sponsorship_id = Session::get('sponsorship_id');
+        $sponsorship_name = Session::get('sponsorship_name');
+        $sponsorship_duration = Session::get('sponsorship_duration');
+       ?>
 
 
     {{-- <div class="container-payment-empty">
@@ -57,7 +61,7 @@
                             <div class="row">
                                 <div class="col">
                                     <label for="" class="fw-bold small mb-3">Piano di Sponsorship</label>
-                                    <h5 class="font-secondary fw-bold text-muted">Sponsorship name <span class="fw-secondary">(Sponsorship Duration h)</span></h5>
+                                    <h5 class="font-secondary fw-bold text-muted">{{$sponsorship_name}} <span class="fw-secondary">({{$sponsorship_duration}} h)</span></h5>
                                 </div>
                                 <div class="col">
                                     <label for="amount" class="mb-3 small fw-bold">
