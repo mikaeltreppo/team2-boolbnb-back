@@ -48,7 +48,7 @@ class ApartmentController extends Controller
             }
         }
 
-        $results = Apartment::whereIn('id', $sponsoredIds)->with(['facilities', 'sponsorships', 'user'])->paginate(20);
+        $results = Apartment::whereIn('id', $sponsoredIds)->with(['facilities', 'sponsorships', 'user'])->paginate(4);
 
         return response()->json([
             'success' => true,
