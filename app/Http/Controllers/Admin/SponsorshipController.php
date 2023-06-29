@@ -95,7 +95,7 @@ class SponsorshipController extends Controller
         } else { // Se il pagamento no va a buon fine
             $errorString = "";
 
-            foreach ($result->errors->deepAll() as $error) {
+
             foreach ($result->errors->deepAll() as $error) {
                 $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
             }
@@ -153,7 +153,7 @@ class SponsorshipController extends Controller
     public function show(Request $request, $sponsorship_id)
     {
 
-        $apartment_id = Session::get('apartment_id'); 
+        $apartment_id = Session::get('apartment_id');
         $sponsorship_id = Session::get('sponsorship_id');
 
 
