@@ -227,6 +227,29 @@
     color: white;
 }
 
+
+/* Button textual dark */
+
+.btn.ms-btn-textual-dark {
+    position: relative;
+    overflow: hidden;
+    color: $black_text_color;
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+
+
+.btn.ms-btn-textual-dark:hover {
+    background-color: $main_darker_color;
+    color: white;
+}
+
+.btn.ms-btn-textual-dark:hover.arrow::after {
+    right: 0px;
+    opacity: 1;
+}
+
+
 //CARD MESSAGE YELLOW INFO
 
 .ms_speech {

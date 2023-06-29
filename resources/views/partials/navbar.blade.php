@@ -32,26 +32,47 @@
 </nav>
   
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title font-secondary" id="offcanvasExampleLabel">{{ Auth::user()->name }}</h5>
+    <div class="offcanvas-header bg-light">
+     <div class="top">
+        <span class="xsmall text-muted fw-bold">Menu</span>
+        <h5 class="offcanvas-title font-secondary" id="offcanvasExampleLabel">{{ Auth::user()->name }}</h5>
+     </div>
       <div class="offcanvas-right d-flex align-items-center">
-        <a href="{{ url('profile') }}" class="btn btn-sm ms-btn-outline-primary rounded-4">
-     
-            <i class="fa-solid fa-gear align-middle fa-lg"></i>
+        <a href="{{ url('profile') }}" class="btn btn-sm ms-btn-textual-dark rounded-4 xsmall fw-bold">
+            <i class="fa-solid fa-gear fa-lg me-1"></i>
+            Account
         </a>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
     </div>
     <div class="offcanvas-body">
         <ul class="list-unstyled">
-       
+                   <li>
+                <a href="{{ route('admin.dashboard') }}" class="fw-bold mb-1 text-start btn ms-btn-textual-dark rounded-4 btn-sm w-100" data-dismiss="offcanvas">
+                    <i class="fa-solid fa-gauge me-2"></i>
+                    <span class="d-none d-md-inline">Dashboard</span>
+                </a>
+            </li>
+
             <li>
-                <button class="my-3 btn ms-btn-outline-primary rounded-4 btn-sm w-100" href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
-                <i class="fa-solid fa-right-from-bracket me-2"></i>
-                {{ __('Logout') }}
-                </button>
+                <a href="{{ route('admin.apartments.index') }}" class="fw-bold mb-1 text-start btn ms-btn-textual-dark rounded-4 btn-sm w-100" data-dismiss="offcanvas">
+                    <i class="fa-solid fa-list me-2"></i>
+                    <span class="d-none d-md-inline">I Miei Appartamenti</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('admin.messages.index') }}" class="fw-bold mb-1 text-start btn ms-btn-textual-dark rounded-4 btn-sm w-100" data-dismiss="offcanvas">
+                    <i class="fa-solid fa-envelope me-2"></i>
+                    <span class="d-none d-md-inline">Messaggi</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('admin.sponsorships.index') }}" class="fw-bold mb-1 text-start btn ms-btn-textual-dark rounded-4 btn-sm w-100" data-dismiss="offcanvas">
+                    <i class="fa-solid fa-star me-2"></i>
+                    <span class="d-none d-md-inline">Sponsorizza</span>
+                </a>
             </li>
         </ul>
        
@@ -60,4 +81,15 @@
         </form>
        
     </div>
+
+     <div class="offcanvas-footer px-5 pb-5 text-end">
+            <button class="my-3 btn fw-bold ms-btn  ms-btn-outline-primary rounded-5 " href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+            <i class="fa-solid fa-right-from-bracket me-2"></i>
+            <span class="xsmall align-middle text-uppercase">
+                {{ __('logout') }}
+            </span>
+            </button>
+     </div>
   </div>
