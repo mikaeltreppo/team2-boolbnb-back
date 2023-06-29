@@ -65,11 +65,10 @@
                         @enderror
                     </div>
 
-                    <div class="w-50 p-3">
-                        <div class="w-50 p-3">
-                            <label for="address" class="form-label">Indirizzo</label>
-                            <div id="address"></div>
-                        </div>
+                    <div class="w-50 px-3">
+                        <label for="address" class="form-label">Indirizzo</label>
+                        <div id="address"></div>
+
                         <p id="addressError" style="color: red;"></p>
                         @error('address')
                             <div class="invalid-feedback">

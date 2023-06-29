@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <div class="row">
-        <div class="col-10 mx-auto">
+        <div class="col-12 mx-auto">
 
             <h1 class=" text-center mb-2">Sponsorizza</h1>
             <p class="text-center">Dai una marcia in più ai tuoi annunci!</p>
@@ -11,7 +11,7 @@
                 @method('POST')
 
                 <div class="row mt-5">
-                    <div class="col-5 mx-auto text-center mb-4">
+                    <div class="col-lg-6 col-12 col-sm-10 mx-auto text-center mb-4">
                         <label for="apartmentSelect" class="mb-2 small">
                             <span class="number-badge me-2">1</span>
                             Scegli un <span class="fw-bold">appartamento</span>
@@ -34,16 +34,16 @@
 
                 <div class="row py-3 justify-content-center">
 
-                    <span class="small text-center mb-3"><span class="number-badge me-2">2</span> Scegli un <span
+                    <span class="small text-center mb-5"><span class="number-badge me-2">2</span> Scegli un <span
                             class="fw-bold">piano di sponsorizzazione</span></span>
 
                     @foreach ($sponsorships as $sponsorship)
-                        <div class="col-3">
+                        <div class="col-12 col-lg-3  col-md-4 col-sm-6 mb-4 mx-lg-3">
                             <label class="card-radio">
                                 <input type="radio" id="sponsorship_{{ $sponsorship->id }}" name="sponsorship_id"
                                     value="{{ $sponsorship->id }}" class="card-radio-element">
 
-                                <div class="card card-tile flat-shadow m-3 drop-shadow-sm card-radio-content">
+                                <div class="card card-tileflat-shadow  drop-shadow-sm card-radio-content">
                                     <div class="card-header py-4 bg-secondary text-light">
 
                                         <h6 class="text-center font-secondary text-light small text-uppercase fw-bold">

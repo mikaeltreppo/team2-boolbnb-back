@@ -53,11 +53,9 @@
                     @enderror
                 </div>
                 <!--search-->
-                <div class="w-50 p-3">
-                    <div class="w-50 p-3">
-                        <label for="address" class="form-label">Indirizzo</label>
-                        <div id="address"></div>
-                    </div>
+                <div class="w-50 px-3">
+                    <label for="address" class="form-label">Indirizzo</label>
+                    <div id="address"></div>
                     <p id="addressError" style="color: red;"></p>
                     @error('address')
                         <div class="invalid-feedback">
@@ -72,8 +70,8 @@
                     <label for="description" class="form-label">Descrizione</label>
                     <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description"
                         cols="30" rows="10" class="form-control" required maxlength="5000">
-{{ old('description') }}
-</textarea>
+                    {{ old('description') }}
+                    </textarea>
                     <p id="descriptionError" style="color: red;"></p>
                     @error('description')
                         <div class="invalid-feedback">
