@@ -59,7 +59,7 @@ class ApartmentController extends Controller
 
 
     /*  Metodo di ricerca degli appartamenti entro il raggio selezionato  */
-    public function search($latitude, $longitude, $radius, $price, $beds, $meters, $rooms, $bathrooms, $wifi, $car, $pool, $door, $sauna, $water)
+    public function search($latitude, $longitude, $radius, $price, $beds, $meters, $rooms, $bathrooms, $available, $wifi, $car, $pool, $door, $sauna, $water)
     {
         //i valori passati sono inizialmente tutte stringhe, qui li trasforma in int, float, boolean effettivi
         $latitude = floatval($latitude);
@@ -70,6 +70,7 @@ class ApartmentController extends Controller
         $meters = intval($meters);
         $rooms = intval($rooms);
         $bathrooms = intval($bathrooms);
+        $available = ($available === "true") ? true : false;
         $wifi = ($wifi === "true") ? true : false;
         $car = ($car === "true") ? true : false;
         $pool = ($pool === "true") ? true : false;
@@ -111,6 +112,14 @@ class ApartmentController extends Controller
         foreach ($apartments as $apartment) {
             if (in_array($apartment->id, $apartmentIds)) {
                 /* Faccio diversi check, se almeno uno di essi è true allora l'appartamento sarà da rimuovere*/
+
+                if ($apartment->visible) { //se visibile in DB
+                    $visibleCheck = false; //passa al controllo
+                } else {
+                    $visibleCheck = true;
+                }
+
+
                 $priceCheck;
                 if ($price == 0 || $price == null) {
                     $priceCheck = false;
@@ -121,6 +130,14 @@ class ApartmentController extends Controller
                 $m2Check = $apartment->size_m2 < $meters;
                 $roomsCheck = $apartment->bedrooms < $rooms;
                 $bathroomsCheck = $apartment->bathrooms < $bathrooms;
+
+
+                $availableCheck = false;
+                if ($available) { //"disponibile" spuntato, rimuovi l'appartmento se non è disponibile in DB
+                    if (!$apartment->available) { // se non è dispobile
+                        $availableCheck = true; //dopo lo rimuovi
+                    }
+                }
 
                 //inizializzo i check dei servizi a false perchè di base devono passare tutti
                 $wifiCheck = false;
@@ -168,7 +185,7 @@ class ApartmentController extends Controller
                     }
                 }
 
-                if ($priceCheck || $bedsCheck || $m2Check || $roomsCheck || $bathroomsCheck || $wifiCheck || $carCheck || $poolCheck || $doorCheck || $saunaCheck || $waterCheck) { //entra se anche solo uno è true
+                if ($visibleCheck || $priceCheck || $bedsCheck || $m2Check || $roomsCheck || $bathroomsCheck || $availableCheck || $wifiCheck || $carCheck || $poolCheck || $doorCheck || $saunaCheck || $waterCheck) { //entra se anche solo uno è true
                     $apartmentIdIndex = array_search($apartment->id, $apartmentIds); //è l'indice dell'appartamento in apartmentIds
                     array_splice($apartmentIds, $apartmentIdIndex, 1); //rimuovo l'elemento all'indice $apartmentIdIndex in $apartmentIds
                 }
