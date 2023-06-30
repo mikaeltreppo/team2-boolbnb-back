@@ -142,7 +142,7 @@
                 <div class="card h-100 bg-white rounded-4 flat-shadow card-tile drop-shadow-md">
                     <div class="card-body p-4">
                         <span class="small fw-bold">Statistiche Globali</span>
-                        <canvas id="myChart" class="mt-3">
+                        <canvas id="myChart" class="mt-3" data-chart-data="{{ json_encode($data) }}">
                             
                         </canvas>
                     </div>

@@ -5,7 +5,6 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\Admin\SponsorshipController;
 use App\Http\Controllers\Admin\MessageController;
-use App\Http\Controllers\Admin\ViewController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Sponsorship;
 use Illuminate\Support\Facades\Route;
@@ -64,7 +63,6 @@ Route::middleware(['auth', 'verified'])
         });
 
         Route::resource('messages', MessageController::class);
-        Route::post('apartments/{id}/views', [ViewController::class, 'incrementViews']);
 
 
 

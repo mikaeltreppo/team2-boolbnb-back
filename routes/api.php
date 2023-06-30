@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ViewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ApartmentController;
@@ -28,6 +29,9 @@ Route::get('/apartments/{id}', [ApartmentController::class, 'show']);
 /*rotta avere tutti gli appartamenti che rientrano nel radius passato a partire dalla coordinata (lat/lon) */
 Route::post('/apartments/search/{latitude}/{longitude}/{radius}/{price}/{beds}/{m2}/{rooms}/{bathrooms}/{available}/{wifi}/{car}/{pool}/{door}/{sauna}/{water}', [ApartmentController::class, 'search']);
 Route::post('/apartments/sponsorized', [ApartmentController::class, 'all_sponsorized']);
+
+/* Rotta per incrementare le visualizzazioni */
+Route::post('apartments/views/{id}', [ViewController::class, 'incrementViews']);
 
 /*rotta per email*/
 Route::post('/apartment/{id}', [MessageController::class, 'store']);
