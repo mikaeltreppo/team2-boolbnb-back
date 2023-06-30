@@ -72,17 +72,21 @@
                     </div>
 
                     <div class="px-3 col-12 col-lg-6">
-                        <label for="address" class="form-label">Indirizzo</label>
-                        <div id="address"></div>
+                        <label for="ttAddress" class="form-label">Indirizzo</label>
+                        <div id="ttAddress"></div>
 
                         <p id="addressError" style="color: red;"></p>
-                        @error('address')
+                        @error('ttAddress')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
                         <input type="hidden" id="longitude" name="longitude" value="">
                         <input type="hidden" id="latitude" name="latitude" value="">
+
+                        <input type="hidden" id="address" name="address" value="">
+                        <input type="hidden" id="city" name="city" value="">
+                        <input type="hidden" id="country" name="country" value="">
                     </div>
                    
                     <div class="p-3 col-12">
@@ -209,15 +213,33 @@
         };
         var ttSearchBox = new tt.plugins.SearchBox(tt.services, options);
         var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
-        document.getElementById("address").appendChild(searchBoxHTML);
+        document.getElementById("ttAddress").appendChild(searchBoxHTML);
 
         ttSearchBox.on('tomtom.searchbox.resultselected', function(data) {
             var result = data.data.result;
+
+
             var longitude = result.position.lng;
             var latitude = result.position.lat;
 
+            var address = result.address.streetName;
+
+            var number = result.address.streetNumber;
+
+            if(number != undefined){
+                address += `, ${number}`;
+            }
+
+            var country = result.address.country;
+            var city = result.address.municipality;
+                
             document.getElementById("longitude").value = longitude;
             document.getElementById("latitude").value = latitude;
+            
+            document.getElementById("country").value = country;
+            document.getElementById("city").value = city;
+            document.getElementById("address").value = address;
+       
         });
     </script>
 @endsection
