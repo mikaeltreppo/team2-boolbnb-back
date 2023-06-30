@@ -1,8 +1,14 @@
 /* Implementazione di Chart.js */
 import Chart from 'chart.js/auto';
+import { indexOf } from 'lodash';
 
 const ctx = document.getElementById('myChart');
-const chartData = JSON.parse(ctx.dataset.chartData); // Ottieni i dati dal dataset
+
+let chartData = [];
+
+if(ctx != undefined){
+  chartData = JSON.parse(ctx.dataset.chartData); // Ottieni i dati dal dataset
+}
 
 /* Impostazioni di default dei font */
 Chart.defaults.font.family = "'Montserrat', sans-serif";
