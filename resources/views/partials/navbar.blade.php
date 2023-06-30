@@ -69,6 +69,13 @@
             </li>
 
             <li>
+                <a href="{{ route('admin.apartments.create') }}" class="fw-bold mb-1 text-start btn ms-btn-textual-dark rounded-4 btn-sm w-100" data-dismiss="offcanvas">
+                    <i class="fa-solid fa-plus me-2"></i>
+                    <span class="d-md-inline">Aggiungi</span>
+                </a>
+            </li>
+
+            <li>
                 <a href="{{ route('admin.messages.index') }}" class="fw-bold mb-1 text-start btn ms-btn-textual-dark rounded-4 btn-sm w-100" data-dismiss="offcanvas">
                     <i class="fa-solid fa-envelope me-2"></i>
                     <span class="d-md-inline">Messaggi</span>
