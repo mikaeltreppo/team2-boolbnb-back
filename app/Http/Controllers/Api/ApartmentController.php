@@ -42,9 +42,12 @@ class ApartmentController extends Controller
             $activeSponsorship = $sponsorships->first(function ($sponsorship) { //trova la prima sponsorizzazione attiva
                 return $sponsorship->pivot->start_date <= now() && $sponsorship->pivot->expired_at >= now();
             });
-            if ($activeSponsorship) {
-                // Aggiungi l'ID dell'appartamento sponsorizzato all'array sponsoredIds
-                $sponsoredIds[] = $apartment->id;
+
+            if ($apartment->visibile) { // se l'appartamento non è visibile non mostrarmelo 
+                if ($activeSponsorship) {
+                    // Aggiungi l'ID dell'appartamento sponsorizzato all'array sponsoredIds
+                    $sponsoredIds[] = $apartment->id;
+                }
             }
         }
 
