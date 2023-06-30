@@ -2,12 +2,25 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Apartment;
 use App\Models\View;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class ViewController extends Controller
 {
+
+    public function incrementViews($id)
+    {
+        $apartment = Apartment::find($id);
+
+        if ($apartment) {
+            $apartment->increment('views'); // Incrementa il conteggio delle visualizzazioni di 1
+            return response()->json(['message' => 'Conteggio visualizzazioni aggiornato.']);
+        }
+
+        return response()->json(['error' => 'Appartamento non trovato.'], 404);
+    }
     /**
      * Display a listing of the resource.
      *
