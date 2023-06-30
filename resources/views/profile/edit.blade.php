@@ -10,14 +10,14 @@
     </span>
 
     <div class="row mb-4">
-        <div class="col-6">
+        <div class="col-12 col-lg-6">
             <div class="card p-5 bg-white rounded-lg rounded-4 flat-shadow h-100">
 
                 @include('profile.partials.update-profile-information-form')
         
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-lg-6 mt-3 mt-lg-0">
 
             <div class="card p-5  bg-white rounded-lg rounded-4 flat-shadow h-100">
 
@@ -31,7 +31,7 @@
 
     <div class="row">
         
-       <div class="col-6">
+       <div class="col-12 col-lg-6">
         <div class="card p-5 mb-4 bg-white rounded-lg rounded-4 flat-shadow">
 
 
