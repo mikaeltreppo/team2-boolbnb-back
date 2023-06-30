@@ -1,11 +1,12 @@
 @extends('layouts.admin')
 @section('content')
 
+
         {{-- Top Container --}}
         <div class="row align-items-center text-center text-lg-start mb-5">
 
             {{-- Heading --}}
-            <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+            <div class="col-12 col-lg-6 mb-4 mb-lg-0 pt-5 pt-lg-0">
                 <h1 class="fw-lighter mb-1">Bentornato, <span class="fw-bold font-primary">{{ Auth::user()->name }}</span></h1>
                 <p>Questa è la tua dashboard, una panoramica dei tuoi annunci</p>
             </div>
@@ -44,23 +45,23 @@
         <div class="row">
 
 
-            <div class="col-lg-4 col-12">
+            <div class="col-lg-4 col-12 d-flex flex-column justify-content-between">
                 
                 {{-- Messages --}}
                     <a href="{{ route('admin.messages.index') }}" class="text-decoration-none">
-                        <div class="card card-tile drop-shadow-md mb-4 py-3 bg-white rounded-4 flat-shadow">
+                        <div class="card card-tile drop-shadow-md mb-4 py-4 bg-white rounded-4 flat-shadow">
                             <div class="card-body position-relative">
                             <div class="row align-items-center text-center text-lg-start g-0">
         
                             <div class="col-12 col-xl-2 text-center order-3 order-lg-0">
-                                    <h1 class="fw-bolder">50</h1>
+                                    <h1 class="fw-bolder">{{$messages_count}}</h1>
                             </div>
         
                                 <div class="col-12 col-xl-7 col-lg-12 text-center text-xl-start order-1 text-muted ">
-                                    <div class="small mb-2 mb-xl-0">
+                                    <div class="mb-2 mb-xl-0">
                                         Messaggi
                                         <br/>
-                                        Non letti
+                                        nella tua inbox
                                     </div>
                                 </div>
         
@@ -79,7 +80,7 @@
 
                   {{-- Views --}}
                    <a href="{{ route('admin.apartments.index') }}" class="text-decoration-none">
-                    <div class="card card-tile drop-shadow-md mb-4 py-3 bg-white rounded-4 flat-shadow">
+                    <div class="card card-tile drop-shadow-md mb-4 py-4 bg-white rounded-4 flat-shadow">
                         <div class="card-body position-relative">
 
                         <div class="row align-items-center text-center text-lg-start  g-0">
@@ -108,14 +109,14 @@
 
                     {{-- Aparmtents --}}
                     <a href="{{ route('admin.apartments.index') }}" class="text-decoration-none">
-                        <div class="card card-tile drop-shadow-md py-3 bg-white rounded-4 flat-shadow">
+                        <div class="card card-tile drop-shadow-md py-4 bg-white rounded-4 flat-shadow">
 
                             <div class="card-body position-relative">
 
                             <div class="row align-items-center text-center text-lg-start g-0">
 
                                 <div class="col-xl-2 col-12 text-center order-3 order-lg-0">
-                                        <h1 class="fw-bolder">5</h1>
+                                        <h1 class="fw-bolder">{{$apartment_count}}</h1>
                                 </div>
 
                                 <div class="col-12 col-xl-7 col-lg-12 text-center text-xl-start order-1 text-muted ">
@@ -152,7 +153,22 @@
              <div class="col-xl-3 col-lg-12 col-12">
                 <div class="card h-100 bg-white rounded-4 flat-shadow card-tile drop-shadow-md">
                     <div class="card-body p-3">
-                        <span class="small fw-bold">Altro?</span>
+                        <span class="small fw-bold">Supporto Clienti</span>
+
+                        <div class="row text-center py-5">
+                           <div class="col-7 mx-auto">
+                                <div class="rounded-icon mx-auto ms-bg-dark mb-5 p-5">
+                                    <i class="fa-solid fa-envelope mb-3 mb-lg-0 fa-2x"></i>
+                                </div>
+                                <h5 class="font-secondary">Non sai come usare la dashboard?</h5>
+                                <h6 class="font-secondary text-muted mb-4">Ti aiutiamo noi!</h6>
+                                <a href="http://localhost:5174/support" target="_blank" class="btn ms-btn ms-btn-sm ms-btn-primary">
+                                    <i class="fa-solid fa-headset me-2"></i>
+                                    Vai alle FAQ
+                                </a>
+                           </div>
+                        </div>
+                        
                     </div>
                 </div>
              </div>

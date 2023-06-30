@@ -14,6 +14,7 @@ class Apartment extends Model
         'cover_image',
         'price',
         'description',
+        'address',
         'beds',
         'bathrooms',
         'bedrooms',
@@ -23,7 +24,10 @@ class Apartment extends Model
         'user_id',
         'facility_id',
         'longitude',
-        'latitude'
+        'latitude',
+        'city',
+        'country'
+        
     ];
 
     use HasFactory;
@@ -47,5 +51,10 @@ class Apartment extends Model
     public function messages()
     {
         return $this->hasMany(Message::class);
+    }
+
+    public function apartment_sponsorship()
+    {
+        return $this->belongsToMany(Sponsorship::class);
     }
 }

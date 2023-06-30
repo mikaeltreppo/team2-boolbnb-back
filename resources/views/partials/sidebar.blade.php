@@ -1,11 +1,10 @@
-<div class="sidebar ms-bg-dark vh-100 py-4 panel-shadow-right px-3">
-<div class="brand mb-3">
-    {{-- <h3 class="text-white">LOGO</h3> --}}
-    <img src="{{URL('images/logo.png')}}" alt="" class="sidebar-logo align-middle">
-    <h6 class="font-secondary fw-bold text-white d-inline align-middle ms-2">BoolBNB</h6>
+<div class="sidebar ms-bg-dark vh-100 py-4 panel-shadow-right px-3 w-100">
+<div class="brand my-4 text-center">
+    <img src="{{URL('images/logo.svg')}}" alt="" class="sidebar-logo logo-light align-middle d-md-block d-none ms-lg-3">
+    <h1 class="display-3 font-secondary fw-bold text-white d-inline align-middle ms-2 d-md-none">B</h1>
 </div>
-<hr>
-<ul class="nav nav-pills flex-column mb-auto">
+
+<ul class="nav nav-pills flex-column mb-auto mt-5">
     <!-- reindirizzamento DASHBOARD -->
     <span class="sidebar-title ps-3 text-uppercase mb-3 d-none d-md-inline text-light">main</span>
     <li>
@@ -31,15 +30,15 @@
     </li>
    
 
-        <li>
-            <a href="{{ route('admin.sponsorships.index') }}" class="btn ms-btn-textual-primary w-lg-auto w-100 text-center text-lg-start sidebar-icon arrow rounded-3">
-                <i class="fa-solid fa-star me-2"></i>
-                <span  class="d-none d-md-inline">
-                    Sponsorizza
-                </span>
-                
-            </a>
-         </li>
+    <li>
+        <a href="{{ route('admin.sponsorships.index') }}" class="btn ms-btn-textual-primary w-lg-auto w-100 text-center text-lg-start sidebar-icon arrow rounded-3">
+            <i class="fa-solid fa-star me-2"></i>
+            <span  class="d-none d-md-inline">
+                Sponsorizza
+            </span>
+            
+        </a>
+        </li>
      
        
 </ul>

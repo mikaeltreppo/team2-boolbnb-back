@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+
 use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\Admin\SponsorshipController;
 use App\Http\Controllers\Admin\MessageController;
@@ -19,8 +21,7 @@ use Symfony\Component\Mime\Message;
 |
 */
 
-
-/* dobbiamo ricontrolare */
+Route::post('/admin/salva-relazione', [SponsorshipController::class, 'salvaRelazione'])->name('salva.relazione');
 
 Route::get('/', function () {
     return view('auth.login');
@@ -28,9 +29,11 @@ Route::get('/', function () {
 
 /* commentata perchè spostata in middleware con controller*/
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+// Route::get('/dashboard', function () {
+//     return view('admin.dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 
 
@@ -38,19 +41,38 @@ Route::middleware(['auth', 'verified'])
     ->name('admin.')
     ->prefix('admin')
     ->group(function () {
+
+        // Route::get('/', function () {
+        //     return view('admin.dashboard');
+        // })->name('dashboard');
+
         Route::get('/', function () {
-            return view('admin.dashboard');
+            $userId = Auth::id();// Il dato che desideri passare
+            $dashboardController = new DashboardController();
+            return $dashboardController->index($userId);
         })->name('dashboard');
+
 
         /*rotte appartamenti con crud gestite qui*/
         Route::resource('apartments', ApartmentController::class);
         Route::resource('sponsorships', SponsorshipController::class);
-        Route::resource('messages', MessageController::class);
+        Route::prefix('sponsorships')->group(function () {
+            // Rotta "checkouts" all'interno del gruppo "sponsorships"
+            Route::post('checkouts', [SponsorshipController::class, 'checkouts'])->name('sponsorships.checkouts');
+            Route::post('payement', [SponsorshipController::class, 'payement'])->name('sponsorships.payement');
+        });
 
-        /*Rotta per gestire il post delle sponsorizzazioni
-        Route::post('sponsorship', [SponsorshipController::class, 'sponsorizeApartment'])->name('sponsorize.apartment');
+        Route::resource('messages', MessageController::class);
+        
+
+
+        //Rotta per gestire il post delle sponsorizzazioni
+    
+        /*
+            Route::post('sponsorship', [SponsorshipController::class, 'sponsorizeApartment'])->name('sponsorize.apartment');
         */
     });
+
 
 
 /*rotte di profilo*/

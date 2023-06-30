@@ -1,12 +1,11 @@
 import "./bootstrap";
-import "./validationsRegister";
-import "./validationsCreateEditApartment";
+import "./chartImplement";
 import "~resources/scss/app.scss";
-import "./chartImplement"; // Contiene tutti i grafici delle statistiche!
+import "./validationsCreateEditApartment";
 import * as bootstrap from "bootstrap";
 import.meta.glob(["../img/**"]);
 
-//funzioni
+//MODAL DELETE
 
 const deleteButtons = document.querySelectorAll(
     '.form_delete_post button[type="submit"]'
@@ -35,5 +34,3 @@ btnDelete.addEventListener("click", function () {
     const formDelete = document.getElementById("form-delete");
     formDelete.submit();
 });
-
-//loader pagina

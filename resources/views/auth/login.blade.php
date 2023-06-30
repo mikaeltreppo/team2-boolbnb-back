@@ -8,11 +8,14 @@
             <div class="card flat-shadow rounded-4 ">
                
                 <div class="card-body py-5 px-lg-5 px-3">
+        
 
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
-                    <h2 class="mb-5 text-center">- Login -</h2>
+                        
+                        <div class="auth-brand text-center mb-5 mt-3">
+                            <img src="{{URL('images/logo.svg')}}" alt="" class="login-logo">
+                        </div>
 
                     {{-- Email --}}
                     <div class="form-floating mb-3">

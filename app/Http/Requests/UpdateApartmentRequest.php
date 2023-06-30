@@ -27,13 +27,17 @@ class UpdateApartmentRequest extends FormRequest
         return [
             'title' => 'required|max:255',
             'description' => 'required|max:5000',
+            'address' => 'required|max:300',
             'cover_image' => 'nullable|max:1024|image',
             'price' => 'required|numeric|min:0',
-            'address' => 'required',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
             'beds' => 'required|integer',
             'bathrooms' => 'required|integer',
             'bedrooms' => 'required|integer',
-            'size_m2' => 'required|integer'
+            'size_m2' => 'required|integer',
+            'city' => 'required|max:300',
+            'country' => 'required|max:300'
         ];
     }
     public function messages()

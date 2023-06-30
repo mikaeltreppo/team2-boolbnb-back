@@ -9,7 +9,7 @@
         <div class="row flex-wrap gy-4">
 
             {{-- card add --}}
-            <div class="col-lg-3 col-md-6 col-sm-12 ">
+            <div class="col-lg-4 col-xlg-3 col-md-6 col-sm-12 ">
 
                 <a href="{{ route('admin.apartments.create') }}" class="card ms_card ms_btn_add flat-shadow">
                     <div class="ms_box_info">
@@ -26,8 +26,9 @@
             {{-- fine card add --}}
 
             {{-- card apartment --}}
+
             @foreach ($apartments as $apartment)
-                <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="col-lg-4 col-xlg-3 col-md-6 col-sm-12">
                     <div class="p-0 card ms_card card-tile drop-shadow-sm bg-white rounded-4 flat-shadow">
                         <a href="{{ route('admin.apartments.show', ['apartment' => $apartment->id]) }}">
                             @if ($apartment->cover_image)
@@ -45,10 +46,17 @@
 
                         <div class="card-body">
                             <h5 class="card-title fs-5 font-semibold">{{ $apartment->title }}</h5>
-                            <span class="card-text">
-                                <i class="fa-solid fa-location-dot ms_light_gray_text me-2 mt-1"></i>
-                                {{ $apartment->address }}
-                            </span>
+                            <div class="d-flex">
+                                    <i class="fa-solid fa-location-dot ms_light_gray_text me-2 mt-1"></i>
+                                    <span class="card-text" >
+
+                                {{ $apartment->address}}.
+                                {{$apartment->city}}
+
+
+                                </span>
+                            </div>
+                            
 
                             <div class="d-flex mt-2 justify-content-between">
                                 <div class="card-text">
@@ -62,9 +70,29 @@
                             </div>
                             {{-- buttons --}}
                             <div class="d-flex position-absolute mb-2 bottom-0 start-0 justify-content-between w-100">
-                                <a href="#" class="btn ms-btn ms-btn-sm ms-btn-premium ms-2"><i
-                                        class="fa-solid fa-star me-2"></i>Sponsorizza</a>
+
+                                {{-- sponsorizza o in evidenza --}}
+                                {{-- <a href="{{route('admin.sponsorships.index', ['id' => $apartment->id])}}" class="btn ms-btn ms-btn-sm ms-btn-premium ms-2"><i
+                                        class="fa-solid fa-star me-2"></i>Sponsorizza</a> --}}
+                               
+                                        
+                                @if($apartment->sponsorships->max('pivot.start_date') < $apartment->sponsorships->max('pivot.expired_at'))
+                                <div class="badge ms-bg-dark ms-2 d-flex align-items-center">
+                                    <i class="fa-solid fa-star text-light me-2"></i>
+                                    <span class="xsmall text-uppercase fw-bolder text-light">
+                                    in evidenza
+                                    </span>
+                                </div>
+                                @else
+                                <a href="{{route('admin.sponsorships.index', ['id' => $apartment->id])}}" class="btn ms-btn ms-btn-sm ms-btn-premium ms-2">
+                                    <i class="fa-solid fa-star me-1"></i>
+                                    Sponsorizza
+                                </a>
+                                @endif
+
+                                    
                                 <div class="me-2 d-flex gap-2">
+                                    {{-- modifica --}}
                                     <a href="{{ route('admin.apartments.edit', ['apartment' => $apartment->id]) }}" class="btn ms-btn-sm ms-btn-outline-primary">
                                         <i class="fa-solid fa-pen"></i>
                                     </a>
@@ -89,4 +117,11 @@
 
     </div>
 
+    {{-- ciao --}}
+
+  
+
 @endsection
+
+
+
