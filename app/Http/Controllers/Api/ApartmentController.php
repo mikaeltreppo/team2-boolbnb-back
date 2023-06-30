@@ -238,7 +238,7 @@ class ApartmentController extends Controller
         /*viene fatta la richiesta degli appartamenti del database restituendo tutti quelli con l'id dell'array 
         apartmentIds legando anche le tabelle facilities, sponsorship, user e messages*/
         $idsString = implode(',', $orderedApartmentIds);
-        $results = Apartment::whereIn('id', $orderedApartmentIds)->with(['facilities', 'sponsorships', 'user', 'messages'])->orderByRaw("FIELD(id, $idsString)")->paginate(20);
+        $results = Apartment::whereIn('id', $orderedApartmentIds)->with(['facilities', 'sponsorships', 'user', 'messages'])->orderByRaw("FIELD(id, $idsString)")->paginate(5);
 
 
         // Restituisci i risultati come risposta JSON
