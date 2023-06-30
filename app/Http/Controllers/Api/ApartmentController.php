@@ -43,7 +43,7 @@ class ApartmentController extends Controller
                 return $sponsorship->pivot->start_date <= now() && $sponsorship->pivot->expired_at >= now();
             });
 
-            if ($apartment->visibile) { // se l'appartamento non è visibile non mostrarmelo 
+            if ($apartment->visible) { // se l'appartamento non è visibile non mostrarmelo 
                 if ($activeSponsorship) {
                     // Aggiungi l'ID dell'appartamento sponsorizzato all'array sponsoredIds
                     $sponsoredIds[] = $apartment->id;
