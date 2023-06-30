@@ -1,7 +1,9 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white sticky-top">
     <div class="container-fluid">
     <div class="navbar-logo h-100 d-flex align-items-middle">
-        <img src="{{URL('images/logo.svg')}}" alt="" class="navbar-logo d-inline-block d-md-none">
+        <a href="http://localhost:5173/">
+            <img src="{{URL('images/logo.svg')}}" alt="" class="navbar-logo d-inline-block d-md-none">
+        </a>
     </div>
     <button class="navbar-toggler ms-auto shadow-none" type="button" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" aria-label="{{ __('Toggle navigation') }}">
             <div class="line-1"></div>
