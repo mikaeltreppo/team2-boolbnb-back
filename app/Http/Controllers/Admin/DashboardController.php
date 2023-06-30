@@ -14,7 +14,6 @@ class DashboardController extends Controller
 {
     public function index($userId)
     {
-
         $user = auth()->user();
 
         $apartment_count = Apartment::where('user_id', $userId)->count();
@@ -24,6 +23,7 @@ class DashboardController extends Controller
         // Ottenere il conteggio delle views per ogni mese sugli appartamenti dell'utente
         $currentMonth = Carbon::now()->month;
         $views_count = [];
+        $total_views = 0; // Somma globale delle views
 
         for ($i = 1; $i <= 12; $i++) {
             $monthViews = View::whereIn('apartment_id', $apartments)
@@ -31,10 +31,11 @@ class DashboardController extends Controller
                 ->count();
 
             $views_count[] = $monthViews;
+            $total_views += $monthViews; // Aggiungi il conteggio del mese alla somma globale
         }
 
         $data = $views_count;
 
-        return view('admin.dashboard', compact('apartment_count', 'messages_count', 'data'));
+        return view('admin.dashboard', compact('apartment_count', 'messages_count', 'data', 'total_views'));
     }
 }
