@@ -70,9 +70,29 @@
                             </div>
                             {{-- buttons --}}
                             <div class="d-flex position-absolute mb-2 bottom-0 start-0 justify-content-between w-100">
-                                <a href="{{route('admin.sponsorships.index', ['id' => $apartment->id])}}" class="btn ms-btn ms-btn-sm ms-btn-premium ms-2"><i
-                                        class="fa-solid fa-star me-2"></i>Sponsorizza</a>
+
+                                {{-- sponsorizza o in evidenza --}}
+                                {{-- <a href="{{route('admin.sponsorships.index', ['id' => $apartment->id])}}" class="btn ms-btn ms-btn-sm ms-btn-premium ms-2"><i
+                                        class="fa-solid fa-star me-2"></i>Sponsorizza</a> --}}
+                               
+                                        
+                                @if($apartment->sponsorships->max('pivot.start_date') < $apartment->sponsorships->max('pivot.expired_at'))
+                                <div class="badge ms-bg-dark ms-2 d-flex align-items-center">
+                                    <i class="fa-solid fa-star text-light me-2"></i>
+                                    <span class="xsmall text-uppercase fw-bolder text-light">
+                                    in evidenza
+                                    </span>
+                                </div>
+                                @else
+                                <a href="{{route('admin.sponsorships.index', ['id' => $apartment->id])}}" class="btn ms-btn ms-btn-sm ms-btn-premium ms-2">
+                                    <i class="fa-solid fa-star me-1"></i>
+                                    Sponsorizza
+                                </a>
+                                @endif
+
+                                    
                                 <div class="me-2 d-flex gap-2">
+                                    {{-- modifica --}}
                                     <a href="{{ route('admin.apartments.edit', ['apartment' => $apartment->id]) }}" class="btn ms-btn-sm ms-btn-outline-primary">
                                         <i class="fa-solid fa-pen"></i>
                                     </a>
