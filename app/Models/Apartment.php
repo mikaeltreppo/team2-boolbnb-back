@@ -14,6 +14,7 @@ class Apartment extends Model
         'cover_image',
         'price',
         'description',
+        'address',
         'beds',
         'bathrooms',
         'bedrooms',
@@ -23,7 +24,10 @@ class Apartment extends Model
         'user_id',
         'facility_id',
         'longitude',
-        'latitude'
+        'latitude',
+        'city',
+        'country'
+        
     ];
 
     use HasFactory;

@@ -27,6 +27,7 @@ class StoreApartmentRequest extends FormRequest
 
             'title' => 'required|max:255',
             'description' => 'required|max:5000',
+            'address' => 'required|max:300',
             'cover_image' => 'required|max:1024|image',
             'price' => 'required|numeric|min:0',
             'latitude' => 'required|numeric',
@@ -35,7 +36,9 @@ class StoreApartmentRequest extends FormRequest
             'bathrooms' => 'required|integer',
             'bedrooms' => 'required|integer',
             'size_m2' => 'required|integer',
-            'facilities'=> 'exists:facilities,id'
+            'facilities'=> 'exists:facilities,id',
+            'city' => 'required|max:300',
+            'country' => 'required|max:300'
 
         ];
     }

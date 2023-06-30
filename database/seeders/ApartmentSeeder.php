@@ -29,7 +29,9 @@ class ApartmentSeeder extends Seeder
                 'size' => 70,
                 'slug' => 'appartamento-bologna',
                 'available' => true,
-                'visible' => true
+                'visible' => true,
+                'city' => 'Città',
+                'country' => 'Italia'
             ],
             [
                 'title' => 'Appartamento Roma',
@@ -43,7 +45,9 @@ class ApartmentSeeder extends Seeder
                 'size' => 60,
                 'slug' => 'appartamento-roma',
                 'available' => false,
-                'visible' => true
+                'visible' => true,
+                'city' => 'Città',
+                'country' => 'Italia'
             ],
             [
                 'title' => 'Appartamento Firenze',
@@ -57,7 +61,9 @@ class ApartmentSeeder extends Seeder
                 'size' => 35,
                 'slug' => 'appartamento-firenze',
                 'available' => true,
-                'visible' => true
+                'visible' => true,
+                'city' => 'Città',
+                'country' => 'Italia'
             ],
             [
                 'title' => 'Appartamento Napoli',
@@ -71,7 +77,9 @@ class ApartmentSeeder extends Seeder
                 'size' => 55,
                 'slug' => 'appartamento-napoli',
                 'available' => true,
-                'visible' => true
+                'visible' => true,
+                'city' => 'Città',
+                'country' => 'Italia'
             ],
             [
                 'title' => 'Appartamento Torino',
@@ -85,7 +93,9 @@ class ApartmentSeeder extends Seeder
                 'size' => 40,
                 'slug' => 'appartamento-torino',
                 'available' => false,
-                'visible' => true
+                'visible' => true,
+                'city' => 'Città',
+                'country' => 'Italia'
             ], 
             [
                 'title' => 'Appartamento Verona',
@@ -99,7 +109,9 @@ class ApartmentSeeder extends Seeder
                 'size' => 50,
                 'slug' => 'appartamento-verona',
                 'available' => true,
-                'visible' => true
+                'visible' => true,
+                'city' => 'Città',
+                'country' => 'Italia'
             ]            
         ];
         
@@ -118,6 +130,8 @@ class ApartmentSeeder extends Seeder
             $newApartment->slug = $field['slug'];
             $newApartment->available = $field['available'];
             $newApartment->visible = $field['visible'];
+            $newApartment->city = $field['city'];
+            $newApartment->country = $field['country'];
         
             $newApartment->save();
         }

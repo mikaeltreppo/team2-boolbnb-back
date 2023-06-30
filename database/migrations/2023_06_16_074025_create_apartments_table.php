@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('cover_image', 300);
             $table->decimal('price');
             $table->string('description', 1500);
-            $table->string('address', 150);
+            $table->string('address', 250);
             $table->tinyInteger('beds');
             $table->tinyInteger('bathrooms');
             $table->tinyInteger('bedrooms');

@@ -22,40 +22,40 @@ class ApartmentController extends Controller
         $apartments = $user->apartments;
 
 
-        foreach($apartments as $apartment){
+        // foreach($apartments as $apartment){
 
-            $data = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/reverseGeocode/'. $apartment->latitude .','. $apartment->longitude .'.json?key=ZPskuspkrrcmchd9ut4twltuw96h5bWH');
-            $responseData = $data->json();
+        //     $data = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/reverseGeocode/'. $apartment->latitude .','. $apartment->longitude .'.json?key=ZPskuspkrrcmchd9ut4twltuw96h5bWH');
+        //     $responseData = $data->json();
 
-            $apartment->city = (!empty($responseData['addresses'][0]['address']['municipality'])) ? $responseData['addresses'][0]['address']['municipality'] : null;
-            $apartment->country = (!empty($responseData['addresses'][0]['address']['country'])) ? $responseData['addresses'][0]['address']['country'] : null;
+        //     $apartment->city = (!empty($responseData['addresses'][0]['address']['municipality'])) ? $responseData['addresses'][0]['address']['municipality'] : null;
+        //     $apartment->country = (!empty($responseData['addresses'][0]['address']['country'])) ? $responseData['addresses'][0]['address']['country'] : null;
             
-            $apartment->number = (!empty($responseData['addresses'][0]['address']['streetNumber'])) ? $responseData['addresses'][0]['address']['streetNumber'] : null;
+        //     $apartment->number = (!empty($responseData['addresses'][0]['address']['streetNumber'])) ? $responseData['addresses'][0]['address']['streetNumber'] : null;
             
-             /*
-            if(!empty($responseData['addresses'][0]['address']['streetName'])){
-                $apartment->address = $responseData['addresses'][0]['address']['streetName'];
-            } else if(!empty($responseData['addresses'][0]['address']['streetNameAndNumber'])) {
-                $apartment->address = $responseData['addresses'][0]['address']['streetNameAndNumber'];
-            } else {
-                $apartment->address = 'Indirizzo non valido';
-            }
-            */
+        //      /*
+        //     if(!empty($responseData['addresses'][0]['address']['streetName'])){
+        //         $apartment->address = $responseData['addresses'][0]['address']['streetName'];
+        //     } else if(!empty($responseData['addresses'][0]['address']['streetNameAndNumber'])) {
+        //         $apartment->address = $responseData['addresses'][0]['address']['streetNameAndNumber'];
+        //     } else {
+        //         $apartment->address = 'Indirizzo non valido';
+        //     }
+        //     */
 
             
-            if(!empty($responseData['addresses'][0]['address']['streetNameAndNumber'])){
-                $apartment->address = $responseData['addresses'][0]['address']['streetNameAndNumber'];
-            } else if(!empty($responseData['addresses'][0]['address']['streetName'])) {
-                $apartment->address = $responseData['addresses'][0]['address']['streetName'];
-            } else {
-                $apartment->address = 'Indirizzo non valido';
-            }
+        //     if(!empty($responseData['addresses'][0]['address']['streetNameAndNumber'])){
+        //         $apartment->address = $responseData['addresses'][0]['address']['streetNameAndNumber'];
+        //     } else if(!empty($responseData['addresses'][0]['address']['streetName'])) {
+        //         $apartment->address = $responseData['addresses'][0]['address']['streetName'];
+        //     } else {
+        //         $apartment->address = 'Indirizzo non valido';
+        //     }
             
          
             
-            $address = (!empty($responseData['addresses'][0]['address']) ? $responseData['addresses'][0]['address'] : '');
+        //     $address = (!empty($responseData['addresses'][0]['address']) ? $responseData['addresses'][0]['address'] : '');
             
-        }
+        // }
      
 
         return view('admin.apartments.index', compact('apartments', 'facilities'));
@@ -133,26 +133,26 @@ class ApartmentController extends Controller
         $facilities = Facility::all();
 
 
-            $data = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/reverseGeocode/'. $apartment->latitude .','. $apartment->longitude .'.json?key=ZPskuspkrrcmchd9ut4twltuw96h5bWH');
-            $responseData = $data->json();
+            // $data = Http::withOptions(['verify' => false])->get('https://api.tomtom.com/search/2/reverseGeocode/'. $apartment->latitude .','. $apartment->longitude .'.json?key=ZPskuspkrrcmchd9ut4twltuw96h5bWH');
+            // $responseData = $data->json();
 
-            $apartment->city = (!empty($responseData['addresses'][0]['address']['municipality'])) ? $responseData['addresses'][0]['address']['municipality'] : null;
-            $apartment->country = (!empty($responseData['addresses'][0]['address']['country'])) ? $responseData['addresses'][0]['address']['country'] : null;
-            $apartment->number = (!empty($responseData['addresses'][0]['address']['streetNumber'])) ? $responseData['addresses'][0]['address']['streetNumber'] : null;
+            // $apartment->city = (!empty($responseData['addresses'][0]['address']['municipality'])) ? $responseData['addresses'][0]['address']['municipality'] : null;
+            // $apartment->country = (!empty($responseData['addresses'][0]['address']['country'])) ? $responseData['addresses'][0]['address']['country'] : null;
+            // $apartment->number = (!empty($responseData['addresses'][0]['address']['streetNumber'])) ? $responseData['addresses'][0]['address']['streetNumber'] : null;
             
         
             
-            if(!empty($responseData['addresses'][0]['address']['streetNameAndNumber'])){
-                $apartment->address = $responseData['addresses'][0]['address']['streetNameAndNumber'];
-            } else if(!empty($responseData['addresses'][0]['address']['streetName'])) {
-                $apartment->address = $responseData['addresses'][0]['address']['streetName'];
-            } else {
-                $apartment->address = 'Indirizzo non valido';
-            }
+            // if(!empty($responseData['addresses'][0]['address']['streetNameAndNumber'])){
+            //     $apartment->address = $responseData['addresses'][0]['address']['streetNameAndNumber'];
+            // } else if(!empty($responseData['addresses'][0]['address']['streetName'])) {
+            //     $apartment->address = $responseData['addresses'][0]['address']['streetName'];
+            // } else {
+            //     $apartment->address = 'Indirizzo non valido';
+            // }
             
          
             
-            $address = (!empty($responseData['addresses'][0]['address']) ? $responseData['addresses'][0]['address'] : '');
+            // $address = (!empty($responseData['addresses'][0]['address']) ? $responseData['addresses'][0]['address'] : '');
             
         
 

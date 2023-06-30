@@ -18,14 +18,14 @@ class MessageSeeder extends Seeder
     {
         $tableFields = [
             [
-                'full_name' => 'Pippo',
+                'name' => 'Pippo',
                 'email' => 'pippo@pluto.com',
                 'message' => 'ciao sono cicciobello'
             ]
         ];
         foreach ($tableFields as $field){
             $newMessage = new Message();
-            $newMessage -> full_name = $field['full_name'];
+            $newMessage -> name = $field['name'];
             $newMessage -> email = $field['email'];
             $newMessage -> message = $field['message'];
 

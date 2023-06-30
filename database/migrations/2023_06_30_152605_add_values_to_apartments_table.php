@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('messages', function (Blueprint $table) {
-            $table->renameColumn('full_name', 'name');
+        Schema::table('apartments', function (Blueprint $table) {
+            $table->string('city', 150)->nullable();
+            $table->string('country', 150)->nullable();
+
         });
     }
 
@@ -25,6 +27,8 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('apartments', function (Blueprint $table) {
+            //
+        });
     }
 };
