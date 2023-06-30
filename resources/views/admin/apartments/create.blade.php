@@ -19,8 +19,9 @@
         <form method="POST" action="{{ route('admin.apartments.store') }}" enctype="multipart/form-data" id="formCreate">
     
             @csrf
-            <div class="d-flex flex-wrap">
-                <div class="w-50 p-3">
+            {{-- info principali --}}
+            <div class="row flex-wrap">
+                <div class="col-12 col-lg-6 p-3">
                     <label for="title" class="form-label">Nome Appartamento</label>
                     <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
                         name="title" value="{{ old('title') }}" minlength="2" maxlength="255" required>
@@ -31,7 +32,7 @@
                         </div>
                     @enderror
                 </div>
-                <div class="w-50 p-3">
+                <div class=" col-12 col-lg-6 p-3">
                     <label for="cover_image" class="form-label">Immagine</label>
                     <input type="file" class="form-control @error('cover_image') is-invalid @enderror" id="cover_image"
                         name="cover_image">
@@ -41,7 +42,7 @@
                         </div>
                     @enderror
                 </div>
-                <div class="w-50 p-3">
+                <div class="col-12 col-lg-6 p-3">
                     <label for="price" class="form-label">Prezzo</label>
                     <input type="text" class="form-control @error('price') is-invalid @enderror" id="price"
                         name="price" value="{{ old('price') }}" required>
@@ -53,7 +54,7 @@
                     @enderror
                 </div>
                 <!--search-->
-                <div class="w-50 px-3">
+                <div class="col-12  col-lg-6  px-3">
                     <label for="address" class="form-label">Indirizzo</label>
                     <div id="address"></div>
                     <p id="addressError" style="color: red;"></p>
@@ -66,7 +67,7 @@
                     <input type="hidden" id="latitude" name="latitude" value="">
                    
                 </div>
-                <div class="p-3 w-100">
+                <div class="p-3 col-12">
                     <label for="description" class="form-label">Descrizione</label>
                     <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description"
                         cols="30" rows="10" class="form-control" required maxlength="5000">
@@ -82,8 +83,8 @@
             </div>
             <!--sezione numeri del form-->
 
-            <div class="d-flex flex-wrap">
-                <div class="p-3 w-25">
+            <div class="row flex-wrap">
+                <div class="p-3 col-6 col-lg-3">
                     <label for="bedrooms" class="form-label">Camere da letto</label>
                     <input type="number" class="form-control @error('bedrooms') is-invalid @enderror" id="bedrooms"
                         name="bedrooms" min="1" max="130" step="1" value="{{ old('bedrooms') }}"
@@ -95,7 +96,7 @@
                         </div>
                     @enderror
                 </div>
-                <div class="p-3 w-25">
+                <div class="p-3 col-6 col-lg-3">
                     <label for="beds" class="form-label">Letti</label>
                     <input type="number" class="form-control @error('beds') is-invalid @enderror" id="beds"
                         name="beds" min="1" max="130" step="1" value="{{ old('beds') }}" required>
@@ -106,7 +107,7 @@
                         </div>
                     @enderror
                 </div>
-                <div class="p-3 w-25">
+                <div class="p-3 col-6 col-lg-3">
                     <label for="bathrooms" class="form-label">Bagni</label>
                     <input type="number" class="form-control @error('bathrooms') is-invalid @enderror" id="bathrooms"
                         name="bathrooms" min="1" max="130" step="1" value="{{ old('bathrooms') }}"
@@ -118,7 +119,7 @@
                         </div>
                     @enderror
                 </div>
-                <div class="p-3 w-25">
+                <div class="p-3 col-6 col-lg-3">
                     <label for="size_m2" class="form-label">Metratura</label>
                     <input type="number" class="form-control @error('size_m2') is-invalid @enderror" id="size_m2"
                         name="size_m2" min="1" max="130" step="1" value="{{ old('size_m2') }}"

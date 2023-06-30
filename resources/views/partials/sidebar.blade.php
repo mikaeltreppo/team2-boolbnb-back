@@ -30,15 +30,15 @@
     </li>
    
 
-        <li>
-            <a href="{{ route('admin.sponsorships.index') }}" class="btn ms-btn-textual-primary w-lg-auto w-100 text-center text-lg-start sidebar-icon arrow rounded-3">
-                <i class="fa-solid fa-star me-2"></i>
-                <span  class="d-none d-md-inline">
-                    Sponsorizza
-                </span>
-                
-            </a>
-         </li>
+    <li>
+        <a href="{{ route('admin.sponsorships.index') }}" class="btn ms-btn-textual-primary w-lg-auto w-100 text-center text-lg-start sidebar-icon arrow rounded-3">
+            <i class="fa-solid fa-star me-2"></i>
+            <span  class="d-none d-md-inline">
+                Sponsorizza
+            </span>
+            
+        </a>
+        </li>
      
        
 </ul>
