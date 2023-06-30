@@ -64,6 +64,7 @@ class ApartmentController extends Controller
     /*  Metodo di ricerca degli appartamenti entro il raggio selezionato  */
     public function search($latitude, $longitude, $radius, $price, $beds, $meters, $rooms, $bathrooms, $available, $wifi, $car, $pool, $door, $sauna, $water)
     {
+
         //i valori passati sono inizialmente tutte stringhe, qui li trasforma in int, float, boolean effettivi
         $latitude = floatval($latitude);
         $longitude = floatval($longitude);
@@ -238,7 +239,10 @@ class ApartmentController extends Controller
         /*viene fatta la richiesta degli appartamenti del database restituendo tutti quelli con l'id dell'array 
         apartmentIds legando anche le tabelle facilities, sponsorship, user e messages*/
         $idsString = implode(',', $orderedApartmentIds);
-        $results = Apartment::whereIn('id', $orderedApartmentIds)->with(['facilities', 'sponsorships', 'user', 'messages'])->orderByRaw("FIELD(id, $idsString)")->paginate(5);
+        
+
+        $results = Apartment::whereIn('id', $orderedApartmentIds)->with(['facilities', 'sponsorships', 'user', 'messages'])->orderByRaw("FIELD(id, $idsString)")->paginate(20);
+   
 
 
         // Restituisci i risultati come risposta JSON
