@@ -64,15 +64,15 @@
                                         <ul class="list-unstyled">
                                             @if($sponsorship->id === 1)
                                             <li class="my-3" >
-                                                Massima visibilità per 24 ore
+                                                <b>Massima visibilità per 24 ore</b>
                                             </li>
                                             @elseif ($sponsorship->id === 2)
                                             <li class="my-3" >
-                                                Aumenta le possibilità di prenotazione per 72 ore 
+                                                <b>Aumenta le possibilità di prenotazione per 72 ore</b> 
                                             </li>
                                             @else
                                             <li class="my-3" >
-                                                Promozione di alto livello per 144 ore 
+                                                <b>Promozione di alto livello per 144 ore</b> 
                                             </li>
                                             @endif
 
@@ -87,7 +87,7 @@
                                             </li>
                                             @else
                                             <li class="my-3" >
-                                                Massima visibilità nella ricerca e nell'area degli appartamenti in evidenza 
+                                                Massima visibilità nei risultati di ricerca
                                             </li>
                                             @endif
 
