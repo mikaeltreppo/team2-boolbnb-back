@@ -1,6 +1,6 @@
 <div class="sidebar ms-bg-dark vh-100 py-4 panel-shadow-right px-3 w-100">
 <div class="brand my-4 text-center">
-    <a href="http://localhost:5173/">
+    <a href="http://localhost:5174/">
         <img src="{{URL('images/logo.svg')}}" alt="" class="sidebar-logo logo-light align-middle d-md-block d-none ms-lg-3">
         <h1 class="display-3 font-secondary fw-bold text-white d-inline align-middle ms-2 d-md-none">B</h1>
     </a>
