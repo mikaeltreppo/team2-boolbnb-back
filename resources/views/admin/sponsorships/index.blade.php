@@ -62,14 +62,37 @@
                                     <div class="card-body text-center">
 
                                         <ul class="list-unstyled">
-                                            <li class="my-3">
-                                                Feature #1
+                                            @if($sponsorship->id === 1)
+                                            <li class="my-3" >
+                                                Massima visibilità per 24 ore
                                             </li>
-                                            <li class="my-3">
-                                                Feature #2
+                                            @elseif ($sponsorship->id === 2)
+                                            <li class="my-3" >
+                                                Aumenta le possibilità di prenotazione per 72 ore 
                                             </li>
-                                            <li class="my-3">
-                                                Feature #3
+                                            @else
+                                            <li class="my-3" >
+                                                Promozione di alto livello per 144 ore 
+                                            </li>
+                                            @endif
+
+
+                                            @if($sponsorship->id === 1)
+                                            <li class="my-3" >
+                                                Risultati messi in primo piano nelle ricerche degli appartamenti 
+                                            </li>
+                                            @elseif ($sponsorship->id === 2)
+                                            <li class="my-3" >
+                                                Massima visibilità nei risultati di ricerca
+                                            </li>
+                                            @else
+                                            <li class="my-3" >
+                                                Massima visibilità nella ricerca e nell'area degli appartamenti in evidenza 
+                                            </li>
+                                            @endif
+
+                                            <li class="my-3" >
+                                                Inserimento nella sezione degli appartamenti in evidenza
                                             </li>
                                         </ul>
 
