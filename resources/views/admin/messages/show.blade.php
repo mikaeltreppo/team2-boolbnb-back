@@ -26,8 +26,8 @@
                     @method('DELETE')
                     @csrf
                     <button type="submit" class="btn btn-sm ms-btn-primary  mt-3">
-                        <i class="fa-solid fa-envelope-circle-check me-1"></i>
-                        Segna come letto
+                        <i class="fa-solid fa-trash me-1"></i>
+                        Elimina
                     </button>
                 </form>
                   

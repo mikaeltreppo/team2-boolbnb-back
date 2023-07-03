@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="m-3">
+    <div class="m-0 m-lg-3">
         {{-- buttons-top --}}
         <a href="{{ route('admin.apartments.index') }}" class="btn ms-btn-outline-primary d-none d-lg-inline-block">
             <i class="fa-solid fa-arrow-left"></i>
@@ -73,10 +73,7 @@
                 </div>
                 <div class="p-3 col-12">
                     <label for="description" class="form-label">Descrizione</label>
-                    <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description"
-                        cols="30" rows="10" class="form-control" required maxlength="5000">
-                    {{ old('description') }}
-                    </textarea>
+                    <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" cols="30" rows="10" class="form-control" required maxlength="5000">{{ old('description') }}</textarea>
                     <p id="descriptionError" style="color: red;"></p>
                     @error('description')
                         <div class="invalid-feedback">

@@ -410,3 +410,27 @@ label.card-radio {
     width: 100%!important;
     height: 100%!important;
 }
+
+/* Track Bar */
+
+/* width */
+::-webkit-scrollbar {
+    width: 9px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border: 2px solid white;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #c4cbcb;
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: $main_darker2_color;
+  }
