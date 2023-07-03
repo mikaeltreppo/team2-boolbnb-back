@@ -72,11 +72,11 @@
                     </div>
 
                     <div class="px-3 col-12 col-lg-6">
-                        <label for="address" class="form-label">Indirizzo</label>
-                        <div id="address"></div>
+                        <label for="ttAddress" class="form-label">Indirizzo</label>
+                        <div id="ttAddress"></div>
 
                         <p id="addressError" style="color: red;"></p>
-                        @error('address')
+                        @error('ttAddress')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -207,6 +207,7 @@
     </a>
 
     <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps-web.min.js"></script>
+   
     <script>
         var options = {
             searchOptions: {
@@ -221,15 +222,34 @@
         };
         var ttSearchBox = new tt.plugins.SearchBox(tt.services, options);
         var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
-        document.getElementById("address").appendChild(searchBoxHTML);
+        document.getElementById("ttAddress").appendChild(searchBoxHTML);
 
         ttSearchBox.on('tomtom.searchbox.resultselected', function(data) {
             var result = data.data.result;
+
+
             var longitude = result.position.lng;
             var latitude = result.position.lat;
 
+            var address = result.address.streetName;
+
+            var number = result.address.streetNumber;
+
+            if(number != undefined){
+                address += `, ${number}`;
+            }
+
+            var country = result.address.country;
+            var city = result.address.municipality;
+                
             document.getElementById("longitude").value = longitude;
             document.getElementById("latitude").value = latitude;
+            
+            document.getElementById("country").value = country;
+            document.getElementById("city").value = city;
+            document.getElementById("address").value = address;
+       
         });
+
     </script>
 @endsection
