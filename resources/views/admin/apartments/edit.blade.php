@@ -10,9 +10,9 @@
         </div>
     @endif
 
-    <div class="card border-0 w-80 mx-auto">
-        {{-- buttons-top --}}
-        <a href="{{ route('admin.apartments.index') }}" class="btn ms-btn-outline-primary  ms_arrow_back">
+    <div class="card border-0 w-80 mx-auto mt-4 mt-lg-0">
+         {{-- buttons-top --}}
+         <a href="{{ route('admin.apartments.index') }}" class="btn ms-btn-outline-primary d-none d-lg-inline-block">
             <i class="fa-solid fa-arrow-left"></i>
         </a>
 
@@ -22,9 +22,9 @@
                 alt="{{ $apartment->title }}" />
         @endif
 
-        <h5 class="card-title fs-2 font-semibold  text-center">{{ $apartment->title }}</h5>
+        <h5 class="card-title fs-2 font-semibold text-center">{{ $apartment->title }}</h5>
 
-        <div class="card-body mt-5">
+        <div class="card-body mt-lg-5 mt-2">
             <form method="POST" action="{{ route('admin.apartments.update', ['apartment' => $apartment->id]) }}"
                 enctype="multipart/form-data" id="formEdit">
                 @csrf
@@ -194,6 +194,11 @@
         </div>
         <button type="submit" class="m-3 btn ms-btn ms-btn-primary">Modifica</button>
         </form>
+
+          {{-- button --}}
+          <a href="{{ route('admin.apartments.index') }}" class="btn ms-btn-outline-primary d-block d-lg-none my-3">
+            <i class="fa-solid fa-arrow-left"></i> Torna ai miei appartamenti
+        </a>
     </div>
 
     </div>
