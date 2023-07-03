@@ -41,3 +41,15 @@ $premium_color: #fcc419;
     filter: brightness(0) saturate(100%) invert(56%) sepia(39%) saturate(859%)
         hue-rotate(140deg) brightness(81%) contrast(100%);
 }
+
+.sponsor_bronze {
+    background-color: #d0b897 !important;
+}
+
+.sponsor_silver {
+    background-color: #acacac !important;
+}
+
+.sponsor_gold {
+    background-color: #f4d487 !important;
+}

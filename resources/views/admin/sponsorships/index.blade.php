@@ -48,7 +48,8 @@
                                     value="{{ $sponsorship->id }}" class="card-radio-element" @if($key == 0) checked  @endif>
 
                                 <div class="card card-tileflat-shadow  drop-shadow-sm card-radio-content">
-                                    <div class="card-header py-4 bg-secondary text-light">
+                                    <div class="card-header py-4 text-light {{ $sponsorship->name == 'Bronze'? 'sponsor_bronze' : ($sponsorship->name == 'Silver'? 'sponsor_silver' : ($sponsorship->name == 'Gold'? 'sponsor_gold' : ''))
+                                    }} ">
 
                                         <h6 class="text-center font-secondary text-light small text-uppercase fw-bold">
                                             {{ $sponsorship->name }}</h6>
