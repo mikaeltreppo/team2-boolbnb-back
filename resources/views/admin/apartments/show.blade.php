@@ -4,7 +4,7 @@
 <div class="d-flex justify-content-center">
 
     {{-- inizio big-card apartment --}}
-    <div class="card border-0 ms_big_card mx-lg-5">
+    <div class="card border-0 ms_big_card w-100 mx-lg-5">
        
         {{-- card-top --}}
         <div class="row">

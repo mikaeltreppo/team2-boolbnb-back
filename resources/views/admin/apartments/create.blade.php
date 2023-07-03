@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="m-3">
+    <div class="m-0 m-lg-3">
         {{-- buttons-top --}}
         <a href="{{ route('admin.apartments.index') }}" class="btn ms-btn-outline-primary d-none d-lg-inline-block">
             <i class="fa-solid fa-arrow-left"></i>
