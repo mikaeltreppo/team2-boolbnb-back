@@ -2,6 +2,7 @@ import "./bootstrap";
 import "./chartImplement";
 import "~resources/scss/app.scss";
 import "./validationsCreateEditApartment";
+import "./validationsRegister";
 import * as bootstrap from "bootstrap";
 import.meta.glob(["../img/**"]);
 

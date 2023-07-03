@@ -16,6 +16,7 @@
             <div class="card-header">
                 <div class="small fw-bold">Da: <span class="fw-lighter">{{$message->name}}</span></div>
                 <div class="small fw-bold">Appartamento: <span class="fw-lighter">{{$message->apartment->title}}</span></div>
+                <div class="small fw-bold">Email: <span class="fw-lighter">{{$message->email}}</span></div>
             </div>
             <div class="card-body">
                 <div class="small fw-bold">Messaggio:</div>

@@ -15,7 +15,9 @@
                         @csrf
 
                         <div class="auth-brand text-center mb-5 mt-3">
-                            <img src="{{URL('images/logo.svg')}}" alt="" class="login-logo">
+                            <a href="http://localhost:5174/">
+                                <img src="{{URL('images/logo.svg')}}" alt="" class="login-logo">
+                            </a>
                         </div>
 
                           {{-- Name --}}
