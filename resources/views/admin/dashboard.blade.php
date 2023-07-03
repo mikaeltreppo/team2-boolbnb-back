@@ -23,11 +23,11 @@
                                 </div>
                             </div>
 
-                            <div class="col-12 col-xl-7 col-lg-12 text-center text-xl-start text-muted ps-xl-3 ps-0">
+                            <div class="col-12 col-xl-7 col-lg-12 text-center text-xl-start text-muted ps-lg-2 ps-xl-3 ps-0 my-3 my-xl-0">
                                 <div class="small">Sapevi che un annuncio sponsorizzato viene visualizzato in media <span class="fw-bold">3 volte di più</span> rispetto ad un annuncio classico?</div>
                             </div>
 
-                            <div class="col-xl-4 col-12 text-lg-end text-center">
+                            <div class="col-xl-4 col-12 text-xl-end text-center">
                                 <a href="{{ route('admin.sponsorships.index') }}" class="btn ms-btn ms-btn-sm ms-btn-primary">
                                     <i class="fa-solid fa-star me-2"></i>
                                     Sponsorizza
