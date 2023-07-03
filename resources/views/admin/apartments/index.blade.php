@@ -70,6 +70,10 @@
                                     <span class="fw-bold ">{{ $apartment->size_m2 }}</span> m<sup>2</sup>
                                 </div>
                             </div>
+                            <!-- VISUALIZZAZIONI appartamento -->
+                            <div class="mt-2"><i class="fa-solid fa-eye ms_light_gray_text me-1"></i> 
+                                <span>{{$apartment->views_count}}</span>
+                            </div>
                             {{-- buttons --}}
                             <div class="d-flex position-absolute mb-2 bottom-0 start-0 justify-content-between w-100">
 
@@ -92,8 +96,7 @@
                                 </a>
                                 @endif
 
-                                <!-- VISUALIZZAZIONI appartamento -->
-                                <p>{{$apartment->views_count}}</p>
+                                
 
                                     
                                 <div class="me-2 d-flex gap-2">
