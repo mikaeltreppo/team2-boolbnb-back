@@ -128,18 +128,24 @@
                         <span class="fw-bold fs-5">{{ $apartment->price }}</span> 
                         <span>€/notte</span>
                     </div>
-                    <div class="card-text my-3 pb-4 border-bottom">
+                    <div class="card-text my-3">
                         <i class="fa-solid fa-ruler-combined ms_light_gray_text me-2"></i>
                         <span class="fw-bold fs-5">{{ $apartment->size_m2 }}</span> 
                         <span>m<sup>2</sup></span>
                     </div>
+                     <!-- VISUALIZZAZIONI appartamento -->
+                     <div class="card-text my-3 pb-4 border-bottom">
+                        <i class="fa-solid fa-eye ms_light_gray_text me-2"></i> 
+                        <span class="fw-bold fs-5">{{$apartment->views_count}}</span>
+                        <span>views</span>
+                    </div>
                     
                     <div class="card-text d-flex align-items-center gap-2 my-4">
                         @if ($apartment->visible == 0)
-                        <i class="fa-solid fa-eye-slash fs-4"></i>
+                        <i class="fa-solid fa-ghost fs-4"></i>
                         <span>Non visibile all'utente</span> 
                         @else
-                        <i class="fa-solid fa-eye fs-4 text-success"></i>
+                        <i class="fa-solid fa-face-grin-wide fs-4 text-success"></i>
                         <span>Visibile</span> 
                         @endif
                     </div>
@@ -152,6 +158,7 @@
                         <span>Disponibile</span> 
                         @endif
                     </div>
+                    
     
                     {{-- buttons --}}
                     <div class="d-flex flex-column mt-5">
