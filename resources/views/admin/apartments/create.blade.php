@@ -54,7 +54,7 @@
                     @enderror
                 </div>
                 <!--search-->
-                <div class="col-12  col-lg-6  px-3">
+                <div class="col-12 col-lg-6 p-3">
                     <label for="ttAddress" class="form-label">Indirizzo</label>
                     <div id="ttAddress"></div>
                     <p id="addressError" style="color: red;"></p>

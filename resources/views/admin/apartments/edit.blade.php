@@ -93,9 +93,7 @@
                    
                     <div class="p-3 col-12">
                         <label for="description" class="form-label">Descrizione</label>
-                        <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description"
-                            cols="30" rows="10" class="form-control" required maxlength="5000">{{ old('apartment', $apartment->description) }} 
-                            </textarea>
+                        <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" cols="30" rows="10" class="form-control" required maxlength="5000">{{ old('apartment', $apartment->description) }}</textarea>
                         <p id="descriptionError" class="error-validation"></p>
                         @error('description')
                             <div class="invalid-feedback">
