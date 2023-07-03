@@ -28,6 +28,7 @@
             {{-- card apartment --}}
 
             @foreach ($apartments as $apartment)
+                
                 <div class="col-lg-4 col-xlg-3 col-md-6 col-sm-12">
                     <div class="p-0 card ms_card card-tile drop-shadow-sm bg-white rounded-4 flat-shadow">
                         <a href="{{ route('admin.apartments.show', ['apartment' => $apartment->id]) }}">
@@ -35,6 +36,7 @@
                                 <img src="{{ asset('storage/' . $apartment->cover_image) }}" class="card-img-top @if($apartment->visible == 0)? ms_img_grayscale :''@endif"
                                     alt="{{ $apartment->title }}">
                             @endif
+                            
 
                             @if ($apartment->visible == 0)
                             <div class="position-absolute top-0 end-0 d-flex align-items-center mt-1 me-1 ms_black_text">
@@ -89,6 +91,9 @@
                                     Sponsorizza
                                 </a>
                                 @endif
+
+                                <!-- VISUALIZZAZIONI appartamento -->
+                                <p>{{$apartment->views_count}}</p>
 
                                     
                                 <div class="me-2 d-flex gap-2">

@@ -21,8 +21,9 @@
                 <img src="{{ asset('storage/' . $apartment->cover_image) }}" alt="{{ $apartment->title }}" class="card-img-top w-100 img-fluid border-0 d-none d-lg-block">
                 @endif
 
-   
 
+                <!-- VISUALIZZAZIONI appartamento -->
+                <p>{{ $apartment->views_count }}</p>
 
                 @if($apartment->sponsorships->max('pivot.start_date') < $apartment->sponsorships->max('pivot.expired_at'))
                     <div class="badge ms-bg-dark position-absolute top-0 end-0 mt-lg-2 mt-2 me-lg-4 me-3">
