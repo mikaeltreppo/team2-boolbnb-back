@@ -81,8 +81,14 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                        <input type="hidden" id="longitude" name="longitude" value="">
-                        <input type="hidden" id="latitude" name="latitude" value="">
+
+                        <input type="hidden" id="longitude" name="longitude" value="{{ old('apartment', $apartment->longitude) }}">
+                        <input type="hidden" id="latitude" name="latitude" value="{{ old('apartment', $apartment->latitude) }}">
+
+                        <input type="hidden" id="address" name="address" value="{{ old('apartment', $apartment->address) }}">
+                        <input type="hidden" id="city" name="city" value="{{ old('apartment', $apartment->city) }}">
+                        <input type="hidden" id="country" name="country" value="{{ old('apartment', $apartment->country) }}">
+
                     </div>
                    
                     <div class="p-3 col-12">
