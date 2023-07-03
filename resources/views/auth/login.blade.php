@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-4">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 col-12">
 
             <div class="card flat-shadow rounded-4 ">
                
@@ -53,7 +53,7 @@
                             </div>
                         </div>
                         {{-- Forgot Password --}}
-                        <div class="col-12 col-lg-8 text-lg-end text-start">
+                        <div class="col-12 col-lg-8 text-lg-end text-center">
                             @if (Route::has('password.request'))
                             <a class="btn btn-link" href="{{ route('password.request') }}">
                                 {{ __('Password dimenticata?') }}

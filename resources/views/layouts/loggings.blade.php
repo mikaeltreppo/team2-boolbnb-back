@@ -26,7 +26,7 @@
     <div id="app">
         <div class="container">
             <div class="row vh-100 align-items-center">
-                <div class="col-8 mx-auto">
+                <div class="col-12 col-lg-9 col-xl-8 mx-auto">
                     @yield('content')
                 </div>
             </div>
