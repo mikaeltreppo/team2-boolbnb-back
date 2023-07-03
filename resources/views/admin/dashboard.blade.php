@@ -45,7 +45,7 @@
         <div class="row">
 
 
-            <div class="col-lg-4 col-12 d-flex flex-column justify-content-between">
+            <div class="col-lg-4 col-12 d-flex flex-column justify-content-between mb-4 mb-lg-0">
                 
                 {{-- Messages --}}
                     <a href="{{ route('admin.messages.index') }}" class="text-decoration-none">
@@ -138,8 +138,8 @@
                     {{-- End Aparmtents --}}
             </div>
            {{-- Graph --}}
-            <div class="col-xl-5 col-lg-8 col-12">
-                <div class="card h-100 bg-white rounded-4 flat-shadow card-tile drop-shadow-md">
+            <div class="col-xl-5 col-lg-8 col-12 mb-4 mb-lg-0">
+                <div class="card h-100 bg-white rounded-4 flat-shadow card-tile drop-shadow-md mb-4">
                     <div class="card-body p-4">
                         <span class="small fw-bold">Statistiche Globali</span>
                         <canvas id="myChart" class="mt-3" data-chart-data="{{ json_encode($data) }}">
