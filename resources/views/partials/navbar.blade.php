@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white sticky-top">
     <div class="container-fluid">
     <div class="navbar-logo h-100 d-flex align-items-middle">
-        <a href="http://localhost:5173/">
+        <a href="http://localhost:5174/">
             <img src="{{URL('images/logo.svg')}}" alt="" class="navbar-logo d-inline-block d-md-none">
         </a>
     </div>
