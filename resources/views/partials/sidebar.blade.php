@@ -11,7 +11,7 @@
     <!-- reindirizzamento DASHBOARD -->
     <span class="sidebar-title ps-3 text-uppercase mb-3 d-none d-md-inline text-light">main</span>
     <li>
-        <a href="{{ route('admin.dashboard') }}" class="btn ms-btn-textual-primary w-lg-auto w-100  text-start sidebar-icon arrow rounded-3 active">
+        <a href="{{ route('admin.dashboard') }}" class="btn ms-btn-textual-primary w-lg-auto w-100  text-start sidebar-icon arrow rounded-3 {{Route::currentRouteName() == 'admin.dashboard'?'active':''}}">
             <i class="fa-solid fa-gauge me-2"></i>
             <span class="d-none d-md-inline">Dashboard</span>
         </a>
@@ -19,14 +19,14 @@
     <!-- reindirizzamento LISTA APPARTAMENTI -->
     <span class="sidebar-title ps-3 text-uppercase my-3 d-none d-md-inline text-light">link rapidi</span>
     <li>
-        <a href="{{ route('admin.apartments.index') }}" class="btn ms-btn-textual-primary w-lg-auto w-100  text-start sidebar-icon arrow rounded-3">
+        <a href="{{ route('admin.apartments.index') }}" class="btn ms-btn-textual-primary w-lg-auto w-100  text-start sidebar-icon arrow rounded-3 {{Route::currentRouteName() == 'admin.apartments.index'?'active':''}}"">
             <i class="fa-solid fa-list me-2"></i>
             <span class="d-none d-md-inline">I Miei Appartamenti</span>
         </a>
     </li>
 
     <li>
-        <a href="{{ route('admin.messages.index') }}" class="btn ms-btn-textual-primary w-lg-auto w-100  text-start sidebar-icon arrow rounded-3">
+        <a href="{{ route('admin.messages.index') }}" class="btn ms-btn-textual-primary w-lg-auto w-100  text-start sidebar-icon arrow rounded-3 {{Route::currentRouteName() == 'admin.messages.index'?'active':''}}"">
             <i class="fa-solid fa-envelope me-2"></i>
             <span  class="d-none d-md-inline">Messaggi</span>
         </a>
@@ -34,7 +34,7 @@
    
 
     <li>
-        <a href="{{ route('admin.sponsorships.index') }}" class="btn ms-btn-textual-primary w-lg-auto w-100  text-start sidebar-icon arrow rounded-3">
+        <a href="{{ route('admin.sponsorships.index') }}" class="btn ms-btn-textual-primary w-lg-auto w-100  text-start sidebar-icon arrow rounded-3 {{Route::currentRouteName() == 'admin.sponsorships.index'?'active':''}}"">
             <i class="fa-solid fa-star me-2"></i>
             <span  class="d-none d-md-inline">
                 Sponsorizza
