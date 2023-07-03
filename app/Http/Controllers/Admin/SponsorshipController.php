@@ -52,8 +52,14 @@ class SponsorshipController extends Controller
     {
         $sponsorship = Sponsorship::findOrFail($request->sponsorship_id);
         $apartment = Apartment::findOrFail($request->apartment_id);
-
-        $amount = $request->amount;
+        $amount = 0;
+        if ($request->sponsorship_id == 1) {
+            $amount = 2.99;
+        } elseif ($request->sponsorship_id == 2) {
+            $amount = 5.99;
+        } elseif ($request->sponsorship_id == 3) {
+            $amount = 9.99;
+        }
         $nonce = $request->payment_method_nonce;
 
         $gateway = new Braintree\Gateway([
