@@ -2,7 +2,7 @@
 @section('content')
     <div class="m-3">
         {{-- buttons-top --}}
-        <a href="{{ route('admin.apartments.index') }}" class="btn ms-btn-outline-primary  ms_arrow_back">
+        <a href="{{ route('admin.apartments.index') }}" class="btn ms-btn-outline-primary d-none d-lg-inline-block">
             <i class="fa-solid fa-arrow-left"></i>
         </a>
         <!--messaggi errori generali-->
@@ -15,7 +15,7 @@
                 </ul>
             </div>
         @endif
-        <h1 class="text-center">Aggiungi un nuovo appartamento</h1>
+        <h1 class="text-center mt-5 mt-lg-0">Aggiungi un nuovo appartamento</h1>
         <form method="POST" action="{{ route('admin.apartments.store') }}" enctype="multipart/form-data" id="formCreate">
     
             @csrf
@@ -164,6 +164,11 @@
             </div>
             <button type="submit" class="m-3 btn btn-success">Aggiungi</button>
         </form>
+
+          {{-- button --}}
+        <a href="{{ route('admin.apartments.index') }}" class="btn ms-btn-outline-primary d-block d-lg-none my-3">
+            <i class="fa-solid fa-arrow-left"></i> Torna ai miei appartamenti
+        </a>
     </div>
     <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps-web.min.js"></script>
     <script>
