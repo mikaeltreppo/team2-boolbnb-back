@@ -19,7 +19,7 @@
                        <div class="row align-items-center">
                             <div class="col-12 col-xl-1 col-lg-12 text-center text-xl-start text-muted ">
                                 <div class="rounded-icon animated mx-auto ms-bg-dark">
-                                    <i class="fa-solid fa-ranking-star mb-3 mb-lg-0"></i>
+                                    <i class="fa-solid fa-ranking-star mb-lg-0"></i>
                                 </div>
                             </div>
 
@@ -65,9 +65,9 @@
                                     </div>
                                 </div>
         
-                                <div class="col-12 col-xl-3 text-center order-0 order-lg-3 text-muted">
+                                <div class="col-12 col-xl-3 text-center order-0 order-lg-3 text-muted mb-2 mb-xl-0">
                                     <div class="rounded-icon animated mx-auto bg-success">
-                                        <i class="fa-solid fa-envelope mb-3 mb-lg-0"></i>
+                                        <i class="fa-solid fa-envelope mb-lg-0"></i>
                                     </div>
                                 </div>
                             </div>
@@ -89,15 +89,15 @@
                                     <h1 class="fw-bolder">{{$total_views}}</h1>
                             </div>
 
-                            <div class="col-12 col-xl-7 col-lg-12 text-center text-xl-start order-1 text-muted">
+                            <div class="col-12 col-xl-7 col-lg-12 text-center text-xl-start order-1 text-muted mb-2 mb-xl-0">
                                 Persone hanno visto
                                 <br/>
                                 i tuoi appartamenti
                             </div>
 
-                            <div class="col-12 col-xl-3 text-center order-0 order-lg-3 text-muted">
+                            <div class="col-12 col-xl-3 text-center order-0 order-lg-3 text-muted mb-2 mb-xl-0">
                                 <div class="rounded-icon animated mx-auto bg-primary">
-                                    <i class="fa-solid fa-eye mb-3 mb-lg-0"></i>
+                                    <i class="fa-solid fa-eye mb-lg-0"></i>
                                 </div>
                             </div>
 
@@ -119,15 +119,15 @@
                                         <h1 class="fw-bolder">{{$apartment_count}}</h1>
                                 </div>
 
-                                <div class="col-12 col-xl-7 col-lg-12 text-center text-xl-start order-1 text-muted ">
+                                <div class="col-12 col-xl-7 col-lg-12 text-center text-xl-start order-1 text-muted mb-2 mb-xl-0">
                                     Appartamenti
                                     <br/>
                                     pubblicati
                                 </div>
 
-                                <div class="col-xl-3 col-12 text-center order-0 order-lg-3 text-muted">
+                                <div class="col-xl-3 col-12 text-center order-0 order-lg-3 text-muted mb-2 mb-xl-0">
                                     <div class="rounded-icon animated mx-auto bg-warning">
-                                        <i class="fa-solid fa-house mb-3 mb-lg-0"></i>
+                                        <i class="fa-solid fa-house mb-lg-0"></i>
                                     </div>
                                 </div>
 
@@ -158,7 +158,7 @@
                         <div class="row text-center py-5">
                            <div class="col-7 mx-auto">
                                 <div class="rounded-icon mx-auto ms-bg-dark mb-5 p-5">
-                                    <i class="fa-solid fa-envelope mb-3 mb-lg-0 fa-2x"></i>
+                                    <i class="fa-solid fa-envelope  mb-lg-0 fa-2x"></i>
                                 </div>
                                 <h5 class="font-secondary">Non sai come usare la dashboard?</h5>
                                 <h6 class="font-secondary text-muted mb-4">Ti aiutiamo noi!</h6>
