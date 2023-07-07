@@ -82,7 +82,7 @@
                                         class="fa-solid fa-star me-2"></i>Sponsorizza</a> --}}
                                
                                         
-                                @if($apartment->sponsorships->max('pivot.start_date') < $apartment->sponsorships->max('pivot.expired_at'))
+                                @if($currentDateTime < $apartment->sponsorships->max('pivot.expired_at'))
                                 <div class="badge ms-bg-dark ms-2 d-flex align-items-center">
                                     <i class="fa-solid fa-star text-light me-2"></i>
                                     <span class="xsmall text-uppercase fw-bolder text-light">

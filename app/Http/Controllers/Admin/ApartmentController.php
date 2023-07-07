@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use App\Http\Requests\StoreApartmentRequest;
 use App\Http\Requests\UpdateApartmentRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Carbon;
 
 class ApartmentController extends Controller
 {
@@ -18,11 +19,13 @@ class ApartmentController extends Controller
 
     public function index()
     {
+        $currentDateTime = Carbon::now();
+
         $facilities = Facility::all();
         $user = auth()->user();
         $apartments = $user->apartments()->withCount('views')->get();
 
-        return view('admin.apartments.index', compact('apartments', 'facilities'));
+        return view('admin.apartments.index', compact('apartments', 'facilities','currentDateTime'));
     }
 
     /**
@@ -89,6 +92,8 @@ class ApartmentController extends Controller
      */
     public function show($id)
     {
+        $currentDateTime = Carbon::now();
+
         $user = auth()->user();
         // $apartment = Apartment::findOrFail($id)->with('sponsorships')->get();
         $apartment = Apartment::with('sponsorships')->withCount('views')->findOrFail($id)->load('sponsorships');
@@ -97,7 +102,7 @@ class ApartmentController extends Controller
         $facilities = Facility::all();
 
         if ($apartment->user_id == $user->id) {
-            return view('admin.apartments.show', compact('apartment'));
+            return view('admin.apartments.show', compact('apartment','currentDateTime'));
         } else {
             return view('errors.403');
         }
