@@ -23,7 +23,7 @@
 
 
 
-                @if($apartment->sponsorships->max('pivot.start_date') < $apartment->sponsorships->max('pivot.expired_at'))
+                @if($currentDateTime < $apartment->sponsorships->max('pivot.expired_at'))
                     <div class="badge ms-bg-dark position-absolute top-0 end-0 mt-lg-2 mt-2 me-lg-4 me-3">
                         <i class="fa-solid fa-star text-light me-2"></i>
                         <span class="xsmall text-uppercase fw-bolder text-light">
