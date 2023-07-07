@@ -11,7 +11,7 @@ THUMBNAIL GIF
 -->
 
 <p align="center">
-  <img src="https://github.com/mattiamoneta/team2-boolbnb-front/blob/main/thumbnail_frameless.gif" alt="Boolbnb"/>
+  <img src="https://github.com/mattiamoneta/team2-boolbnb-front/blob/main/thumbnail_back.gif" alt="Boolbnb"/>
 </p>
 
 <!---
